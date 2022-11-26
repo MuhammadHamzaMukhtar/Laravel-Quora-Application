@@ -18,8 +18,8 @@ class FeedController extends Controller
     public function index()
     {
        $posts = Feed::with('user', 'comments')->whereHas('user')->orderBy('updated_at', 'desc')->get();
-    //    dd($posts);
-       return view('dashboard', compact('posts'));
+       $comments = Comment::latest()->get();
+       return view('dashboard', compact('posts', 'comments'));
     }
 
     /**

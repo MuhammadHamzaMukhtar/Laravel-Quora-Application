@@ -824,6 +824,8 @@
                                 <span class="text-muted fs-7">{{$post->updated_at->diffForHumans()}}</span>
                             </div>
                         </div>
+                        @if($post->user_id === Auth::user()->id)
+                        <div>
                         <!-- edit -->
                         <i class="fas fa-ellipsis-h" type="button" id="post1Menu" data-bs-toggle="dropdown" aria-expanded="false"></i>
                         <!-- edit menu -->
@@ -849,6 +851,8 @@
                                     Delete Post</a>
                             </li>
                         </ul>
+                        </div>
+                        @endif
                     </div>
                     <!-- post content -->
                     <div class="mt-3">
@@ -858,7 +862,9 @@
                                 {{$post->description}}
                             </p>
                             @if($post->pic !== 'NULL')
-                            <img src="{{asset('images/'.$post->pic)}}" alt="post image" class="img-fluid rounded" />
+                            <!-- <img src="{{asset('images/'.$post->pic)}}" alt="post image" class="img-fluid rounded" /> -->
+                            <embed src="{{ asset('images/'.$post->pic) }}" width="600" height="500" alt="pdf" />
+
                             @else
 
                             @endif
@@ -885,14 +891,12 @@
                                 <div class="accordion-item border-0">
                                     <!-- comment collapse -->
                                     <h2 class="accordion-header" id="headingTwo">
-                                        <div class="
-                            accordion-button
-                            collapsed
-                            pointer
-                            d-flex
-                            justify-content-end
-                          " data-bs-toggle="collapse" data-bs-target="#collapsePost1" aria-expanded="false" aria-controls="collapsePost1">
-                                            <p class="m-0">2 Comments</p>
+                                        <div class="accordion-button
+                                            collapsed
+                                            pointer
+                                            d-flex
+                                            justify-content-end                                    " data-bs-toggle="collapse" data-bs-target="#collapsePost1" aria-expanded="false" aria-controls="collapsePost1">
+                                            <p class="m-0">{{$post->comments->count()}} Comments</p>
                                         </div>
                                     </h2>
                                     <hr />
@@ -931,9 +935,11 @@
                                         <hr />
                                         <div class="accordion-body">
                                             <!-- comment 1 -->
+                                            @foreach($comments as $comment)
+                                            @if($comment->feed_id === $post->id)
                                             <div class="d-flex align-items-center my-1">
                                                 <!-- avatar -->
-                                                <img src="" alt="avatar" class="rounded-circle me-2" style="
+                                                <img src="{{asset('images/'.$comment->user->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="
                                 width: 38px;
                                 height: 38px;
                                 object-fit: cover;
@@ -941,6 +947,7 @@
                                                 <!-- comment text -->
                                                 <div class="p-3 rounded comment__input w-100">
                                                     <!-- comment menu of author -->
+                                                    @if($comment->user_id === Auth::user()->id)
                                                     <div class="d-flex justify-content-end">
                                                         <!-- icon -->
                                                         <i class="fas fa-ellipsis-h text-blue pointer" id="post1CommentMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
@@ -968,36 +975,22 @@
                                                             </li>
                                                         </ul>
                                                     </div>
-                                                    <p class="fw-bold m-0">John</p>
+                                                    @endif
+                                                    <p class="fw-bold m-0">{{$comment->user->name}}</p>
                                                     <p class="m-0 fs-7 bg-gray p-2 rounded">
-                                                        Lorem ipsum dolor sit amet, consectetur
-                                                        adipiscing elit.
+                                                        {{$comment->comment_text}}
                                                     </p>
+                                                    <span class="text-muted fs-7">{{$comment->updated_at->diffForHumans()}}</span>
                                                 </div>
                                             </div>
-                                            <!-- comment 2 -->
-                                            <div class="d-flex align-items-center my-1">
-                                                <!-- avatar -->
-                                                <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle me-2" style="
-                                width: 38px;
-                                height: 38px;
-                                object-fit: cover;
-                              " />
-                                                <!-- comment text -->
-                                                <div class="p-3 rounded comment__input w-100">
-                                                    <p class="fw-bold m-0">Jerry</p>
-                                                    <p class="m-0 fs-7 bg-gray p-2 rounded">
-                                                        Lorem ipsum dolor sit amet, consectetur
-                                                        adipiscing elit.
-                                                    </p>
-                                                </div>
-                                            </div>
+                                            @endif
+                                            @endforeach
                                             <!-- create comment -->
                                             <form action="{{route('comments_store', $post->id)}}" method="POST" class="d-flex my-1">
                                                 @csrf
                                                 <!-- avatar -->
                                                 <div>
-                                                    <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle me-2" style="
+                                                    <img src="{{asset('images/'.Auth::user()->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="
                                   width: 38px;
                                   height: 38px;
                                   object-fit: cover;
@@ -1986,7 +1979,7 @@
                 dataType: "json",
                 url: '/getLike',
                 data: {
-                    'feed_id' : feed_id
+                    'feed_id': feed_id
                 },
                 success: function(data) {
                     console.log(data);
@@ -1994,7 +1987,7 @@
             });
         })
 
-        
+
     })
 </script>
 
