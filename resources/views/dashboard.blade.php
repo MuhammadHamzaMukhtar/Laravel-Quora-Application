@@ -15,7 +15,7 @@
                     text-decoration-none text-dark
                   ">
                             <div class="p-2">
-                                <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
+                                <img src="{{asset('images/'.Auth::user()->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
                             </div>
                             <div>
                                 <p class="m-0">{{Auth::user()->name}}</p>
@@ -566,9 +566,9 @@
                     <!-- avatar -->
                     <div class="d-flex" type="button">
                         <div class="p-1">
-                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
+                            <img src="{{asset('images/'.Auth::user()->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
                         </div>
-                        <input type="text" class="form-control rounded-pill border-0 bg-gray pointer" disabled placeholder="What's on your mind, John?" data-bs-toggle="modal" data-bs-target="#createModal" />
+                        <input type="text" class="form-control rounded-pill border-0 bg-gray pointer" disabled placeholder="What's on your mind, {{Auth::user()->name}}?" data-bs-toggle="modal" data-bs-target="#createModal" />
                     </div>
                     <!-- create modal -->
                     <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true" data-bs-backdrop="false">
@@ -588,7 +588,7 @@
                                             <!-- name -->
                                             <div class="d-flex align-items-center">
                                                 <div class="p-2">
-                                                    <img src="https://source.unsplash.com/collection/happy-people" alt="from fb" class="rounded-circle" style="
+                                                    <img src="{{asset('images/'.Auth::user()->profile_pic)}}" alt="from fb" class="rounded-circle" style="
                                   width: 38px;
                                   height: 38px;
                                   object-fit: cover;
@@ -616,12 +616,12 @@
                                                 </div>
                                                 <!-- options -->
                                                 <div class="d-flex                            justify-content-between border border-1 border-light rounded p-3 mt-3">
-                                                    <p class="m-0">Add to your post</p>
+                                                    <p class="m-0" id="display_pic">Add to your post</p>
                                                     <div>
                                                         <label for="pic_file">
-                                                        <i class="fas fa-images fs-5 text-success pointer mx-1"></i>
+                                                            <i class="fas fa-images fs-5 text-success pointer mx-1"></i>
                                                         </label>
-                                                        <input type="file" name="image" id="pic_file" >
+                                                        <input type="file" name="image" id="pic_file">
                                                         <i class="fas fa-user-check fs-5 text-primary pointer
                                   mx-1
                                 "></i>
@@ -812,16 +812,16 @@
                     </div>
                 </div>
                 <!-- posts -->
-                <!-- p 1 -->
+                @foreach($posts as $post)
                 <div class="bg-white p-4 rounded shadow mt-3">
                     <!-- author -->
                     <div class="d-flex justify-content-between">
                         <!-- avatar -->
                         <div class="d-flex">
-                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
+                            <img src="{{ asset('images/'.$post->user->profile_pic) }}" alt="avatar" class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
                             <div>
-                                <p class="m-0 fw-bold">John</p>
-                                <span class="text-muted fs-7">July 17 at 1:23 pm</span>
+                                <p class="m-0 fw-bold">{{$post->user->name}}</p>
+                                <span class="text-muted fs-7">{{$post->updated_at->diffForHumans()}}</span>
                             </div>
                         </div>
                         <!-- edit -->
@@ -855,11 +855,13 @@
                         <!-- content -->
                         <div>
                             <p>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                Quae fuga incidunt consequatur tenetur doloremque officia
-                                corrupti provident tempore vitae labore?
+                                {{$post->description}}
                             </p>
-                            <img src="https://source.unsplash.com/random/12" alt="post image" class="img-fluid rounded" />
+                            @if($post->pic !== 'NULL')
+                            <img src="{{asset('images/'.$post->pic)}}" alt="post image" class="img-fluid rounded" />
+                            @else
+
+                            @endif
                         </div>
                         <!-- likes & comments -->
                         <div class="post__comment mt-3 position-relative">
@@ -896,19 +898,20 @@
                                     <hr />
                                     <!-- comment & like bar -->
                                     <div class="d-flex justify-content-around">
-                                        <div class="
-                            dropdown-item
-                            rounded
-                            d-flex
-                            justify-content-center
-                            align-items-center
-                            pointer
-                            text-muted
-                            p-1
-                          ">
+                                        <label class="
+                                            dropdown-item
+                                            rounded
+                                            d-flex
+                                            justify-content-center
+                                            align-items-center
+                                            pointer
+                                            text-muted
+                                            p-1
+                                        ">
                                             <i class="fas fa-thumbs-up me-3"></i>
+                                            <input type="text" name="" class="like" value="{{$post->id}}">
                                             <p class="m-0">Like</p>
-                                        </div>
+                                        </label>
                                         <div class="
                             dropdown-item
                             rounded
@@ -930,7 +933,7 @@
                                             <!-- comment 1 -->
                                             <div class="d-flex align-items-center my-1">
                                                 <!-- avatar -->
-                                                <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle me-2" style="
+                                                <img src="" alt="avatar" class="rounded-circle me-2" style="
                                 width: 38px;
                                 height: 38px;
                                 object-fit: cover;
@@ -990,7 +993,8 @@
                                                 </div>
                                             </div>
                                             <!-- create comment -->
-                                            <form class="d-flex my-1">
+                                            <form action="{{route('comments_store', $post->id)}}" method="POST" class="d-flex my-1">
+                                                @csrf
                                                 <!-- avatar -->
                                                 <div>
                                                     <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle me-2" style="
@@ -1000,7 +1004,8 @@
                                 " />
                                                 </div>
                                                 <!-- input -->
-                                                <input type="text" class="form-control border-0 rounded-pill bg-gray" placeholder="Write a comment" />
+                                                <input type="text" name="comment" class="form-control border-0 rounded-pill bg-gray" placeholder="Write a comment" />
+                                                <button type="submit" class="bg-dark rounded-pill ms-2"><i class="fas fa-chevron-right text-primary"></i></button>
                                             </form>
                                             <!-- end -->
                                         </div>
@@ -1011,180 +1016,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- p 2 -->
-                <div class="bg-white p-4 rounded shadow mt-3">
-                    <!-- author -->
-                    <div class="d-flex justify-content-between">
-                        <!-- avatar -->
-                        <div class="d-flex">
-                            <img src="https://source.unsplash.com/random/1" alt="avatar" class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
-                            <div>
-                                <p class="m-0 fw-bold">Mike</p>
-                                <span class="text-muted fs-7">May 24 at 1:23 pm</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- post content -->
-                    <div class="mt-3">
-                        <!-- content -->
-                        <div>
-                            <p>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                Quae fuga incidunt consequatur tenetur doloremque officia
-                                corrupti provident tempore vitae labore?
-                            </p>
-                            <img src="https://source.unsplash.com/random/13" alt="post image" class="img-fluid rounded" />
-                        </div>
-                        <!-- likes & comments -->
-                        <div class="post__comment mt-3 position-relative">
-                            <!-- likes -->
-                            <div class="
-                      d-flex
-                      align-items-center
-                      top-0
-                      start-0
-                      position-absolute
-                    " style="height: 50px; z-index: 5">
-                                <div class="me-2">
-                                    <i class="text-primary fas fa-thumbs-up"></i>
-                                    <i class="text-danger fab fa-gratipay"></i>
-                                    <i class="text-warning fas fa-grin-squint"></i>
-                                </div>
-                                <p class="m-0 text-muted fs-7">Phu, Tuan, and 3 others</p>
-                            </div>
-                            <!-- comments start-->
-                            <div class="accordion" id="accordionExample">
-                                <div class="accordion-item border-0">
-                                    <!-- comment collapse -->
-                                    <h2 class="accordion-header" id="headingTwo">
-                                        <div class="
-                            accordion-button
-                            collapsed
-                            pointer
-                            d-flex
-                            justify-content-end
-                          " data-bs-toggle="collapse" data-bs-target="#collapsePost1" aria-expanded="false" aria-controls="collapsePost1">
-                                            <p class="m-0">2 Comments</p>
-                                        </div>
-                                    </h2>
-                                    <hr />
-                                    <!-- comment & like bar -->
-                                    <div class="d-flex justify-content-around">
-                                        <div class="
-                            dropdown-item
-                            rounded
-                            d-flex
-                            justify-content-center
-                            align-items-center
-                            pointer
-                            text-muted
-                            p-1
-                          ">
-                                            <i class="fas fa-thumbs-up me-3"></i>
-                                            <p class="m-0">Like</p>
-                                        </div>
-                                        <div class="
-                            dropdown-item
-                            rounded
-                            d-flex
-                            justify-content-center
-                            align-items-center
-                            pointer
-                            text-muted
-                            p-1
-                          " data-bs-toggle="collapse" data-bs-target="#collapsePost1" aria-expanded="false" aria-controls="collapsePost1">
-                                            <i class="fas fa-comment-alt me-3"></i>
-                                            <p class="m-0">Comment</p>
-                                        </div>
-                                    </div>
-                                    <!-- comment expand -->
-                                    <div id="collapsePost1" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                        <hr />
-                                        <div class="accordion-body">
-                                            <!-- comment 1 -->
-                                            <div class="d-flex align-items-center my-1">
-                                                <!-- avatar -->
-                                                <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle me-2" style="
-                                width: 38px;
-                                height: 38px;
-                                object-fit: cover;
-                              " />
-                                                <!-- comment text -->
-                                                <div class="p-3 rounded comment__input w-100">
-                                                    <!-- comment menu of author -->
-                                                    <div class="d-flex justify-content-end">
-                                                        <!-- icon -->
-                                                        <i class="fas fa-ellipsis-h text-blue pointer" id="post1CommentMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                                                        <!-- menu -->
-                                                        <ul class="dropdown-menu border-0 shadow" aria-labelledby="post1CommentMenuButton">
-                                                            <li class="d-flex align-items-center">
-                                                                <a class="
-                                        dropdown-item
-                                        d-flex
-                                        justify-content-around
-                                        align-items-center
-                                        fs-7
-                                      " href="#">
-                                                                    Edit Comment</a>
-                                                            </li>
-                                                            <li class="d-flex align-items-center">
-                                                                <a class="
-                                        dropdown-item
-                                        d-flex
-                                        justify-content-around
-                                        align-items-center
-                                        fs-7
-                                      " href="#">
-                                                                    Delete Comment</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <p class="fw-bold m-0">John</p>
-                                                    <p class="m-0 fs-7 bg-gray p-2 rounded">
-                                                        Lorem ipsum dolor sit amet, consectetur
-                                                        adipiscing elit.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <!-- comment 2 -->
-                                            <div class="d-flex align-items-center my-1">
-                                                <!-- avatar -->
-                                                <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle me-2" style="
-                                width: 38px;
-                                height: 38px;
-                                object-fit: cover;
-                              " />
-                                                <!-- comment text -->
-                                                <div class="p-3 rounded comment__input w-100">
-                                                    <p class="fw-bold m-0">Jerry</p>
-                                                    <p class="m-0 fs-7 bg-gray p-2 rounded">
-                                                        Lorem ipsum dolor sit amet, consectetur
-                                                        adipiscing elit.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <!-- create comment -->
-                                            <form class="d-flex my-1">
-                                                <!-- avatar -->
-                                                <div>
-                                                    <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle me-2" style="
-                                  width: 38px;
-                                  height: 38px;
-                                  object-fit: cover;
-                                " />
-                                                </div>
-                                                <!-- input -->
-                                                <input type="text" class="form-control border-0 rounded-pill bg-gray" placeholder="Write a comment" />
-                                            </form>
-                                            <!-- end -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end -->
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
         <!-- ================= Chatbar ================= -->
@@ -2136,8 +1969,33 @@
 </div>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         $('#pic_file').hide();
+        $('.like').hide();
+
+        $('.like').click(function() {
+            var feed_id = $(this).val();
+            // alert(feed_id);
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: '/getLike',
+                data: {
+                    'feed_id' : feed_id
+                },
+                success: function(data) {
+                    console.log(data);
+                },
+            });
+        })
+
+        
     })
 </script>
+
 @endsection

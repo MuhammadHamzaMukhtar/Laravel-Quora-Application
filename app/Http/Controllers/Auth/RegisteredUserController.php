@@ -33,15 +33,26 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
+        if($request->image){
+
+            $image = $request->file('image')->getClientOriginalName();
+    
+            $request->image->move(public_path('images'), $image);
+        }
+        
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+            // 'image' => 'required|mimes:jpg,jpeg,png',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'profile_pic' => $request->image,
             'password' => Hash::make($request->password),
         ]);
 

@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <!-- CSRF Token -->
+     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- bootstrap -->
@@ -11,6 +13,10 @@
     <!-- main style -->
     <link rel="stylesheet" href="{{asset('forum/feed.css')}}" />
     <title>Laravel Quora</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 </head>
 
 <body class="bg-gray postion-relative">
@@ -150,7 +156,7 @@
                 <div class="col d-flex align-items-center justify-content-end">
                     <!-- avatar -->
                     <div class="align-items-center justify-content-center d-none d-xl-flex">
-                        <img src="https://source.unsplash.com/collection/happy-people" class="rounded-circle me-2" alt="avatar" style="width: 38px; height: 38px; object-fit: cover" />
+                        <img src="{{asset('images/'.Auth::user()->profile_pic)}}" class="rounded-circle me-2" alt="avatar" style="width: 38px; height: 38px; object-fit: cover" />
                         <p class="m-0">{{Auth::user()->name}}</p>
                     </div>
                     <!-- main menu -->

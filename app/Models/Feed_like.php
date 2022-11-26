@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Feed extends Model
+class Feed_like extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'user_id',
-        'description',
-        'pic'
+        'feed_id',
+        'is_liked'
     ];
 
     public function user()
@@ -20,14 +20,13 @@ class Feed extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function feed_likes()
+    public function feed()
     {
-        return $this->hasMany(Feed_like::class, 'feed_id', 'id');
+        return $this->belongsTo(Feed::class, 'feed_id', 'id');
     }
 
-       
-    public function comments()
+    public function feed_likes()
     {
-       return $this->hasMany(Comment::class, 'id');
+        return $this->hasMany(Feed_like::class, 'user_id', 'id');
     }
 }

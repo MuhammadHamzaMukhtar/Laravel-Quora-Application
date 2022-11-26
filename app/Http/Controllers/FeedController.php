@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Feed;
+use App\Models\Feed_like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +17,9 @@ class FeedController extends Controller
      */
     public function index()
     {
-        //
+       $posts = Feed::with('user', 'comments')->whereHas('user')->orderBy('updated_at', 'desc')->get();
+    //    dd($posts);
+       return view('dashboard', compact('posts'));
     }
 
     /**
@@ -36,7 +40,6 @@ class FeedController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->pic);
         if($request->image){
 
             $image = $request->file('image')->getClientOriginalName();
@@ -96,5 +99,26 @@ class FeedController extends Controller
     public function destroy(Feed $feed)
     {
         //
+    }
+
+    public function likes(Request $request)
+    {
+        $data = Feed_like::create([
+            'user_id' => Auth::user()->id,
+            'feed_id' => $request['feed_id'],
+            'is_liked' => 1
+        ]);
+        return response()->json($data);
+    }
+
+    public function storeComment(Request $request, $id)
+    {
+        Comment::create([
+            'user_id' => Auth::user()->id,
+            'feed_id' => $id,
+            'comment_text' => $request->comment
+        ]);
+
+        return redirect()->back();
     }
 }

@@ -20,12 +20,18 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'profile_pic',
         'password',
     ];
 
     public function feeds()
     {
-       $this->hasMany(Feed::class, 'id');
+       return $this->hasMany(Feed::class, 'id');
+    }
+    
+    public function comments()
+    {
+       return $this->hasMany(Comment::class, 'id');
     }
     /**
      * The attributes that should be hidden for serialization.
