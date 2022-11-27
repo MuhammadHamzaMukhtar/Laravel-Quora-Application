@@ -17,7 +17,7 @@ class FeedController extends Controller
      */
     public function index()
     {
-       $posts = Feed::with('user', 'comments')->whereHas('user')->orderBy('updated_at', 'desc')->get();
+       $posts = Feed::with('user', 'comments', 'feed_likes')->whereHas('user')->orderBy('updated_at', 'desc')->get();
        $comments = Comment::latest()->get();
        return view('dashboard', compact('posts', 'comments'));
     }
@@ -103,12 +103,21 @@ class FeedController extends Controller
 
     public function likes(Request $request)
     {
-        $data = Feed_like::create([
-            'user_id' => Auth::user()->id,
-            'feed_id' => $request['feed_id'],
-            'is_liked' => 1
-        ]);
-        return response()->json($data);
+        $user = Auth::user();
+        $feedLike = Feed_like::where(['user_id'=>$user['id'], 'feed_id'=>$request['feed_id']])->update(['is_liked' => $request['status']]);
+        if(!$feedLike){
+
+            Feed_like::create([
+                'user_id' => $user['id'],
+                'feed_id' => $request['feed_id'],
+                'is_liked' => $request['status']
+            ]);
+        }
+        // $feed = Feed::where('id', $request['feed_id']);
+        // $feed->update([
+        //     'likes' => $feed['likes']->increment()
+        // ]);
+        // return response()->json($data);
     }
 
     public function storeComment(Request $request, $id)

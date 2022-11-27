@@ -826,31 +826,31 @@
                         </div>
                         @if($post->user_id === Auth::user()->id)
                         <div>
-                        <!-- edit -->
-                        <i class="fas fa-ellipsis-h" type="button" id="post1Menu" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                        <!-- edit menu -->
-                        <ul class="dropdown-menu border-0 shadow" aria-labelledby="post1Menu">
-                            <li class="d-flex align-items-center">
-                                <a class="
+                            <!-- edit -->
+                            <i class="fas fa-ellipsis-h" type="button" id="post1Menu" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                            <!-- edit menu -->
+                            <ul class="dropdown-menu border-0 shadow" aria-labelledby="post1Menu">
+                                <li class="d-flex align-items-center">
+                                    <a class="
                         dropdown-item
                         d-flex
                         justify-content-around
                         align-items-center
                         fs-7
                       " href="#">
-                                    Edit Post</a>
-                            </li>
-                            <li class="d-flex align-items-center">
-                                <a class="
+                                        Edit Post</a>
+                                </li>
+                                <li class="d-flex align-items-center">
+                                    <a class="
                         dropdown-item
                         d-flex
                         justify-content-around
                         align-items-center
                         fs-7
                       " href="#">
-                                    Delete Post</a>
-                            </li>
-                        </ul>
+                                        Delete Post</a>
+                                </li>
+                            </ul>
                         </div>
                         @endif
                     </div>
@@ -863,13 +863,9 @@
                             </p>
                             @if($post->pic !== 'NULL')
                             <!-- <img src="{{asset('images/'.$post->pic)}}" alt="post image" class="img-fluid rounded" /> -->
-                            <embed src="{{ asset('images/'.$post->pic) }}" width="600" height="500" alt="pdf" />
-
-                            @else
-
+                            <embed src="{{ asset('images/'.$post->pic) }}" width="600" height="600" alt="pdf" />
                             @endif
                         </div>
-                        <!-- likes & comments -->
                         <div class="post__comment mt-3 position-relative">
                             <!-- likes -->
                             <div class="
@@ -884,19 +880,18 @@
                                     <i class="text-danger fab fa-gratipay"></i>
                                     <i class="text-warning fas fa-grin-squint"></i>
                                 </div>
-                                <p class="m-0 text-muted fs-7">Phu, Tuan, and 3 others</p>
+                                <p class="m-0 text-muted fs-7">like</p>
                             </div>
                             <!-- comments start-->
                             <div class="accordion" id="accordionExample">
                                 <div class="accordion-item border-0">
                                     <!-- comment collapse -->
                                     <h2 class="accordion-header" id="headingTwo">
-                                        <div class="accordion-button
-                                            collapsed
+                                        <div class="accordion-button collapsed
                                             pointer
                                             d-flex
                                             justify-content-end                                    " data-bs-toggle="collapse" data-bs-target="#collapsePost1" aria-expanded="false" aria-controls="collapsePost1">
-                                            <p class="m-0">{{$post->comments->count()}} Comments</p>
+                                            <p class="m-0">{{$comments->count()}} Comments</p>
                                         </div>
                                     </h2>
                                     <hr />
@@ -912,9 +907,10 @@
                                             text-muted
                                             p-1
                                         ">
-                                            <i class="fas fa-thumbs-up me-3"></i>
-                                            <input type="text" name="" class="like" value="{{$post->id}}">
-                                            <p class="m-0">Like</p>
+                                            <i class="fas fa-thumbs-up me-3 btn btn-outline-primary form-control"></i>
+                                            <input type="checkbox" name="" data-id="{{$post->id}}" class="toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$post->is_liked == 1 ? 'checked' : ''}} hidden>
+                                            <!-- <input type="text" name="" class="like" value="{{$post->id}}">
+                                            <p class="m-0">Like</p> -->
                                         </label>
                                         <div class="
                             dropdown-item
@@ -926,7 +922,7 @@
                             text-muted
                             p-1
                           " data-bs-toggle="collapse" data-bs-target="#collapsePost1" aria-expanded="false" aria-controls="collapsePost1">
-                                            <i class="fas fa-comment-alt me-3"></i>
+                                            <i class="fas fa-comment-alt me-3 btn btn-outline-warning  form-control"></i>
                                             <p class="m-0">Comment</p>
                                         </div>
                                     </div>
@@ -935,7 +931,7 @@
                                         <hr />
                                         <div class="accordion-body">
                                             <!-- comment 1 -->
-                                            @foreach($comments as $comment)
+                                            @foreach($comments as $comment) 
                                             @if($comment->feed_id === $post->id)
                                             <div class="d-flex align-items-center my-1">
                                                 <!-- avatar -->
@@ -954,13 +950,7 @@
                                                         <!-- menu -->
                                                         <ul class="dropdown-menu border-0 shadow" aria-labelledby="post1CommentMenuButton">
                                                             <li class="d-flex align-items-center">
-                                                                <a class="
-                                        dropdown-item
-                                        d-flex
-                                        justify-content-around
-                                        align-items-center
-                                        fs-7
-                                      " href="#">
+                                                                <a class="dropdown-item d-flex justify-content-around align-items-center fs-7" href="#">
                                                                     Edit Comment</a>
                                                             </li>
                                                             <li class="d-flex align-items-center">
@@ -976,11 +966,63 @@
                                                         </ul>
                                                     </div>
                                                     @endif
-                                                    <p class="fw-bold m-0">{{$comment->user->name}}</p>
+                                                    <div class="d-flex">
+                                                    <p class="fw-bold m-0 me-2">{{$comment->user->name}}</p>
+                                                    <span class="text-muted fs-7">{{$comment->updated_at->diffForHumans()}}</span>
+                                                    </div>
                                                     <p class="m-0 fs-7 bg-gray p-2 rounded">
                                                         {{$comment->comment_text}}
                                                     </p>
-                                                    <span class="text-muted fs-7">{{$comment->updated_at->diffForHumans()}}</span>
+                                                     <!-- comment & like bar -->
+                                    <div class="d-flex justify-content-around">
+                                        <label class="
+                                            dropdown-item
+                                            rounded
+                                            d-flex
+                                            justify-content-center
+                                            align-items-center
+                                            pointer
+                                            text-muted
+                                            p-1 
+                                        ">
+                                            <i class="fas fa-thumbs-up me-3"></i>
+                                            <input type="checkbox" name="" data-id="{{$post->id}}" class="toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$post->status == 1 ? 'checked' : ''}} hidden>
+                                            <!-- <input type="text" name="" class="like" value="{{$post->id}}">
+                                            <p class="m-0">Like</p> -->
+                                        </label>
+                                        <div class="
+                            dropdown-item
+                            rounded
+                            d-flex
+                            justify-content-center
+                            align-items-center
+                            pointer
+                            text-muted
+                            p-1
+                          " data-bs-toggle="collapse" data-bs-target="#collapsePost2" aria-expanded="false" aria-controls="collapsePost2">
+                                            <i class="fas fa-comment-alt me-3"></i>
+                                            <p class="m-0">Reply</p>
+                                        </div>
+                                         <!-- comment expand -->
+                                    <div id="collapsePost2" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample1">
+                                        <div class="accordion-body1">
+                                        <form action="" method="POST" class="d-flex my-1">
+                                                @csrf
+                                                <!-- avatar -->
+                                                <div>
+                                                    <img src="{{asset('images/'.Auth::user()->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="
+                                  width: 38px;
+                                  height: 38px;
+                                  object-fit: cover;
+                                " />
+                                                </div>
+                                                <!-- input -->
+                                                <input type="text" name="comment" class="form-control border-0 rounded-pill bg-gray" placeholder="Write a comment" />
+                                                <button type="submit" class="bg-dark rounded-pill ms-2"><i class="fas fa-chevron-right text-primary"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    </div>
                                                 </div>
                                             </div>
                                             @endif
@@ -1961,9 +2003,8 @@
     </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-<script>
+<!-- <script>
     $(document).ready(function() {
-        $('#pic_file').hide();
         $('.like').hide();
 
         $('.like').click(function() {
@@ -1989,6 +2030,44 @@
 
 
     })
-</script>
+</script> -->
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $(document).ready(function() {
+        $('#pic_file').hide();
 
+        $('.fa-thumbs-up').click(function(){
+            $(this).removeClass('btn-outline-primary');
+            $(this).addClass('btn-primary');
+        })
+
+        $(function() {
+            // alert('hey');
+
+            $('.toggle').change(function() {
+                // alert('hey');
+
+                var status = $(this).prop('checked') == true ? 1 : 0;
+                var feed_id = $(this).data('id');
+                // alert
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: '/getLike',
+                    data: {
+                        'status': status,
+                        'feed_id': feed_id
+                    },
+                    success: function(data) {
+                        console.log('Success')
+                    }
+                })
+            })
+        })
+    })
+</script>
 @endsection
