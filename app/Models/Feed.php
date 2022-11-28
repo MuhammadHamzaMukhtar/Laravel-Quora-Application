@@ -15,6 +15,18 @@ class Feed extends Model
         'pic'
     ];
 
+    protected $appends = ['isLiked'];
+
+    public function getIsLikedAttribute()
+    {
+        return $this->feed_likes()->sum('is_liked');
+    }
+
+    // public function getisCommentedAttribute()
+    // {
+    //     return $this->count('is_commented');
+    // }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');

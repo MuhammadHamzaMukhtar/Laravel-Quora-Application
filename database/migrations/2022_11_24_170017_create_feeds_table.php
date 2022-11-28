@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('feeds', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->text('description');
-            $table->string('pic');
+            $table->text('description')->nullable();
+            $table->string('pic')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

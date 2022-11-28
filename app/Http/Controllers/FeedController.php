@@ -17,9 +17,12 @@ class FeedController extends Controller
      */
     public function index()
     {
-       $posts = Feed::with('user', 'comments', 'feed_likes')->whereHas('user')->orderBy('updated_at', 'desc')->get();
-       $comments = Comment::latest()->get();
-       return view('dashboard', compact('posts', 'comments'));
+        $posts = Feed::with('user', 'comments', 'feed_likes')->orderBy('updated_at', 'desc')->get();
+           dd($posts);
+        $comments = Comment::latest()->get();
+        //    $likes_count = $posts->feed_likes()->sum('is_liked');
+        //    dd($likes_count);
+        return view('dashboard', compact('posts', 'comments'));
     }
 
     /**
@@ -40,7 +43,7 @@ class FeedController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->image){
+        if ($request->image) {
 
             $image = $request->file('image')->getClientOriginalName();
 
@@ -49,7 +52,7 @@ class FeedController extends Controller
 
         Feed::create([
             'user_id' => Auth::user()->id,
-            'description' => $request->description,
+            'description' => $request->description ?? NULL,
             'pic' => $image ?? 'NULL'
         ]);
 
@@ -104,8 +107,8 @@ class FeedController extends Controller
     public function likes(Request $request)
     {
         $user = Auth::user();
-        $feedLike = Feed_like::where(['user_id'=>$user['id'], 'feed_id'=>$request['feed_id']])->update(['is_liked' => $request['status']]);
-        if(!$feedLike){
+        $feedLike = Feed_like::where(['user_id' => $user['id'], 'feed_id' => $request['feed_id']])->update(['is_liked' => $request['status']]);
+        if (!$feedLike) {
 
             Feed_like::create([
                 'user_id' => $user['id'],
@@ -127,6 +130,13 @@ class FeedController extends Controller
             'feed_id' => $id,
             'comment_text' => $request->comment
         ]);
+
+        // Feed_like::create([
+        //     'user_id' => Auth::user()->id,
+        //     'feed_id' => $id,
+        //     'is_commented' => 1
+        // ]);
+
 
         return redirect()->back();
     }

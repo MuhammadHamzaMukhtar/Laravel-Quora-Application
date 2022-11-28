@@ -12,7 +12,6 @@ class Feed_like extends Model
     protected $fillable = [
         'user_id',
         'feed_id',
-        'is_liked'
     ];
 
     public function user()
