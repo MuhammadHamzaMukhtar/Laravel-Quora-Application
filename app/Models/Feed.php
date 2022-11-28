@@ -15,18 +15,19 @@ class Feed extends Model
         'pic'
     ];
 
-    protected $appends = ['isLiked'];
+    protected $appends = ['isLiked', 'totalComments'];
 
     public function getIsLikedAttribute()
     {
         return $this->feed_likes()->sum('is_liked');
     }
+    
 
-    // public function getisCommentedAttribute()
-    // {
-    //     return $this->count('is_commented');
-    // }
-
+    public function getTotalCommentsAttribute()
+    {
+        return $this->comments()->count();    
+    }
+    
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
@@ -40,6 +41,6 @@ class Feed extends Model
        
     public function comments()
     {
-       return $this->hasMany(Comment::class, 'id');
+       return $this->hasMany(Comment::class, 'feed_id', 'id');
     }
 }

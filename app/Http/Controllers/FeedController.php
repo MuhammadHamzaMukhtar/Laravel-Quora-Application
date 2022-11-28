@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\CommentLikes;
 use App\Models\Feed;
 use App\Models\Feed_like;
 use Illuminate\Http\Request;
@@ -18,10 +19,10 @@ class FeedController extends Controller
     public function index()
     {
         $posts = Feed::with('user', 'comments', 'feed_likes')->orderBy('updated_at', 'desc')->get();
-           dd($posts);
-        $comments = Comment::latest()->get();
+        //    dd($posts);
+        $comments = Comment::with('children.children')->root()->latest()->get();
         //    $likes_count = $posts->feed_likes()->sum('is_liked');
-        //    dd($likes_count);
+        //    dd($comments);
         return view('dashboard', compact('posts', 'comments'));
     }
 
@@ -116,11 +117,34 @@ class FeedController extends Controller
                 'is_liked' => $request['status']
             ]);
         }
-        // $feed = Feed::where('id', $request['feed_id']);
-        // $feed->update([
-        //     'likes' => $feed['likes']->increment()
-        // ]);
-        // return response()->json($data);
+    }
+   
+    public function comment_likes(Request $request)
+    {
+        $user = Auth::user();
+        $commentLike = CommentLikes::where(['user_id' => $user['id'], 'comment_id' => $request['comment_id']])->update(['is_liked' => $request['status']]);
+        if (!$commentLike) {
+
+            CommentLikes::create([
+                'user_id' => $user['id'],
+                'comment_id' => $request['comment_id'],
+                'is_liked' => $request['status']
+            ]);
+        }
+    }
+
+    public function child_comment_likes(Request $request)
+    {
+        $user = Auth::user();
+        $commentLike = CommentLikes::where(['user_id' => $user['id'], 'comment_id' => $request['comment_id']])->update(['is_liked' => $request['status']]);
+        if (!$commentLike) {
+
+            CommentLikes::create([
+                'user_id' => $user['id'],
+                'comment_id' => $request['comment_id'],
+                'is_liked' => $request['status']
+            ]);
+        }
     }
 
     public function storeComment(Request $request, $id)
@@ -131,12 +155,18 @@ class FeedController extends Controller
             'comment_text' => $request->comment
         ]);
 
-        // Feed_like::create([
-        //     'user_id' => Auth::user()->id,
-        //     'feed_id' => $id,
-        //     'is_commented' => 1
-        // ]);
-
+        return redirect()->back();
+    }
+    
+    public function addReply(Request $request, $comment_id, $post_id)
+    {
+        // dd($comment_id, $post_id);
+        Comment::create([
+            'user_id' => Auth::user()->id,
+            'feed_id' => $post_id,
+            'comment_text' => $request->reply,
+            'parent_id' => $comment_id
+        ]);
 
         return redirect()->back();
     }

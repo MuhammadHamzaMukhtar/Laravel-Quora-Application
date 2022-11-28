@@ -890,8 +890,8 @@
                                         <div class="accordion-button collapsed
                                             pointer
                                             d-flex
-                                            justify-content-end                                    " data-bs-toggle="collapse" data-bs-target="#collapsePost1" aria-expanded="false" aria-controls="collapsePost1">
-                                            <p class="m-0">{{$post->comments->count()}} Comments</p>
+                                            justify-content-end" data-bs-toggle="collapse" data-bs-target="#collapsePost1" aria-expanded="false" aria-controls="collapsePost1">
+                                            <p class="m-0">{{$post->total_comments}} Comments</p>
                                         </div>
                                     </h2>
                                     <hr />
@@ -907,11 +907,9 @@
                                             text-muted
                                             p-1
                                         ">
-                                            @if($post->feed_likes->is_liked === 1)
-                                            <i class="fas fa-thumbs-up me-3 btn btn-primary form-control"></i>
-                                            @else
+
                                             <i class="fas fa-thumbs-up me-3 btn btn-outline-primary form-control"></i>
-                                            @endif
+
                                             <input type="checkbox" name="" data-id="{{$post->id}}" class="toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$post->is_liked == 1 ? 'checked'
                                             : ''}} hidden>
                                             <!-- <input type="text" name="" class="like" value="{{$post->id}}">
@@ -991,8 +989,8 @@
                                             p-1 
                                         ">
                                                             <i class="fas fa-thumbs-up me-3"></i>
-                                                            <input type="checkbox" name="" data-id="{{$post->id}}" class="toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$post->status ==
-                                                            1 ? 'checked' : ''}} hidden>
+                                                            <input type="checkbox" name="" data-id="{{$comment->id}}" class="comment_toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$comment->is_liked == 1 ? 'checked' : ''}} hidden><span class="text-muted fs-7">{{$comment->is_liked}}</span>
+
                                                             <!-- <input type="text" name="" class="like" value="{{$post->id}}">
                                             <p class="m-0">Like</p> -->
                                                         </label>
@@ -1009,24 +1007,98 @@
                                                             <i class="fas fa-comment-alt me-3"></i>
                                                             <p class="m-0">Reply</p>
                                                         </div>
-                                                        <!-- comment expand -->
-                                                        <div id="collapsePost2" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample1">
-                                                            <div class="accordion-body1">
-                                                                <form action="" method="POST" class="d-flex my-1">
-                                                                    @csrf
-                                                                    <!-- avatar -->
-                                                                    <div>
-                                                                        <img src="{{asset('images/'.Auth::user()->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="
+                                                    </div>
+
+                                                    <!-- comment expand -->
+                                                    <div id="collapsePost2" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample1">
+                                                        <div class="accordion-body1">
+                                                            @foreach($comment->children as $child)
+                                                            <div class="d-flex align-items-center my-1">
+                                                                <!-- avatar -->
+                                                                <img src="{{asset('images/'.$child->user->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="
+                                width: 38px;
+                                height: 38px;
+                                object-fit: cover;
+                              " />
+                                                                <!-- comment text -->
+                                                                <div class="p-3 rounded comment__input w-100">
+                                                                    <!-- comment menu of author -->
+                                                                    <div class="d-flex">
+                                                                        <p class="fw-bold m-0 me-2">{{$child->user->name}}</p>
+                                                                        <span class="text-muted fs-7">{{$child->updated_at->diffForHumans()}}</span>
+                                                                    </div>
+                                                                    <p class="m-0 fs-7 bg-gray p-2 rounded">
+                                                                        {{$child->comment_text}}
+                                                                    </p>
+                                                                    <!-- comment & like bar -->
+                                                                    <div class="d-flex justify-content-around">
+                                                                        <label class="
+                                            dropdown-item
+                                            rounded
+                                            d-flex
+                                            justify-content-center
+                                            align-items-center
+                                            pointer
+                                            text-muted
+                                            p-1 
+                                        ">
+                                                                            <i class="fas fa-thumbs-up me-3"></i>
+                                                                            <input type="checkbox" name="" data-id="{{$child->id}}" class="child_comment_toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$child->is_liked == 1 ? 'checked' : ''}} hidden><span class="text-muted fs-7">{{$child->is_liked}}</span>
+
+                                                                            <!-- <input type="text" name="" class="like" value="{{$post->id}}">
+                                            <p class="m-0">Like</p> -->
+                                                                        </label>
+                                                                        <div class="
+                            dropdown-item
+                            rounded
+                            d-flex
+                            justify-content-center
+                            align-items-center
+                            pointer
+                            text-muted
+                            p-1
+                          " data-bs-toggle="collapse" data-bs-target="#collapsePost3" aria-expanded="false" aria-controls="collapsePost3">
+                                                                            <i class="fas fa-comment-alt me-3"></i>
+                                                                            <p class="m-0">Reply</p>
+                                                                        </div>
+                                                                    </div>
+                                                                     <!-- comment expand -->
+                                                    <div id="collapsePost3" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample2">
+                                                        <div class="accordion-body2">
+                                                        <form action="{{route('addReply', ['comment_id' => $comment->id, 'post_id' => $post->id])}}" method="POST" class="d-flex my-1">
+                                                                @csrf
+                                                                <!-- avatar -->
+                                                                <div>
+                                                                    <img src="{{asset('images/'.Auth::user()->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="
                                   width: 38px;
                                   height: 38px;
                                   object-fit: cover;
                                 " />
-                                                                    </div>
-                                                                    <!-- input -->
-                                                                    <input type="text" name="comment" class="form-control border-0 rounded-pill bg-gray" placeholder="Write a comment" />
-                                                                    <button type="submit" class="bg-dark rounded-pill ms-2"><i class="fas fa-chevron-right text-primary"></i></button>
-                                                                </form>
+                                                                </div>
+                                                                <!-- input -->
+                                                                <input type="text" name="reply" class="form-control border-0 rounded-pill bg-gray" placeholder="Write a comment" />
+                                                                <button type="submit" class="bg-dark rounded-pill ms-2"><i class="fas fa-chevron-right text-primary"></i></button>
+                                                            </form>
+                                                    </div>
+                                                    </div>
+                                                                </div>
                                                             </div>
+                                                            @endforeach
+
+                                                            <form action="{{route('addReply', ['comment_id' => $comment->id, 'post_id' => $post->id])}}" method="POST" class="d-flex my-1">
+                                                                @csrf
+                                                                <!-- avatar -->
+                                                                <div>
+                                                                    <img src="{{asset('images/'.Auth::user()->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="
+                                  width: 38px;
+                                  height: 38px;
+                                  object-fit: cover;
+                                " />
+                                                                </div>
+                                                                <!-- input -->
+                                                                <input type="text" name="reply" class="form-control border-0 rounded-pill bg-gray" placeholder="Write a comment" />
+                                                                <button type="submit" class="bg-dark rounded-pill ms-2"><i class="fas fa-chevron-right text-primary"></i></button>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2046,10 +2118,10 @@
     $(document).ready(function() {
         $('#pic_file').hide();
 
-        // $('.fa-thumbs-up').click(function(){
-        //     $(this).removeClass('btn-outline-primary');
-        //     $(this).addClass('btn-primary');
-        // })
+        $('.fa-thumbs-up').click(function() {
+            $(this).removeClass('btn-outline-primary');
+            $(this).addClass('btn-primary');
+        })
 
         $(function() {
             // alert('hey');
@@ -2067,6 +2139,54 @@
                     data: {
                         'status': status,
                         'feed_id': feed_id
+                    },
+                    success: function(data) {
+                        console.log('Success')
+                    }
+                })
+            })
+        })
+
+        $(function() {
+            // alert('hey');
+
+            $('.comment_toggle').change(function() {
+                // alert('hey');
+
+                var status = $(this).prop('checked') == true ? 1 : 0;
+                var comment_id = $(this).data('id');
+                // alert
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: '/getComment',
+                    data: {
+                        'status': status,
+                        'comment_id': comment_id
+                    },
+                    success: function(data) {
+                        console.log('Success')
+                    }
+                })
+            })
+        })
+
+        $(function() {
+            // alert('hey');
+
+            $('.child_comment_toggle').change(function() {
+                // alert('hey');
+
+                var status = $(this).prop('checked') == true ? 1 : 0;
+                var child_comment_id = $(this).data('id');
+                // alert(child_comment_id);
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: '/getChildComment',
+                    data: {
+                        'status': status,
+                        'child_comment_id': comment_id
                     },
                     success: function(data) {
                         console.log('Success')

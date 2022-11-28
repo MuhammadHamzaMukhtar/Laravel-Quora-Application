@@ -27,7 +27,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('feed', FeedController::class);
     Route::post('getLike', [FeedController::class, 'likes'])->name('getLike');
+    Route::post('getComment', [FeedController::class, 'comment_likes'])->name('getComment');
+    Route::post('getChildComment', [FeedController::class, 'child_comment_likes'])->name('getChildComment');
     Route::post('/getComments/{id}', [FeedController::class, 'storeComment'])->name('comments_store');
+    Route::post('/getReply/{comment_id}/{post_id}', [FeedController::class, 'addReply'])->name('addReply');
 });
 
 require __DIR__.'/auth.php';
