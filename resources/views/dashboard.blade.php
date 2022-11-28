@@ -2186,7 +2186,7 @@
                     url: '/getChildComment',
                     data: {
                         'status': status,
-                        'child_comment_id': comment_id
+                        'child_comment_id': child_comment_id
                     },
                     success: function(data) {
                         console.log('Success')

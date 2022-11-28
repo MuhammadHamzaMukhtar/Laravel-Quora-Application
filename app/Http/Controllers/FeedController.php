@@ -135,13 +135,14 @@ class FeedController extends Controller
 
     public function child_comment_likes(Request $request)
     {
+        // dd($request->all());
         $user = Auth::user();
         $commentLike = CommentLikes::where(['user_id' => $user['id'], 'comment_id' => $request['comment_id']])->update(['is_liked' => $request['status']]);
         if (!$commentLike) {
 
             CommentLikes::create([
                 'user_id' => $user['id'],
-                'comment_id' => $request['comment_id'],
+                'comment_id' => $request['child_comment_id'],
                 'is_liked' => $request['status']
             ]);
         }

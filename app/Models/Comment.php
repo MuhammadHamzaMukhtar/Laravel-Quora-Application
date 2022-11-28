@@ -17,7 +17,7 @@ class Comment extends Model
     ];
 
     
-    protected $appends = ['isLiked', 'totalComments'];
+    protected $appends = ['isLiked'];
 
     public function getIsLikedAttribute()
     {
