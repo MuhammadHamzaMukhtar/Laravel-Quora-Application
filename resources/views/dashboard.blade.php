@@ -1129,6 +1129,40 @@
                         </div>
                     </div>
                 </div>
+                 <!-- Modal -->
+                 <div class="modal fade" id="edit{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Edit Post</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" name="" id="" value="{{$post->id}}">
+                                    <p>Edit Description : <input type="text" class="form-control" value="{{$post->description}}" name="e_description">
+                                    </p>
+                                    <p>Edit Image : <input type="file" class="form-control" value="" name="e_pic">
+                                    </p>
+                                    @if($post->pic != 'NULL')
+                                    <p>
+                                        <img src="{{asset('images/'.$post->pic)}}" alt="" srcset="" width="200px" height="150px">
+                                    </p>
+                                    @endif
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <p>
+                                    <input class="btn btn-info" type="submit" value="Update Post" name='edit'>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 @endforeach
 
             </div>
