@@ -89,9 +89,24 @@ class FeedController extends Controller
      * @param  \App\Models\Feed  $feed
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Feed $feed)
+    public function update(Request $request, $id)
     {
-        //
+        if ($request->e_pic) {
+            $image = $request->file('e_pic')->getClientOriginalName();
+            $request->e_pic->move(public_path('images'), $image);
+            Feed::find($id)->update([
+                'description' => $request->e_description,
+                'pic' => $image
+            ]);
+        }else{
+            
+            Feed::find($id)->update([
+                'description' => $request->e_description,
+            ]);
+        }
+
+
+        return redirect()->back();
     }
 
     /**
@@ -118,7 +133,7 @@ class FeedController extends Controller
             ]);
         }
     }
-   
+
     public function comment_likes(Request $request)
     {
         $user = Auth::user();
@@ -158,7 +173,7 @@ class FeedController extends Controller
 
         return redirect()->back();
     }
-    
+
     public function addReply(Request $request, $comment_id, $post_id)
     {
         // dd($comment_id, $post_id);

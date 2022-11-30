@@ -837,7 +837,7 @@
                         justify-content-around
                         align-items-center
                         fs-7
-                      " href="#">
+                      " href="#"  data-toggle="modal" data-target="#edit{{$post->id}}">
                                         Edit Post</a>
                                 </li>
                                 <li class="d-flex align-items-center">
@@ -863,7 +863,7 @@
                             </p>
                             @if($post->pic !== 'NULL')
                             <!-- <img src="{{asset('images/'.$post->pic)}}" alt="post image" class="img-fluid rounded" /> -->
-                            <embed src="{{ asset('images/'.$post->pic) }}" width="600" height="600" alt="pdf" />
+                            <embed src="{{ asset('images/'.$post->pic) }}" width="600" height="500" alt="pdf" />
                             @endif
                         </div>
                         <div class="post__comment mt-3 position-relative">
@@ -890,7 +890,7 @@
                                         <div class="accordion-button collapsed
                                             pointer
                                             d-flex
-                                            justify-content-end" data-bs-toggle="collapse" data-bs-target="#collapsePost1" aria-expanded="false" aria-controls="collapsePost1">
+                                            justify-content-end" data-bs-toggle="collapse" data-bs-target="#collapsePost1{{$post->id}}" aria-expanded="false" aria-controls="collapsePost1">
                                             <p class="m-0">{{$post->total_comments}} Comments</p>
                                         </div>
                                     </h2>
@@ -924,13 +924,13 @@
                             pointer
                             text-muted
                             p-1
-                          " data-bs-toggle="collapse" data-bs-target="#collapsePost1" aria-expanded="false" aria-controls="collapsePost1">
+                          " data-bs-toggle="collapse" data-bs-target="#collapsePost1{{$post->id}}" aria-expanded="false" aria-controls="collapsePost1">
                                             <i class="fas fa-comment-alt me-3 btn btn-outline-warning  form-control"></i>
                                             <!-- <p class="m-0">Comment</p> -->
                                         </div>
                                     </div>
                                     <!-- comment expand -->
-                                    <div id="collapsePost1" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                    <div id="collapsePost1{{$post->id}}" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                         <hr />
                                         <div class="accordion-body">
                                             <!-- comment 1 -->
@@ -1062,25 +1062,25 @@
                                                                             <p class="m-0">Reply</p>
                                                                         </div>
                                                                     </div>
-                                                                     <!-- comment expand -->
-                                                    <div id="collapsePost3" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample2">
-                                                        <div class="accordion-body2">
-                                                        <form action="{{route('addReply', ['comment_id' => $comment->id, 'post_id' => $post->id])}}" method="POST" class="d-flex my-1">
-                                                                @csrf
-                                                                <!-- avatar -->
-                                                                <div>
-                                                                    <img src="{{asset('images/'.Auth::user()->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="
+                                                                    <!-- comment expand -->
+                                                                    <div id="collapsePost3" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample2">
+                                                                        <div class="accordion-body2">
+                                                                            <form action="{{route('addReply', ['comment_id' => $comment->id, 'post_id' => $post->id])}}" method="POST" class="d-flex my-1">
+                                                                                @csrf
+                                                                                <!-- avatar -->
+                                                                                <div>
+                                                                                    <img src="{{asset('images/'.Auth::user()->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="
                                   width: 38px;
                                   height: 38px;
                                   object-fit: cover;
                                 " />
-                                                                </div>
-                                                                <!-- input -->
-                                                                <input type="text" name="reply" class="form-control border-0 rounded-pill bg-gray" placeholder="Write a comment" />
-                                                                <button type="submit" class="bg-dark rounded-pill ms-2"><i class="fas fa-chevron-right text-primary"></i></button>
-                                                            </form>
-                                                    </div>
-                                                    </div>
+                                                                                </div>
+                                                                                <!-- input -->
+                                                                                <input type="text" name="reply" class="form-control border-0 rounded-pill bg-gray" placeholder="Write a comment" />
+                                                                                <button type="submit" class="bg-dark rounded-pill ms-2"><i class="fas fa-chevron-right text-primary"></i></button>
+                                                                            </form>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             @endforeach
@@ -1129,8 +1129,8 @@
                         </div>
                     </div>
                 </div>
-                 <!-- Modal -->
-                 <div class="modal fade" id="edit{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!-- Modal -->
+                <div class="modal fade" id="edit{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1140,19 +1140,23 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form action="" method="post" enctype="multipart/form-data">
+                                <form action="{{route('feed.update', $post->id)}}" method="post" enctype="multipart/form-data">
                                     @csrf
+                                    @method('PUT')
                                     <input type="hidden" name="" id="" value="{{$post->id}}">
                                     <p>Edit Description : <input type="text" class="form-control" value="{{$post->description}}" name="e_description">
                                     </p>
                                     <p>Edit Image : <input type="file" class="form-control" value="" name="e_pic">
                                     </p>
-                                    @if($post->pic != 'NULL')
+                                    @if(pathinfo($post->pic, PATHINFO_EXTENSION) == 'pdf')
+                                    <p>
+                                        <embed src="{{asset('images/'.$post->pic)}}" type="" width="200px" height="150px">
+                                    </p>
+                                    @else
                                     <p>
                                         <img src="{{asset('images/'.$post->pic)}}" alt="" srcset="" width="200px" height="150px">
                                     </p>
                                     @endif
-                                </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -1160,6 +1164,8 @@
                                     <input class="btn btn-info" type="submit" value="Update Post" name='edit'>
                                 </p>
                             </div>
+                            </form>
+
                         </div>
                     </div>
                 </div>
