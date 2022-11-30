@@ -1048,39 +1048,9 @@
                                                                             <!-- <input type="text" name="" class="like" value="{{$post->id}}">
                                             <p class="m-0">Like</p> -->
                                                                         </label>
-                                                                        <div class="
-                            dropdown-item
-                            rounded
-                            d-flex
-                            justify-content-center
-                            align-items-center
-                            pointer
-                            text-muted
-                            p-1
-                          " data-bs-toggle="collapse" data-bs-target="#collapsePost3" aria-expanded="false" aria-controls="collapsePost3">
-                                                                            <i class="fas fa-comment-alt me-3"></i>
-                                                                            <p class="m-0">Reply</p>
-                                                                        </div>
+                                                                     
                                                                     </div>
-                                                                    <!-- comment expand -->
-                                                                    <div id="collapsePost3" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample2">
-                                                                        <div class="accordion-body2">
-                                                                            <form action="{{route('addReply', ['comment_id' => $comment->id, 'post_id' => $post->id])}}" method="POST" class="d-flex my-1">
-                                                                                @csrf
-                                                                                <!-- avatar -->
-                                                                                <div>
-                                                                                    <img src="{{asset('images/'.Auth::user()->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="
-                                  width: 38px;
-                                  height: 38px;
-                                  object-fit: cover;
-                                " />
-                                                                                </div>
-                                                                                <!-- input -->
-                                                                                <input type="text" name="reply" class="form-control border-0 rounded-pill bg-gray" placeholder="Write a comment" />
-                                                                                <button type="submit" class="bg-dark rounded-pill ms-2"><i class="fas fa-chevron-right text-primary"></i></button>
-                                                                            </form>
-                                                                        </div>
-                                                                    </div>
+                                                               
                                                                 </div>
                                                             </div>
                                                             @endforeach
@@ -1152,6 +1122,8 @@
                                     <p>
                                         <embed src="{{asset('images/'.$post->pic)}}" type="" width="200px" height="150px">
                                     </p>
+                                    @elseif($post->pic == 'NULL')
+
                                     @else
                                     <p>
                                         <img src="{{asset('images/'.$post->pic)}}" alt="" srcset="" width="200px" height="150px">
@@ -2120,120 +2092,5 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-<!-- <script>
-    $(document).ready(function() {
-        $('.like').hide();
 
-        $('.like').click(function() {
-            var feed_id = $(this).val();
-            // alert(feed_id);
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                type: "POST",
-                dataType: "json",
-                url: '/getLike',
-                data: {
-                    'feed_id': feed_id
-                },
-                success: function(data) {
-                    console.log(data);
-                },
-            });
-        })
-
-
-    })
-</script> -->
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $(document).ready(function() {
-        $('#pic_file').hide();
-
-        $('.fa-thumbs-up').click(function() {
-            $(this).removeClass('btn-outline-primary');
-            $(this).addClass('btn-primary');
-        })
-
-        $(function() {
-            // alert('hey');
-
-            $('.toggle').change(function() {
-                // alert('hey');
-
-                var status = $(this).prop('checked') == true ? 1 : 0;
-                var feed_id = $(this).data('id');
-                // alert
-                $.ajax({
-                    type: "POST",
-                    dataType: "json",
-                    url: '/getLike',
-                    data: {
-                        'status': status,
-                        'feed_id': feed_id
-                    },
-                    success: function(data) {
-                        console.log('Success')
-                    }
-                })
-            })
-        })
-
-        $(function() {
-            // alert('hey');
-
-            $('.comment_toggle').change(function() {
-                // alert('hey');
-
-                var status = $(this).prop('checked') == true ? 1 : 0;
-                var comment_id = $(this).data('id');
-                // alert
-                $.ajax({
-                    type: "POST",
-                    dataType: "json",
-                    url: '/getComment',
-                    data: {
-                        'status': status,
-                        'comment_id': comment_id
-                    },
-                    success: function(data) {
-                        console.log('Success')
-                    }
-                })
-            })
-        })
-
-        $(function() {
-            // alert('hey');
-
-            $('.child_comment_toggle').change(function() {
-                // alert('hey');
-
-                var status = $(this).prop('checked') == true ? 1 : 0;
-                var child_comment_id = $(this).data('id');
-                // alert(child_comment_id);
-                $.ajax({
-                    type: "POST",
-                    dataType: "json",
-                    url: '/getChildComment',
-                    data: {
-                        'status': status,
-                        'child_comment_id': child_comment_id
-                    },
-                    success: function(data) {
-                        console.log('Success')
-                    }
-                })
-            })
-        })
-    })
-</script>
 @endsection

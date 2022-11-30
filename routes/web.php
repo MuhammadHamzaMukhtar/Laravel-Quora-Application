@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('feed', FeedController::class);
-    Route::post('getLike', [FeedController::class, 'likes'])->name('getLike');
+    Route::post('/getLike', [FeedController::class, 'likes'])->name('getLike');
     Route::post('getComment', [FeedController::class, 'comment_likes'])->name('getComment');
     Route::post('getChildComment', [FeedController::class, 'child_comment_likes'])->name('getChildComment');
     Route::post('/getComments/{id}', [FeedController::class, 'storeComment'])->name('comments_store');

@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <!-- CSRF Token -->
-     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
     <!-- main style -->
-    <link rel="stylesheet" href="{{asset('forum/feed.css')}}" />
+    <link rel="stylesheet" href="{{ asset('forum/feed.css') }}" />
     <title>Laravel Quora</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -40,7 +40,9 @@
                         <span class="input-group-prepend d-none d-lg-block" id="searchMenu" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
                             <div class="input-group-text bg-gray border-0 rounded-pill" style="min-height: 40px; min-width: 230px">
                                 <i class="fas fa-search me-2 text-muted"></i>
-                                <p class="m-0 fs-7 text-muted">Search Laravel Quora</p>
+                                <p class="m-0 fs-7 text-muted">
+                                    Search Laravel Quora
+                                </p>
                             </div>
                         </span>
                         <!-- search menu -->
@@ -51,19 +53,13 @@
                             </li>
                             <!-- search 1 -->
                             <li class="my-4">
-                                <div class="
-                      alert
-                      fade
-                      show
-                      dropdown-item
-                      p-1
-                      m-0
-                      d-flex
-                      align-items-center
-                      justify-content-between
-                    " role="alert">
+                                <div class="alert fade show dropdown-item p-1 m-0 d-flex align-items-center justify-content-between" role="alert">
                                     <div class="d-flex align-items-center">
-                                        <img src="https://source.unsplash.com/random/1" alt="avatar" class="rounded-circle me-2" style="width: 35px; height: 35px; object-fit: cover" />
+                                        <img src="https://source.unsplash.com/random/1" alt="avatar" class="rounded-circle me-2" style="
+                                                    width: 35px;
+                                                    height: 35px;
+                                                    object-fit: cover;
+                                                " />
                                         <p class="m-0">Lorem ipsum</p>
                                     </div>
                                     <button type="button" class="btn-close p-0 m-0" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -71,19 +67,13 @@
                             </li>
                             <!-- search 2 -->
                             <li class="my-4">
-                                <div class="
-                      alert
-                      fade
-                      show
-                      dropdown-item
-                      p-1
-                      m-0
-                      d-flex
-                      align-items-center
-                      justify-content-between
-                    " role="alert">
+                                <div class="alert fade show dropdown-item p-1 m-0 d-flex align-items-center justify-content-between" role="alert">
                                     <div class="d-flex align-items-center">
-                                        <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle me-2" style="width: 35px; height: 35px; object-fit: cover" />
+                                        <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle me-2" style="
+                                                    width: 35px;
+                                                    height: 35px;
+                                                    object-fit: cover;
+                                                " />
                                         <p class="m-0">Lorem ipsum</p>
                                     </div>
                                     <button type="button" class="btn-close p-0 m-0" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -91,19 +81,13 @@
                             </li>
                             <!-- search 3 -->
                             <li class="my-4">
-                                <div class="
-                      alert
-                      fade
-                      show
-                      dropdown-item
-                      p-1
-                      m-0
-                      d-flex
-                      align-items-center
-                      justify-content-between
-                    " role="alert">
+                                <div class="alert fade show dropdown-item p-1 m-0 d-flex align-items-center justify-content-between" role="alert">
                                     <div class="d-flex align-items-center">
-                                        <img src="https://source.unsplash.com/random/3" alt="avatar" class="rounded-circle me-2" style="width: 35px; height: 35px; object-fit: cover" />
+                                        <img src="https://source.unsplash.com/random/3" alt="avatar" class="rounded-circle me-2" style="
+                                                    width: 35px;
+                                                    height: 35px;
+                                                    object-fit: cover;
+                                                " />
                                         <p class="m-0">Lorem ipsum</p>
                                     </div>
                                     <button type="button" class="btn-close p-0 m-0" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -130,15 +114,7 @@
                     <div class="mx-4 nav__btn">
                         <button type="button" class="btn px-4">
                             <i type="button" class="position-relative fas fa-users text-muted fs-4">
-                                <span class="
-                      position-absolute
-                      top-0
-                      start-100
-                      translate-middle
-                      badge
-                      rounded-pill
-                      bg-danger
-                    " style="font-size: 0.5rem">
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.5rem">
                                     1
                                     <span class="visually-hidden"></span>
                                 </span>
@@ -156,19 +132,15 @@
                 <div class="col d-flex align-items-center justify-content-end">
                     <!-- avatar -->
                     <div class="align-items-center justify-content-center d-none d-xl-flex">
-                        <img src="{{asset('images/'.Auth::user()->profile_pic)}}" class="rounded-circle me-2" alt="avatar" style="width: 38px; height: 38px; object-fit: cover" />
+                        <img src="{{asset('images/'.Auth::user()->profile_pic)}}" class="rounded-circle me-2" alt="avatar" style="
+                                    width: 38px;
+                                    height: 38px;
+                                    object-fit: cover;
+                                " />
                         <p class="m-0">{{Auth::user()->name}}</p>
                     </div>
                     <!-- main menu -->
-                    <div class="
-                rounded-circle
-                p-1
-                bg-gray
-                d-flex
-                align-items-center
-                justify-content-center
-                mx-2
-              " style="width: 38px; height: 38px" type="button" id="mainMenu" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                    <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center mx-2" style="width: 38px; height: 38px" type="button" id="mainMenu" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
                         <i class="fas fa-ellipsis-h"></i>
                     </div>
                     <!-- main menu dd -->
@@ -181,7 +153,10 @@
                             </li>
                             <!-- search -->
                             <li class="p-1">
-                                <div class="input-group-text bg-gray border-0 rounded-pill" style="min-height: 40px; min-width: 230px">
+                                <div class="input-group-text bg-gray border-0 rounded-pill" style="
+                                            min-height: 40px;
+                                            min-width: 230px;
+                                        ">
                                     <i class="fas fa-search me-2 text-muted"></i>
                                     <input type="text" class="form-control rounded-pill border-0 bg-gray" placeholder="Search Menu" />
                                 </div>
@@ -190,109 +165,109 @@
                             <h4 class="m-2">Social</h4>
                             <!-- s1 -->
                             <li class="my-2 p-1">
-                                <a href="#" class="
-                      text-decoration-none text-dark
-                      d-flex
-                      align-items-center
-                      justify-content-between
-                    ">
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center justify-content-between">
                                     <div class="p-2">
-                                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/Y7r38CcFEw5.png" alt="icon from fb" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover" />
+                                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/Y7r38CcFEw5.png" alt="icon from fb" class="rounded-circle" style="
+                                                    width: 48px;
+                                                    height: 48px;
+                                                    object-fit: cover;
+                                                " />
                                     </div>
                                     <div>
                                         <p class="m-0">Campus</p>
-                                        <span class="fs-7 text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing
-                                            elit. Odio, commodi.</span>
+                                        <span class="fs-7 text-muted">Lorem, ipsum dolor sit amet
+                                            consectetur adipisicing elit.
+                                            Odio, commodi.</span>
                                     </div>
                                 </a>
                             </li>
                             <!-- s2 -->
                             <li class="my-2 p-1">
-                                <a href="#" class="
-                      text-decoration-none text-dark
-                      d-flex
-                      align-items-center
-                      justify-content-between
-                    ">
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center justify-content-between">
                                     <div class="p-2">
-                                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/N7UOh8REweU.png" alt="icon from fb" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover" />
+                                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/N7UOh8REweU.png" alt="icon from fb" class="rounded-circle" style="
+                                                    width: 48px;
+                                                    height: 48px;
+                                                    object-fit: cover;
+                                                " />
                                     </div>
                                     <div>
                                         <p class="m-0">Events</p>
-                                        <span class="fs-7 text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing
-                                            elit. Odio, commodi.</span>
+                                        <span class="fs-7 text-muted">Lorem, ipsum dolor sit amet
+                                            consectetur adipisicing elit.
+                                            Odio, commodi.</span>
                                     </div>
                                 </a>
                             </li>
                             <!-- s3 -->
                             <li class="my-2 p-1">
-                                <a href="#" class="
-                      text-decoration-none text-dark
-                      d-flex
-                      align-items-center
-                      justify-content-between
-                    ">
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center justify-content-between">
                                     <div class="p-2">
-                                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/tSXYIzZlfrS.png" alt="icon from fb" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover" />
+                                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/tSXYIzZlfrS.png" alt="icon from fb" class="rounded-circle" style="
+                                                    width: 48px;
+                                                    height: 48px;
+                                                    object-fit: cover;
+                                                " />
                                     </div>
                                     <div>
                                         <p class="m-0">Friends</p>
-                                        <span class="fs-7 text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing
-                                            elit. Odio, commodi.</span>
+                                        <span class="fs-7 text-muted">Lorem, ipsum dolor sit amet
+                                            consectetur adipisicing elit.
+                                            Odio, commodi.</span>
                                     </div>
                                 </a>
                             </li>
                             <!-- s4 -->
                             <li class="my-2 p-1">
-                                <a href="#" class="
-                      text-decoration-none text-dark
-                      d-flex
-                      align-items-center
-                      justify-content-between
-                    ">
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center justify-content-between">
                                     <div class="p-2">
-                                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/Im_0d7HFH4n.png" alt="icon from fb" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover" />
+                                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/Im_0d7HFH4n.png" alt="icon from fb" class="rounded-circle" style="
+                                                    width: 48px;
+                                                    height: 48px;
+                                                    object-fit: cover;
+                                                " />
                                     </div>
                                     <div>
                                         <p class="m-0">Groups</p>
-                                        <span class="fs-7 text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing
-                                            elit. Odio, commodi.</span>
+                                        <span class="fs-7 text-muted">Lorem, ipsum dolor sit amet
+                                            consectetur adipisicing elit.
+                                            Odio, commodi.</span>
                                     </div>
                                 </a>
                             </li>
                             <!-- s5 -->
                             <li class="my-2 p-1">
-                                <a href="#" class="
-                      text-decoration-none text-dark
-                      d-flex
-                      align-items-center
-                      justify-content-between
-                    ">
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center justify-content-between">
                                     <div class="p-2">
-                                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yo/r/hLkEFzsCyXC.png" alt="icon from fb" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover" />
+                                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yo/r/hLkEFzsCyXC.png" alt="icon from fb" class="rounded-circle" style="
+                                                    width: 48px;
+                                                    height: 48px;
+                                                    object-fit: cover;
+                                                " />
                                     </div>
                                     <div>
                                         <p class="m-0">News Feed</p>
-                                        <span class="fs-7 text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing
-                                            elit. Odio, commodi.</span>
+                                        <span class="fs-7 text-muted">Lorem, ipsum dolor sit amet
+                                            consectetur adipisicing elit.
+                                            Odio, commodi.</span>
                                     </div>
                                 </a>
                             </li>
                             <!-- s6 -->
                             <li class="my-2 p-1">
-                                <a href="#" class="
-                      text-decoration-none text-dark
-                      d-flex
-                      align-items-center
-                      justify-content-between
-                    ">
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center justify-content-between">
                                     <div class="p-2">
-                                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/0gH3vbvr8Ee.png" alt="icon from fb" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover" />
+                                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/0gH3vbvr8Ee.png" alt="icon from fb" class="rounded-circle" style="
+                                                    width: 48px;
+                                                    height: 48px;
+                                                    object-fit: cover;
+                                                " />
                                     </div>
                                     <div>
                                         <p class="m-0">Pages</p>
-                                        <span class="fs-7 text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing
-                                            elit. Odio, commodi.</span>
+                                        <span class="fs-7 text-muted">Lorem, ipsum dolor sit amet
+                                            consectetur adipisicing elit.
+                                            Odio, commodi.</span>
                                     </div>
                                 </a>
                             </li>
@@ -301,55 +276,55 @@
                             <h4 class="m-2">Entertainment</h4>
                             <!-- e1 -->
                             <li class="my-2 p-1">
-                                <a href="#" class="
-                      text-decoration-none text-dark
-                      d-flex
-                      align-items-center
-                      justify-content-between
-                    ">
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center justify-content-between">
                                     <div class="p-2">
-                                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/Y7r38CcFEw5.png" alt="icon from fb" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover" />
+                                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/Y7r38CcFEw5.png" alt="icon from fb" class="rounded-circle" style="
+                                                    width: 48px;
+                                                    height: 48px;
+                                                    object-fit: cover;
+                                                " />
                                     </div>
                                     <div>
                                         <p class="m-0">Campus</p>
-                                        <span class="fs-7 text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing
-                                            elit. Odio, commodi.</span>
+                                        <span class="fs-7 text-muted">Lorem, ipsum dolor sit amet
+                                            consectetur adipisicing elit.
+                                            Odio, commodi.</span>
                                     </div>
                                 </a>
                             </li>
                             <!-- e2 -->
                             <li class="my-2 p-1">
-                                <a href="#" class="
-                      text-decoration-none text-dark
-                      d-flex
-                      align-items-center
-                      justify-content-between
-                    ">
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center justify-content-between">
                                     <div class="p-2">
-                                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/N7UOh8REweU.png" alt="icon from fb" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover" />
+                                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/N7UOh8REweU.png" alt="icon from fb" class="rounded-circle" style="
+                                                    width: 48px;
+                                                    height: 48px;
+                                                    object-fit: cover;
+                                                " />
                                     </div>
                                     <div>
                                         <p class="m-0">Events</p>
-                                        <span class="fs-7 text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing
-                                            elit. Odio, commodi.</span>
+                                        <span class="fs-7 text-muted">Lorem, ipsum dolor sit amet
+                                            consectetur adipisicing elit.
+                                            Odio, commodi.</span>
                                     </div>
                                 </a>
                             </li>
                             <!-- e3 -->
                             <li class="my-2 p-1">
-                                <a href="#" class="
-                      text-decoration-none text-dark
-                      d-flex
-                      align-items-center
-                      justify-content-between
-                    ">
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center justify-content-between">
                                     <div class="p-2">
-                                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/tSXYIzZlfrS.png" alt="icon from fb" class="rounded-circle" style="width: 48px; height: 48px; object-fit: cover" />
+                                        <img src="https://static.xx.fbcdn.net/rsrc.php/v3/yj/r/tSXYIzZlfrS.png" alt="icon from fb" class="rounded-circle" style="
+                                                    width: 48px;
+                                                    height: 48px;
+                                                    object-fit: cover;
+                                                " />
                                     </div>
                                     <div>
                                         <p class="m-0">Friends</p>
-                                        <span class="fs-7 text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing
-                                            elit. Odio, commodi.</span>
+                                        <span class="fs-7 text-muted">Lorem, ipsum dolor sit amet
+                                            consectetur adipisicing elit.
+                                            Odio, commodi.</span>
                                     </div>
                                 </a>
                             </li>
@@ -363,20 +338,8 @@
                             </li>
                             <!-- c-1 -->
                             <li class="my-2 p-1">
-                                <a href="#" class="
-                      text-decoration-none text-dark
-                      d-flex
-                      align-items-center
-                    ">
-                                    <div class="
-                        rounded-circle
-                        bg-gray
-                        p-1
-                        d-flex
-                        align-items-center
-                        justify-content-center
-                        me-3
-                      " style="width: 38px; height: 38px">
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center">
+                                    <div class="rounded-circle bg-gray p-1 d-flex align-items-center justify-content-center me-3" style="width: 38px; height: 38px">
                                         <i class="fas fa-edit"></i>
                                     </div>
                                     <div>
@@ -386,20 +349,8 @@
                             </li>
                             <!-- c-2 -->
                             <li class="my-2 p-1">
-                                <a href="#" class="
-                      text-decoration-none text-dark
-                      d-flex
-                      align-items-center
-                    ">
-                                    <div class="
-                        rounded-circle
-                        bg-gray
-                        p-1
-                        d-flex
-                        align-items-center
-                        justify-content-center
-                        me-3
-                      " style="width: 38px; height: 38px">
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center">
+                                    <div class="rounded-circle bg-gray p-1 d-flex align-items-center justify-content-center me-3" style="width: 38px; height: 38px">
                                         <i class="fas fa-book-open"></i>
                                     </div>
                                     <div>
@@ -409,20 +360,8 @@
                             </li>
                             <!-- c-3 -->
                             <li class="my-2 p-1">
-                                <a href="#" class="
-                      text-decoration-none text-dark
-                      d-flex
-                      align-items-center
-                    ">
-                                    <div class="
-                        rounded-circle
-                        bg-gray
-                        p-1
-                        d-flex
-                        align-items-center
-                        justify-content-center
-                        me-3
-                      " style="width: 38px; height: 38px">
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center">
+                                    <div class="rounded-circle bg-gray p-1 d-flex align-items-center justify-content-center me-3" style="width: 38px; height: 38px">
                                         <i class="fas fa-video"></i>
                                     </div>
                                     <div>
@@ -433,20 +372,8 @@
                             <hr />
                             <!-- c-4 -->
                             <li class="my-2 p-1">
-                                <a href="#" class="
-                      text-decoration-none text-dark
-                      d-flex
-                      align-items-center
-                    ">
-                                    <div class="
-                        rounded-circle
-                        bg-gray
-                        p-1
-                        d-flex
-                        align-items-center
-                        justify-content-center
-                        me-3
-                      " style="width: 38px; height: 38px">
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center">
+                                    <div class="rounded-circle bg-gray p-1 d-flex align-items-center justify-content-center me-3" style="width: 38px; height: 38px">
                                         <i class="fas fa-flag"></i>
                                     </div>
                                     <div>
@@ -456,20 +383,8 @@
                             </li>
                             <!-- c-5 -->
                             <li class="my-2 p-1">
-                                <a href="#" class="
-                      text-decoration-none text-dark
-                      d-flex
-                      align-items-center
-                    ">
-                                    <div class="
-                        rounded-circle
-                        bg-gray
-                        p-1
-                        d-flex
-                        align-items-center
-                        justify-content-center
-                        me-3
-                      " style="width: 38px; height: 38px">
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center">
+                                    <div class="rounded-circle bg-gray p-1 d-flex align-items-center justify-content-center me-3" style="width: 38px; height: 38px">
                                         <i class="fas fa-bullhorn"></i>
                                     </div>
                                     <div>
@@ -479,20 +394,8 @@
                             </li>
                             <!-- c-6 -->
                             <li class="my-2 p-1">
-                                <a href="#" class="
-                      text-decoration-none text-dark
-                      d-flex
-                      align-items-center
-                    ">
-                                    <div class="
-                        rounded-circle
-                        bg-gray
-                        p-1
-                        d-flex
-                        align-items-center
-                        justify-content-center
-                        me-3
-                      " style="width: 38px; height: 38px">
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center">
+                                    <div class="rounded-circle bg-gray p-1 d-flex align-items-center justify-content-center me-3" style="width: 38px; height: 38px">
                                         <i class="fas fa-users"></i>
                                     </div>
                                     <div>
@@ -502,20 +405,8 @@
                             </li>
                             <!-- c-7-->
                             <li class="my-2 p-1">
-                                <a href="#" class="
-                      text-decoration-none text-dark
-                      d-flex
-                      align-items-center
-                    ">
-                                    <div class="
-                        rounded-circle
-                        bg-gray
-                        p-1
-                        d-flex
-                        align-items-center
-                        justify-content-center
-                        me-3
-                      " style="width: 38px; height: 38px">
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center">
+                                    <div class="rounded-circle bg-gray p-1 d-flex align-items-center justify-content-center me-3" style="width: 38px; height: 38px">
                                         <i class="fas fa-book"></i>
                                     </div>
                                     <div>
@@ -525,43 +416,21 @@
                             </li>
                             <!-- c-8 -->
                             <li class="my-2 p-1">
-                                <a href="#" class="
-                      text-decoration-none text-dark
-                      d-flex
-                      align-items-center
-                    ">
-                                    <div class="
-                        rounded-circle
-                        bg-gray
-                        p-1
-                        d-flex
-                        align-items-center
-                        justify-content-center
-                        me-3
-                      " style="width: 38px; height: 38px">
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center">
+                                    <div class="rounded-circle bg-gray p-1 d-flex align-items-center justify-content-center me-3" style="width: 38px; height: 38px">
                                         <i class="fas fa-shopping-basket"></i>
                                     </div>
                                     <div>
-                                        <p class="m-0">Marketplace Listing</p>
+                                        <p class="m-0">
+                                            Marketplace Listing
+                                        </p>
                                     </div>
                                 </a>
                             </li>
                             <!-- c-9 -->
                             <li class="my-2 p-1">
-                                <a href="#" class="
-                      text-decoration-none text-dark
-                      d-flex
-                      align-items-center
-                    ">
-                                    <div class="
-                        rounded-circle
-                        bg-gray
-                        p-1
-                        d-flex
-                        align-items-center
-                        justify-content-center
-                        me-3
-                      " style="width: 38px; height: 38px">
+                                <a href="#" class="text-decoration-none text-dark d-flex align-items-center">
+                                    <div class="rounded-circle bg-gray p-1 d-flex align-items-center justify-content-center me-3" style="width: 38px; height: 38px">
                                         <i class="fas fa-suitcase"></i>
                                     </div>
                                     <div>
@@ -572,15 +441,7 @@
                         </div>
                     </ul>
                     <!-- chat -->
-                    <div class="
-                rounded-circle
-                p-1
-                bg-gray
-                d-flex
-                align-items-center
-                justify-content-center
-                mx-2
-              " style="width: 38px; height: 38px" type="button" id="chatMenu" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                    <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center mx-2" style="width: 38px; height: 38px" type="button" id="chatMenu" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
                         <i class="fas fa-comment"></i>
                     </div>
                     <!-- chat  dd -->
@@ -597,21 +458,19 @@
                                         <!-- title -->
                                         <div class="p-2">
                                             <h5>Chat Settings</h5>
-                                            <span class="text-muted fs-7">Customize your Messenger experience.</span>
+                                            <span class="text-muted fs-7">Customize your Messenger
+                                                experience.</span>
                                         </div>
                                         <hr />
                                         <!-- incoming sound -->
                                         <li>
-                                            <div class="
-                            dropdown-item
-                            d-flex
-                            align-items-center
-                            justify-content-between
-                          ">
+                                            <div class="dropdown-item d-flex align-items-center justify-content-between">
                                                 <!-- icon -->
                                                 <div class="d-flex align-items-center">
                                                     <i class="fas fa-phone-alt me-3"></i>
-                                                    <p class="m-0">Incoming call sounds</p>
+                                                    <p class="m-0">
+                                                        Incoming call sounds
+                                                    </p>
                                                 </div>
                                                 <!-- toggle -->
                                                 <div class="form-check form-switch m-0">
@@ -622,16 +481,13 @@
                                         </li>
                                         <!-- message sound -->
                                         <li>
-                                            <div class="
-                            dropdown-item
-                            d-flex
-                            align-items-center
-                            justify-content-between
-                          ">
+                                            <div class="dropdown-item d-flex align-items-center justify-content-between">
                                                 <!-- icon -->
                                                 <div class="d-flex align-items-center">
                                                     <i class="fas fa-volume-off me-4 fs-4"></i>
-                                                    <p class="m-0">Message sounds</p>
+                                                    <p class="m-0">
+                                                        Message sounds
+                                                    </p>
                                                 </div>
                                                 <!-- toggle -->
                                                 <div class="form-check form-switch m-0">
@@ -642,16 +498,13 @@
                                         </li>
                                         <!-- popup message -->
                                         <li>
-                                            <div class="
-                            dropdown-item
-                            d-flex
-                            align-items-center
-                            justify-content-between
-                          ">
+                                            <div class="dropdown-item d-flex align-items-center justify-content-between">
                                                 <!-- icon -->
                                                 <div class="d-flex align-items-center">
                                                     <i class="fas fa-spinner me-3"></i>
-                                                    <p class="m-0">Pop-up new messages</p>
+                                                    <p class="m-0">
+                                                        Pop-up new messages
+                                                    </p>
                                                 </div>
                                                 <!-- toggle -->
                                                 <div class="form-check form-switch m-0">
@@ -659,66 +512,57 @@
                                                     <label class="form-check-label" for="flexSwitchCheckChecked"></label>
                                                 </div>
                                             </div>
-                                            <span class="ms-5 text-muted fs-7">Automatically open new messages.</span>
+                                            <span class="ms-5 text-muted fs-7">Automatically open new
+                                                messages.</span>
                                         </li>
                                         <hr class="m-0" />
                                         <!-- item 1 -->
                                         <li>
-                                            <div class="
-                            dropdown-item
-                            d-flex
-                            align-items-center
-                            justify-content-between
-                          ">
+                                            <div class="dropdown-item d-flex align-items-center justify-content-between">
                                                 <!-- icon -->
                                                 <div class="d-flex align-items-center">
                                                     <i class="fas fa-toggle-off me-3"></i>
-                                                    <p class="m-0">Turn Off Active Status</p>
+                                                    <p class="m-0">
+                                                        Turn Off Active
+                                                        Status
+                                                    </p>
                                                 </div>
                                             </div>
                                         </li>
                                         <!-- item 2 -->
                                         <li>
-                                            <div class="
-                            dropdown-item
-                            d-flex
-                            align-items-center
-                            justify-content-between
-                          ">
+                                            <div class="dropdown-item d-flex align-items-center justify-content-between">
                                                 <!-- icon -->
                                                 <div class="d-flex align-items-center">
                                                     <i class="far fa-comment-alt me-3"></i>
-                                                    <p class="m-0">Message Request</p>
+                                                    <p class="m-0">
+                                                        Message Request
+                                                    </p>
                                                 </div>
                                             </div>
                                         </li>
                                         <!-- item 3 -->
                                         <li>
-                                            <div class="
-                            dropdown-item
-                            d-flex
-                            align-items-center
-                            justify-content-between
-                          ">
+                                            <div class="dropdown-item d-flex align-items-center justify-content-between">
                                                 <!-- icon -->
                                                 <div class="d-flex align-items-center">
                                                     <i class="fas fa-share-square me-3"></i>
-                                                    <p class="m-0">Message delivery settings</p>
+                                                    <p class="m-0">
+                                                        Message delivery
+                                                        settings
+                                                    </p>
                                                 </div>
                                             </div>
                                         </li>
                                         <!-- item 4 -->
                                         <li>
-                                            <div class="
-                            dropdown-item
-                            d-flex
-                            align-items-center
-                            justify-content-between
-                          ">
+                                            <div class="dropdown-item d-flex align-items-center justify-content-between">
                                                 <!-- icon -->
                                                 <div class="d-flex align-items-center">
                                                     <i class="fas fa-shield-alt me-3"></i>
-                                                    <p class="m-0">Block settings</p>
+                                                    <p class="m-0">
+                                                        Block settings
+                                                    </p>
                                                 </div>
                                             </div>
                                         </li>
@@ -742,7 +586,11 @@
                                 <!-- big avatar -->
                                 <div class="d-flex align-items-center justify-content-evenly">
                                     <div class="p-2">
-                                        <img src="https://source.unsplash.com/random/1" alt="avatar" class="rounded-circle" style="width: 58px; height: 58px; object-fit: cover" />
+                                        <img src="https://source.unsplash.com/random/1" alt="avatar" class="rounded-circle" style="
+                                                    width: 58px;
+                                                    height: 58px;
+                                                    object-fit: cover;
+                                                " />
                                     </div>
                                     <div>
                                         <p class="fs-7 m-0">Mike</p>
@@ -751,7 +599,11 @@
                                 </div>
                                 <!-- small avatar -->
                                 <div class="p-2">
-                                    <img src="https://source.unsplash.com/random/1" alt="avatar" class="rounded-circle" style="width: 15px; height: 15px; object-fit: cover" />
+                                    <img src="https://source.unsplash.com/random/1" alt="avatar" class="rounded-circle" style="
+                                                width: 15px;
+                                                height: 15px;
+                                                object-fit: cover;
+                                            " />
                                 </div>
                             </div>
                         </li>
@@ -761,18 +613,27 @@
                                 <!-- big avatar -->
                                 <div class="d-flex align-items-center justify-content-evenly">
                                     <div class="p-2">
-                                        <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle" style="width: 58px; height: 58px; object-fit: cover" />
+                                        <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle" style="
+                                                    width: 58px;
+                                                    height: 58px;
+                                                    object-fit: cover;
+                                                " />
                                     </div>
                                     <div>
                                         <p class="fs-7 m-0">
                                             Tuan
-                                            <span class="fs-7 text-muted">Lorem ipsum &#8226; 7d</span>
+                                            <span class="fs-7 text-muted">Lorem ipsum &#8226;
+                                                7d</span>
                                         </p>
                                     </div>
                                 </div>
                                 <!-- small avatar -->
                                 <div class="p-2">
-                                    <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle" style="width: 15px; height: 15px; object-fit: cover" />
+                                    <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle" style="
+                                                width: 15px;
+                                                height: 15px;
+                                                object-fit: cover;
+                                            " />
                                 </div>
                             </div>
                         </li>
@@ -782,7 +643,11 @@
                                 <!-- big avatar -->
                                 <div class="d-flex align-items-center justify-content-evenly">
                                     <div class="p-2">
-                                        <img src="https://source.unsplash.com/random/3" alt="avatar" class="rounded-circle" style="width: 58px; height: 58px; object-fit: cover" />
+                                        <img src="https://source.unsplash.com/random/3" alt="avatar" class="rounded-circle" style="
+                                                    width: 58px;
+                                                    height: 58px;
+                                                    object-fit: cover;
+                                                " />
                                     </div>
                                     <div>
                                         <p class="fs-7 m-0">Jerry</p>
@@ -791,7 +656,11 @@
                                 </div>
                                 <!-- small avatar -->
                                 <div class="p-2">
-                                    <img src="https://source.unsplash.com/random/3" alt="avatar" class="rounded-circle" style="width: 15px; height: 15px; object-fit: cover" />
+                                    <img src="https://source.unsplash.com/random/3" alt="avatar" class="rounded-circle" style="
+                                                width: 15px;
+                                                height: 15px;
+                                                object-fit: cover;
+                                            " />
                                 </div>
                             </div>
                         </li>
@@ -801,7 +670,11 @@
                                 <!-- big avatar -->
                                 <div class="d-flex align-items-center justify-content-evenly">
                                     <div class="p-2">
-                                        <img src="https://source.unsplash.com/random/4" alt="avatar" class="rounded-circle" style="width: 58px; height: 58px; object-fit: cover" />
+                                        <img src="https://source.unsplash.com/random/4" alt="avatar" class="rounded-circle" style="
+                                                    width: 58px;
+                                                    height: 58px;
+                                                    object-fit: cover;
+                                                " />
                                     </div>
                                     <div>
                                         <p class="fs-7 m-0">Tony</p>
@@ -810,7 +683,11 @@
                                 </div>
                                 <!-- small avatar -->
                                 <div class="p-2">
-                                    <img src="https://source.unsplash.com/random/4" alt="avatar" class="rounded-circle" style="width: 15px; height: 15px; object-fit: cover" />
+                                    <img src="https://source.unsplash.com/random/4" alt="avatar" class="rounded-circle" style="
+                                                width: 15px;
+                                                height: 15px;
+                                                object-fit: cover;
+                                            " />
                                 </div>
                             </div>
                         </li>
@@ -820,7 +697,11 @@
                                 <!-- big avatar -->
                                 <div class="d-flex align-items-center justify-content-evenly">
                                     <div class="p-2">
-                                        <img src="https://source.unsplash.com/random/5" alt="avatar" class="rounded-circle" style="width: 58px; height: 58px; object-fit: cover" />
+                                        <img src="https://source.unsplash.com/random/5" alt="avatar" class="rounded-circle" style="
+                                                    width: 58px;
+                                                    height: 58px;
+                                                    object-fit: cover;
+                                                " />
                                     </div>
                                     <div>
                                         <p class="fs-7 m-0">Phu</p>
@@ -829,54 +710,55 @@
                                 </div>
                                 <!-- small avatar -->
                                 <div class="p-2">
-                                    <img src="https://source.unsplash.com/random/5" alt="avatar" class="rounded-circle" style="width: 15px; height: 15px; object-fit: cover" />
+                                    <img src="https://source.unsplash.com/random/5" alt="avatar" class="rounded-circle" style="
+                                                width: 15px;
+                                                height: 15px;
+                                                object-fit: cover;
+                                            " />
                                 </div>
                             </div>
                         </li>
                         <hr class="m-0" />
                         <a href="#" class="text-decoration-none">
-                            <p class="fw-bold text-center pt-3 m-0">See All in Messenger</p>
+                            <p class="fw-bold text-center pt-3 m-0">
+                                See All in Messenger
+                            </p>
                         </a>
                     </ul>
                     <!-- notifications -->
-                    <div class="
-                rounded-circle
-                p-1
-                bg-gray
-                d-flex
-                align-items-center
-                justify-content-center
-                mx-2
-              " style="width: 38px; height: 38px" type="button" id="notMenu" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                    <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center mx-2" style="width: 38px; height: 38px" type="button" id="notMenu" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
                         <i class="fas fa-bell"></i>
                     </div>
                     <!-- notifications dd -->
-                    <ul class="dropdown-menu border-0 shadow p-3" aria-labelledby="notMenu" style="width: 23em; max-height: 600px; overflow-y: auto">
+                    <ul class="dropdown-menu border-0 shadow p-3" aria-labelledby="notMenu" style="
+                                width: 23em;
+                                max-height: 600px;
+                                overflow-y: auto;
+                            ">
                         <!-- header -->
                         <li class="p-1">
                             <div class="d-flex justify-content-between">
                                 <h2>Notifications</h2>
                                 <div>
-                                    <i class="
-                        fas
-                        fa-ellipsis-h
-                        pointer
-                        p-2
-                        rounded-circle
-                        bg-gray
-                      " type="button" data-bs-toggle="dropdown"></i>
+                                    <i class="fas fa-ellipsis-h pointer p-2 rounded-circle bg-gray" type="button" data-bs-toggle="dropdown"></i>
                                     <ul class="dropdown-menu">
                                         <li class="dropdown-item d-flex align-items-center" type="button">
                                             <i class="fas fa-check me-3 text-muted"></i>
-                                            <p class="m-0">Mark all as read</p>
+                                            <p class="m-0">
+                                                Mark all as read
+                                            </p>
                                         </li>
                                         <li class="dropdown-item d-flex align-items-center" type="button">
                                             <i class="fas fa-cog me-3 text-muted"></i>
-                                            <p class="m-0">Privacy Checkup</p>
+                                            <p class="m-0">
+                                                Privacy Checkup
+                                            </p>
                                         </li>
                                         <li class="dropdown-item d-flex align-items-center" type="button">
                                             <i class="fas fa-desktop me-3 text-muted"></i>
-                                            <p class="m-0">Privacy Shortcuts</p>
+                                            <p class="m-0">
+                                                Privacy Shortcuts
+                                            </p>
                                         </li>
                                     </ul>
                                 </div>
@@ -895,20 +777,21 @@
                         </div>
                         <!-- news 1 -->
                         <li class="my-2 p-1">
-                            <a href="#" class="
-                    d-flex
-                    align-items-center
-                    justify-content-evenly
-                    text-decoration-none text-dark
-                  ">
+                            <a href="#" class="d-flex align-items-center justify-content-evenly text-decoration-none text-dark">
                                 <div class="d-flex align-items-center justify-content-evenly">
                                     <div class="p-2">
-                                        <img src="https://source.unsplash.com/random/1" alt="avatar" class="rounded-circle" style="width: 58px; height: 58px; object-fit: cover" />
+                                        <img src="https://source.unsplash.com/random/1" alt="avatar" class="rounded-circle" style="
+                                                    width: 58px;
+                                                    height: 58px;
+                                                    object-fit: cover;
+                                                " />
                                     </div>
                                     <div>
                                         <p class="fs-7 m-0">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            Harum unde amet at nulla quae porro.
+                                            Lorem ipsum dolor sit amet
+                                            consectetur adipisicing elit.
+                                            Harum unde amet at nulla quae
+                                            porro.
                                         </p>
                                         <span class="fs-7 text-primary">about an hour ago</span>
                                     </div>
@@ -918,20 +801,21 @@
                         </li>
                         <!-- news 2 -->
                         <li class="my-2 p-1">
-                            <a href="#" class="
-                    d-flex
-                    align-items-center
-                    justify-content-evenly
-                    text-decoration-none text-dark
-                  ">
+                            <a href="#" class="d-flex align-items-center justify-content-evenly text-decoration-none text-dark">
                                 <div class="d-flex align-items-center justify-content-evenly">
                                     <div class="p-2">
-                                        <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle" style="width: 58px; height: 58px; object-fit: cover" />
+                                        <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle" style="
+                                                    width: 58px;
+                                                    height: 58px;
+                                                    object-fit: cover;
+                                                " />
                                     </div>
                                     <div>
                                         <p class="fs-7 m-0">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            Harum unde amet at nulla quae porro.
+                                            Lorem ipsum dolor sit amet
+                                            consectetur adipisicing elit.
+                                            Harum unde amet at nulla quae
+                                            porro.
                                         </p>
                                         <span class="fs-7 text-primary">about an hour ago</span>
                                     </div>
@@ -941,20 +825,21 @@
                         </li>
                         <!-- news 3 -->
                         <li class="my-2 p-1">
-                            <a href="#" class="
-                    d-flex
-                    align-items-center
-                    justify-content-evenly
-                    text-decoration-none text-dark
-                  ">
+                            <a href="#" class="d-flex align-items-center justify-content-evenly text-decoration-none text-dark">
                                 <div class="d-flex align-items-center justify-content-evenly">
                                     <div class="p-2">
-                                        <img src="https://source.unsplash.com/random/3" alt="avatar" class="rounded-circle" style="width: 58px; height: 58px; object-fit: cover" />
+                                        <img src="https://source.unsplash.com/random/3" alt="avatar" class="rounded-circle" style="
+                                                    width: 58px;
+                                                    height: 58px;
+                                                    object-fit: cover;
+                                                " />
                                     </div>
                                     <div>
                                         <p class="fs-7 m-0">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            Harum unde amet at nulla quae porro.
+                                            Lorem ipsum dolor sit amet
+                                            consectetur adipisicing elit.
+                                            Harum unde amet at nulla quae
+                                            porro.
                                         </p>
                                         <span class="fs-7 text-primary">about an hour ago</span>
                                     </div>
@@ -964,20 +849,21 @@
                         </li>
                         <!-- news 4 -->
                         <li class="my-2 p-1">
-                            <a href="#" class="
-                    d-flex
-                    align-items-center
-                    justify-content-evenly
-                    text-decoration-none text-dark
-                  ">
+                            <a href="#" class="d-flex align-items-center justify-content-evenly text-decoration-none text-dark">
                                 <div class="d-flex align-items-center justify-content-evenly">
                                     <div class="p-2">
-                                        <img src="https://source.unsplash.com/random/4" alt="avatar" class="rounded-circle" style="width: 58px; height: 58px; object-fit: cover" />
+                                        <img src="https://source.unsplash.com/random/4" alt="avatar" class="rounded-circle" style="
+                                                    width: 58px;
+                                                    height: 58px;
+                                                    object-fit: cover;
+                                                " />
                                     </div>
                                     <div>
                                         <p class="fs-7 m-0">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            Harum unde amet at nulla quae porro.
+                                            Lorem ipsum dolor sit amet
+                                            consectetur adipisicing elit.
+                                            Harum unde amet at nulla quae
+                                            porro.
                                         </p>
                                         <span class="fs-7 text-primary">about an hour ago</span>
                                     </div>
@@ -987,20 +873,21 @@
                         </li>
                         <!-- news 5 -->
                         <li class="my-2 p-1">
-                            <a href="#" class="
-                    d-flex
-                    align-items-center
-                    justify-content-evenly
-                    text-decoration-none text-dark
-                  ">
+                            <a href="#" class="d-flex align-items-center justify-content-evenly text-decoration-none text-dark">
                                 <div class="d-flex align-items-center justify-content-evenly">
                                     <div class="p-2">
-                                        <img src="https://source.unsplash.com/random/5" alt="avatar" class="rounded-circle" style="width: 58px; height: 58px; object-fit: cover" />
+                                        <img src="https://source.unsplash.com/random/5" alt="avatar" class="rounded-circle" style="
+                                                    width: 58px;
+                                                    height: 58px;
+                                                    object-fit: cover;
+                                                " />
                                     </div>
                                     <div>
                                         <p class="fs-7 m-0">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                            Harum unde amet at nulla quae porro.
+                                            Lorem ipsum dolor sit amet
+                                            consectetur adipisicing elit.
+                                            Harum unde amet at nulla quae
+                                            porro.
                                         </p>
                                         <span class="fs-7 text-primary">about an hour ago</span>
                                     </div>
@@ -1010,25 +897,23 @@
                         </li>
                     </ul>
                     <!-- secondary menu -->
-                    <div class="
-                rounded-circle
-                p-1
-                bg-gray
-                d-flex
-                align-items-center
-                justify-content-center
-                mx-2
-              " style="width: 38px; height: 38px" type="button" id="secondMenu" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+                    <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center mx-2" style="width: 38px; height: 38px" type="button" id="secondMenu" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
                         <i class="fas fa-caret-down"></i>
                     </div>
                     <!-- secondary menu dd -->
                     <ul class="dropdown-menu border-0 shadow p-3" aria-labelledby="secondMenu" style="width: 23em">
                         <!-- avatar -->
                         <li class="dropdown-item p-1 rounded d-flex" type="button">
-                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle me-2" style="width: 45px; height: 45px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 45px;
+                                        height: 45px;
+                                        object-fit: cover;
+                                    " />
                             <div>
                                 <p class="m-0">John</p>
-                                <p class="m-0 text-muted">See your profile</p>
+                                <p class="m-0 text-muted">
+                                    See your profile
+                                </p>
                             </div>
                         </li>
                         <hr />
@@ -1050,14 +935,10 @@
                                 <li class="nav-item">
                                     <div class="d-flex" data-bs-toggle="dropdown">
                                         <i class="fas fa-cog bg-gray p-2 rounded-circle"></i>
-                                        <div class="
-                          ms-3
-                          d-flex
-                          justify-content-between
-                          align-items-center
-                          w-100
-                        ">
-                                            <p class="m-0">Settings & Privacy</p>
+                                        <div class="ms-3 d-flex justify-content-between align-items-center w-100">
+                                            <p class="m-0">
+                                                Settings & Privacy
+                                            </p>
                                             <i class="fas fa-chevron-right"></i>
                                         </div>
                                     </div>
@@ -1065,15 +946,10 @@
                                     <ul class="dropdown-menu">
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center" href="#">
-                                                <div class="
-                              rounded-circle
-                              p-1
-                              bg-gray
-                              d-flex
-                              align-items-center
-                              justify-content-center
-                              me-2
-                            " style="width: 38px; height: 38px">
+                                                <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center me-2" style="
+                                                            width: 38px;
+                                                            height: 38px;
+                                                        ">
                                                     <i class="fas fa-cog"></i>
                                                 </div>
                                                 <p class="m-0">Settings</p>
@@ -1081,79 +957,62 @@
                                         </li>
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center" href="#">
-                                                <div class="
-                              rounded-circle
-                              p-1
-                              bg-gray
-                              d-flex
-                              align-items-center
-                              justify-content-center
-                              me-2
-                            " style="width: 38px; height: 38px">
+                                                <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center me-2" style="
+                                                            width: 38px;
+                                                            height: 38px;
+                                                        ">
                                                     <i class="fas fa-lock"></i>
                                                 </div>
-                                                <p class="m-0">Privacy Checkup</p>
+                                                <p class="m-0">
+                                                    Privacy Checkup
+                                                </p>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center" href="#">
-                                                <div class="
-                              rounded-circle
-                              p-1
-                              bg-gray
-                              d-flex
-                              align-items-center
-                              justify-content-center
-                              me-2
-                            " style="width: 38px; height: 38px">
+                                                <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center me-2" style="
+                                                            width: 38px;
+                                                            height: 38px;
+                                                        ">
                                                     <i class="fas fa-unlock-alt"></i>
                                                 </div>
-                                                <p class="m-0">Privacy Shortcuts</p>
+                                                <p class="m-0">
+                                                    Privacy Shortcuts
+                                                </p>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center" href="#">
-                                                <div class="
-                              rounded-circle
-                              p-1
-                              bg-gray
-                              d-flex
-                              align-items-center
-                              justify-content-center
-                              me-2
-                            " style="width: 38px; height: 38px">
+                                                <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center me-2" style="
+                                                            width: 38px;
+                                                            height: 38px;
+                                                        ">
                                                     <i class="fas fa-list"></i>
                                                 </div>
-                                                <p class="m-0">Activity Log</p>
+                                                <p class="m-0">
+                                                    Activity Log
+                                                </p>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center" href="#">
-                                                <div class="
-                              rounded-circle
-                              p-1
-                              bg-gray
-                              d-flex
-                              align-items-center
-                              justify-content-center
-                              me-2
-                            " style="width: 38px; height: 38px">
+                                                <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center me-2" style="
+                                                            width: 38px;
+                                                            height: 38px;
+                                                        ">
                                                     <i class="fas fa-newspaper"></i>
                                                 </div>
-                                                <p class="m-0">News Feed Preferences</p>
+                                                <p class="m-0">
+                                                    News Feed Preferences
+                                                </p>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center" href="#">
-                                                <div class="
-                              rounded-circle
-                              p-1
-                              bg-gray
-                              d-flex
-                              align-items-center
-                              justify-content-center
-                              me-2
-                            " style="width: 38px; height: 38px">
+                                                <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center me-2" style="
+                                                            width: 38px;
+                                                            height: 38px;
+                                                        ">
                                                     <i class="fas fa-globe"></i>
                                                 </div>
                                                 <p class="m-0">Language</p>
@@ -1168,21 +1027,11 @@
                             <ul class="navbar-nav">
                                 <li class="nav-item">
                                     <div class="d-flex" data-bs-toggle="dropdown">
-                                        <i class="
-                          fas
-                          fa-question-circle
-                          bg-gray
-                          p-2
-                          rounded-circle
-                        "></i>
-                                        <div class="
-                          ms-3
-                          d-flex
-                          justify-content-between
-                          align-items-center
-                          w-100
-                        ">
-                                            <p class="m-0">Help & Support</p>
+                                        <i class="fas fa-question-circle bg-gray p-2 rounded-circle"></i>
+                                        <div class="ms-3 d-flex justify-content-between align-items-center w-100">
+                                            <p class="m-0">
+                                                Help & Support
+                                            </p>
                                             <i class="fas fa-chevron-right"></i>
                                         </div>
                                     </div>
@@ -1190,15 +1039,10 @@
                                     <ul class="dropdown-menu">
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center" href="#">
-                                                <div class="
-                              rounded-circle
-                              p-1
-                              bg-gray
-                              d-flex
-                              align-items-center
-                              justify-content-center
-                              me-2
-                            " style="width: 38px; height: 38px">
+                                                <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center me-2" style="
+                                                            width: 38px;
+                                                            height: 38px;
+                                                        ">
                                                     <i class="fas fa-cog"></i>
                                                 </div>
                                                 <p class="m-0">Settings</p>
@@ -1206,79 +1050,62 @@
                                         </li>
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center" href="#">
-                                                <div class="
-                              rounded-circle
-                              p-1
-                              bg-gray
-                              d-flex
-                              align-items-center
-                              justify-content-center
-                              me-2
-                            " style="width: 38px; height: 38px">
+                                                <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center me-2" style="
+                                                            width: 38px;
+                                                            height: 38px;
+                                                        ">
                                                     <i class="fas fa-lock"></i>
                                                 </div>
-                                                <p class="m-0">Privacy Checkup</p>
+                                                <p class="m-0">
+                                                    Privacy Checkup
+                                                </p>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center" href="#">
-                                                <div class="
-                              rounded-circle
-                              p-1
-                              bg-gray
-                              d-flex
-                              align-items-center
-                              justify-content-center
-                              me-2
-                            " style="width: 38px; height: 38px">
+                                                <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center me-2" style="
+                                                            width: 38px;
+                                                            height: 38px;
+                                                        ">
                                                     <i class="fas fa-unlock-alt"></i>
                                                 </div>
-                                                <p class="m-0">Privacy Shortcuts</p>
+                                                <p class="m-0">
+                                                    Privacy Shortcuts
+                                                </p>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center" href="#">
-                                                <div class="
-                              rounded-circle
-                              p-1
-                              bg-gray
-                              d-flex
-                              align-items-center
-                              justify-content-center
-                              me-2
-                            " style="width: 38px; height: 38px">
+                                                <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center me-2" style="
+                                                            width: 38px;
+                                                            height: 38px;
+                                                        ">
                                                     <i class="fas fa-list"></i>
                                                 </div>
-                                                <p class="m-0">Activity Log</p>
+                                                <p class="m-0">
+                                                    Activity Log
+                                                </p>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center" href="#">
-                                                <div class="
-                              rounded-circle
-                              p-1
-                              bg-gray
-                              d-flex
-                              align-items-center
-                              justify-content-center
-                              me-2
-                            " style="width: 38px; height: 38px">
+                                                <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center me-2" style="
+                                                            width: 38px;
+                                                            height: 38px;
+                                                        ">
                                                     <i class="fas fa-newspaper"></i>
                                                 </div>
-                                                <p class="m-0">News Feed Preferences</p>
+                                                <p class="m-0">
+                                                    News Feed Preferences
+                                                </p>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center" href="#">
-                                                <div class="
-                              rounded-circle
-                              p-1
-                              bg-gray
-                              d-flex
-                              align-items-center
-                              justify-content-center
-                              me-2
-                            " style="width: 38px; height: 38px">
+                                                <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center me-2" style="
+                                                            width: 38px;
+                                                            height: 38px;
+                                                        ">
                                                     <i class="fas fa-globe"></i>
                                                 </div>
                                                 <p class="m-0">Language</p>
@@ -1294,14 +1121,10 @@
                                 <li class="nav-item">
                                     <div class="d-flex" data-bs-toggle="dropdown">
                                         <i class="fas fa-moon bg-gray p-2 rounded-circle"></i>
-                                        <div class="
-                          ms-3
-                          d-flex
-                          justify-content-between
-                          align-items-center
-                          w-100
-                        ">
-                                            <p class="m-0">Display & Accessibility</p>
+                                        <div class="ms-3 d-flex justify-content-between align-items-center w-100">
+                                            <p class="m-0">
+                                                Display & Accessibility
+                                            </p>
                                             <i class="fas fa-chevron-right"></i>
                                         </div>
                                     </div>
@@ -1309,15 +1132,10 @@
                                     <ul class="dropdown-menu">
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center" href="#">
-                                                <div class="
-                              rounded-circle
-                              p-1
-                              bg-gray
-                              d-flex
-                              align-items-center
-                              justify-content-center
-                              me-2
-                            " style="width: 38px; height: 38px">
+                                                <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center me-2" style="
+                                                            width: 38px;
+                                                            height: 38px;
+                                                        ">
                                                     <i class="fas fa-cog"></i>
                                                 </div>
                                                 <p class="m-0">Settings</p>
@@ -1325,79 +1143,62 @@
                                         </li>
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center" href="#">
-                                                <div class="
-                              rounded-circle
-                              p-1
-                              bg-gray
-                              d-flex
-                              align-items-center
-                              justify-content-center
-                              me-2
-                            " style="width: 38px; height: 38px">
+                                                <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center me-2" style="
+                                                            width: 38px;
+                                                            height: 38px;
+                                                        ">
                                                     <i class="fas fa-lock"></i>
                                                 </div>
-                                                <p class="m-0">Privacy Checkup</p>
+                                                <p class="m-0">
+                                                    Privacy Checkup
+                                                </p>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center" href="#">
-                                                <div class="
-                              rounded-circle
-                              p-1
-                              bg-gray
-                              d-flex
-                              align-items-center
-                              justify-content-center
-                              me-2
-                            " style="width: 38px; height: 38px">
+                                                <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center me-2" style="
+                                                            width: 38px;
+                                                            height: 38px;
+                                                        ">
                                                     <i class="fas fa-unlock-alt"></i>
                                                 </div>
-                                                <p class="m-0">Privacy Shortcuts</p>
+                                                <p class="m-0">
+                                                    Privacy Shortcuts
+                                                </p>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center" href="#">
-                                                <div class="
-                              rounded-circle
-                              p-1
-                              bg-gray
-                              d-flex
-                              align-items-center
-                              justify-content-center
-                              me-2
-                            " style="width: 38px; height: 38px">
+                                                <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center me-2" style="
+                                                            width: 38px;
+                                                            height: 38px;
+                                                        ">
                                                     <i class="fas fa-list"></i>
                                                 </div>
-                                                <p class="m-0">Activity Log</p>
+                                                <p class="m-0">
+                                                    Activity Log
+                                                </p>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center" href="#">
-                                                <div class="
-                              rounded-circle
-                              p-1
-                              bg-gray
-                              d-flex
-                              align-items-center
-                              justify-content-center
-                              me-2
-                            " style="width: 38px; height: 38px">
+                                                <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center me-2" style="
+                                                            width: 38px;
+                                                            height: 38px;
+                                                        ">
                                                     <i class="fas fa-newspaper"></i>
                                                 </div>
-                                                <p class="m-0">News Feed Preferences</p>
+                                                <p class="m-0">
+                                                    News Feed Preferences
+                                                </p>
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center" href="#">
-                                                <div class="
-                              rounded-circle
-                              p-1
-                              bg-gray
-                              d-flex
-                              align-items-center
-                              justify-content-center
-                              me-2
-                            " style="width: 38px; height: 38px">
+                                                <div class="rounded-circle p-1 bg-gray d-flex align-items-center justify-content-center me-2" style="
+                                                            width: 38px;
+                                                            height: 38px;
+                                                        ">
                                                     <i class="fas fa-globe"></i>
                                                 </div>
                                                 <p class="m-0">Language</p>
@@ -1416,18 +1217,11 @@
 
                                         <div class="d-flex text-decoration-none text-dark">
                                             <i class="fas fa-cog bg-gray p-2 rounded-circle"></i>
-                                            <button class="
-                          ms-3
-                          d-flex
-                          justify-content-between
-                          align-items-center
-                          w-100
-                        ">
+                                            <button class="ms-3 d-flex justify-content-between align-items-center w-100">
                                                 <p class="m-0">Log Out</p>
                                             </button>
                                         </div>
                                     </form>
-
                                 </li>
                             </ul>
                         </li>
@@ -1439,14 +1233,7 @@
     </div>
     <!-- =============== New Chat Mobile =============== -->
     <div class="modal fade" id="newChat" tabindex="-1" aria-labelledby="newChatLabel" aria-hidden="true" data-bs-backdrop="false">
-        <div class="
-          modal-dialog modal-sm
-          position-absolute
-          bottom-0
-          end-0
-          w-75
-          shadow
-        " style="transform: translateX(-80px)">
+        <div class="modal-dialog modal-sm position-absolute bottom-0 end-0 w-75 shadow" style="transform: translateX(-80px)">
             <div class="modal-content border-0">
                 <!-- head -->
                 <div class="modal-header align-items-start">
@@ -1504,22 +1291,20 @@
               ' data-bs-html="true">
                         <!-- avatar -->
                         <div class="position-relative">
-                            <img src="https://source.unsplash.com/random/1" alt="avatar" class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
-                            <span class="
-                    position-absolute
-                    bottom-0
-                    translate-middle
-                    p-1
-                    bg-success
-                    border border-light
-                    rounded-circle
-                  " style="left: 75%">
+                            <img src="https://source.unsplash.com/random/1" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 38px;
+                                        height: 38px;
+                                        object-fit: cover;
+                                    " />
+                            <span class="position-absolute bottom-0 translate-middle p-1 bg-success border border-light rounded-circle" style="left: 75%">
                                 <span class="visually-hidden">New alerts</span>
                             </span>
                         </div>
                         <!-- name -->
                         <div>
-                            <p class="m-0">Mike <i class="fas fa-angle-down"></i></p>
+                            <p class="m-0">
+                                Mike <i class="fas fa-angle-down"></i>
+                            </p>
                             <span class="text-muted fs-7">Active Now</span>
                         </div>
                     </div>
@@ -1534,54 +1319,90 @@
                     <li class="list-group-item border-0 d-flex">
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/random/1" alt="avatar" class="rounded-circle me-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/random/1" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                     </li>
                     <!-- message r -->
                     <li class="list-group-item border-0 d-flex justify-content-end">
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                     </li>
                     <!-- message l -->
                     <li class="list-group-item border-0 d-flex">
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/random/1" alt="avatar" class="rounded-circle me-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/random/1" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                     </li>
                     <!-- message r -->
                     <li class="list-group-item border-0 d-flex justify-content-end">
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                     </li>
                     <!-- message l -->
                     <li class="list-group-item border-0 d-flex">
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/random/1" alt="avatar" class="rounded-circle me-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/random/1" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                     </li>
                     <!-- message r -->
                     <li class="list-group-item border-0 d-flex justify-content-end">
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                     </li>
                 </div>
@@ -1640,22 +1461,20 @@
                 ' data-bs-html="true">
                         <!-- avatar -->
                         <div class="position-relative">
-                            <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
-                            <span class="
-                    position-absolute
-                    bottom-0
-                    translate-middle
-                    p-1
-                    bg-success
-                    border border-light
-                    rounded-circle
-                  " style="left: 75%">
+                            <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 38px;
+                                        height: 38px;
+                                        object-fit: cover;
+                                    " />
+                            <span class="position-absolute bottom-0 translate-middle p-1 bg-success border border-light rounded-circle" style="left: 75%">
                                 <span class="visually-hidden">New alerts</span>
                             </span>
                         </div>
                         <!-- name -->
                         <div>
-                            <p class="m-0">Tuan <i class="fas fa-angle-down"></i></p>
+                            <p class="m-0">
+                                Tuan <i class="fas fa-angle-down"></i>
+                            </p>
                             <span class="text-muted fs-7">Active Now</span>
                         </div>
                     </div>
@@ -1670,54 +1489,90 @@
                     <li class="list-group-item border-0 d-flex">
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle me-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                     </li>
                     <!-- message r -->
                     <li class="list-group-item border-0 d-flex justify-content-end">
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                     </li>
                     <!-- message l -->
                     <li class="list-group-item border-0 d-flex">
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle me-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                     </li>
                     <!-- message r -->
                     <li class="list-group-item border-0 d-flex justify-content-end">
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                     </li>
                     <!-- message l -->
                     <li class="list-group-item border-0 d-flex">
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle me-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                     </li>
                     <!-- message r -->
                     <li class="list-group-item border-0 d-flex justify-content-end">
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                     </li>
                 </div>
@@ -1776,22 +1631,20 @@
                     ' data-bs-html="true">
                         <!-- avatar -->
                         <div class="position-relative">
-                            <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
-                            <span class="
-                    position-absolute
-                    bottom-0
-                    translate-middle
-                    p-1
-                    bg-success
-                    border border-light
-                    rounded-circle
-                  " style="left: 75%">
+                            <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 38px;
+                                        height: 38px;
+                                        object-fit: cover;
+                                    " />
+                            <span class="position-absolute bottom-0 translate-middle p-1 bg-success border border-light rounded-circle" style="left: 75%">
                                 <span class="visually-hidden">New alerts</span>
                             </span>
                         </div>
                         <!-- name -->
                         <div>
-                            <p class="m-0">Jerry <i class="fas fa-angle-down"></i></p>
+                            <p class="m-0">
+                                Jerry <i class="fas fa-angle-down"></i>
+                            </p>
                             <span class="text-muted fs-7">Active Now</span>
                         </div>
                     </div>
@@ -1806,54 +1659,90 @@
                     <li class="list-group-item border-0 d-flex">
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/random/3" alt="avatar" class="rounded-circle me-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/random/3" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                     </li>
                     <!-- message r -->
                     <li class="list-group-item border-0 d-flex justify-content-end">
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                     </li>
                     <!-- message l -->
                     <li class="list-group-item border-0 d-flex">
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/random/3" alt="avatar" class="rounded-circle me-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/random/3" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                     </li>
                     <!-- message r -->
                     <li class="list-group-item border-0 d-flex justify-content-end">
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                     </li>
                     <!-- message l -->
                     <li class="list-group-item border-0 d-flex">
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/random/3" alt="avatar" class="rounded-circle me-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/random/3" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                     </li>
                     <!-- message r -->
                     <li class="list-group-item border-0 d-flex justify-content-end">
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                     </li>
                 </div>
@@ -1912,22 +1801,20 @@
                       ' data-bs-html="true">
                         <!-- avatar -->
                         <div class="position-relative">
-                            <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
-                            <span class="
-                    position-absolute
-                    bottom-0
-                    translate-middle
-                    p-1
-                    bg-success
-                    border border-light
-                    rounded-circle
-                  " style="left: 75%">
+                            <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 38px;
+                                        height: 38px;
+                                        object-fit: cover;
+                                    " />
+                            <span class="position-absolute bottom-0 translate-middle p-1 bg-success border border-light rounded-circle" style="left: 75%">
                                 <span class="visually-hidden">New alerts</span>
                             </span>
                         </div>
                         <!-- name -->
                         <div>
-                            <p class="m-0">Tony <i class="fas fa-angle-down"></i></p>
+                            <p class="m-0">
+                                Tony <i class="fas fa-angle-down"></i>
+                            </p>
                             <span class="text-muted fs-7">Active Now</span>
                         </div>
                     </div>
@@ -1942,54 +1829,90 @@
                     <li class="list-group-item border-0 d-flex">
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/random/4" alt="avatar" class="rounded-circle me-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/random/4" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                     </li>
                     <!-- message r -->
                     <li class="list-group-item border-0 d-flex justify-content-end">
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                     </li>
                     <!-- message l -->
                     <li class="list-group-item border-0 d-flex">
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/random/4" alt="avatar" class="rounded-circle me-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/random/4" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                     </li>
                     <!-- message r -->
                     <li class="list-group-item border-0 d-flex justify-content-end">
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                     </li>
                     <!-- message l -->
                     <li class="list-group-item border-0 d-flex">
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/random/4" alt="avatar" class="rounded-circle me-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/random/4" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                     </li>
                     <!-- message r -->
                     <li class="list-group-item border-0 d-flex justify-content-end">
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                     </li>
                 </div>
@@ -2048,22 +1971,20 @@
                           ' data-bs-html="true">
                         <!-- avatar -->
                         <div class="position-relative">
-                            <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
-                            <span class="
-                    position-absolute
-                    bottom-0
-                    translate-middle
-                    p-1
-                    bg-success
-                    border border-light
-                    rounded-circle
-                  " style="left: 75%">
+                            <img src="https://source.unsplash.com/random/2" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 38px;
+                                        height: 38px;
+                                        object-fit: cover;
+                                    " />
+                            <span class="position-absolute bottom-0 translate-middle p-1 bg-success border border-light rounded-circle" style="left: 75%">
                                 <span class="visually-hidden">New alerts</span>
                             </span>
                         </div>
                         <!-- name -->
                         <div>
-                            <p class="m-0">Phu <i class="fas fa-angle-down"></i></p>
+                            <p class="m-0">
+                                Phu <i class="fas fa-angle-down"></i>
+                            </p>
                             <span class="text-muted fs-7">Active Now</span>
                         </div>
                     </div>
@@ -2078,54 +1999,90 @@
                     <li class="list-group-item border-0 d-flex">
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/random/5" alt="avatar" class="rounded-circle me-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/random/5" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                     </li>
                     <!-- message r -->
                     <li class="list-group-item border-0 d-flex justify-content-end">
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                     </li>
                     <!-- message l -->
                     <li class="list-group-item border-0 d-flex">
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/random/5" alt="avatar" class="rounded-circle me-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/random/5" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                     </li>
                     <!-- message r -->
                     <li class="list-group-item border-0 d-flex justify-content-end">
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                     </li>
                     <!-- message l -->
                     <li class="list-group-item border-0 d-flex">
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/random/5" alt="avatar" class="rounded-circle me-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/random/5" alt="avatar" class="rounded-circle me-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                     </li>
                     <!-- message r -->
                     <li class="list-group-item border-0 d-flex justify-content-end">
                         <!-- message -->
-                        <p class="bg-gray p-2 rounded">Lorem, ipsum dolor</p>
+                        <p class="bg-gray p-2 rounded">
+                            Lorem, ipsum dolor
+                        </p>
                         <!-- avatar -->
                         <div>
-                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="width: 28px; height: 28px; object-fit: cover" />
+                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle ms-2" style="
+                                        width: 28px;
+                                        height: 28px;
+                                        object-fit: cover;
+                                    " />
                         </div>
                     </li>
                 </div>
@@ -2158,10 +2115,126 @@
         <i class="fas fa-edit bg-white rounded-circle p-3 shadow"></i>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    <script src="{{asset('forum/feed.js')}}"></script>
+    <script src="{{ asset('forum/feed.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<!-- <script>
+    $(document).ready(function() {
+        $('.like').hide();
+
+        $('.like').click(function() {
+            var feed_id = $(this).val();
+            // alert(feed_id);
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: '/getLike',
+                data: {
+                    'feed_id': feed_id
+                },
+                success: function(data) {
+                    console.log(data);
+                },
+            });
+        })
+
+
+    })
+</script> -->
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $(document).ready(function() {
+        $('#pic_file').hide();
+
+        $('.fa-thumbs-up').click(function() {
+            $(this).removeClass('btn-outline-primary');
+            $(this).addClass('btn-primary');
+        })
+
+        $(function() {
+            // alert('hey');
+
+            $('.toggle').change(function() {
+                // alert('hey');
+
+                var status = $(this).prop('checked') == true ? 1 : 0;
+                var feed_id = $(this).data('id');
+                // alert
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: '/getLike',
+                    data: {
+                        'status': status,
+                        'feed_id': feed_id
+                    },
+                    success: function(data) {
+                        console.log('Success')
+                    }
+                })
+            })
+        })
+
+        $(function() {
+            // alert('hey');
+
+            $('.comment_toggle').change(function() {
+                // alert('hey');
+
+                var status = $(this).prop('checked') == true ? 1 : 0;
+                var comment_id = $(this).data('id');
+                // alert
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: '/getComment',
+                    data: {
+                        'status': status,
+                        'comment_id': comment_id
+                    },
+                    success: function(data) {
+                        console.log('Success')
+                    }
+                })
+            })
+        })
+
+        $(function() {
+            // alert('hey');
+
+            $('.child_comment_toggle').change(function() {
+                // alert('hey');
+
+                var status = $(this).prop('checked') == true ? 1 : 0;
+                var child_comment_id = $(this).data('id');
+                // alert(child_comment_id);
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: '/getChildComment',
+                    data: {
+                        'status': status,
+                        'child_comment_id': child_comment_id
+                    },
+                    success: function(data) {
+                        console.log('Success')
+                    }
+                })
+            })
+        })
+    })
+</script>
 </body>
 
 </html>
