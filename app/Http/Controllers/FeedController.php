@@ -117,11 +117,7 @@ class FeedController extends Controller
      */
     public function destroy($id)
     {
-        $feed = Feed::find($id);
-        // $feed->comments()->comment_likes()->delete();
-        $feed->feed_likes()->delete();
-        $feed->delete();
-        $feed->comments()->delete();
+        Feed::find($id)->delete();
         return redirect()->back();
     }
 

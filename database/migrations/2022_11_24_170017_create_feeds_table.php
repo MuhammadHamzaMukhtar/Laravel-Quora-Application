@@ -15,11 +15,10 @@ return new class extends Migration
     {
         Schema::create('feeds', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->text('description')->nullable();
             $table->string('pic')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

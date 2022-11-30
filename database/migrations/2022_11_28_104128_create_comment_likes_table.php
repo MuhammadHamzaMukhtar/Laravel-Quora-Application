@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('comment_likes', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id');
-            $table->integer('comment_id');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('comment_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->tinyInteger('is_liked')->default(1);
             $table->timestamps();
         });
