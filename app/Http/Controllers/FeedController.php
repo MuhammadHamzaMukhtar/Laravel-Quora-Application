@@ -200,4 +200,13 @@ class FeedController extends Controller
 
         return redirect()->back();
     }
+
+    public function editComment(Request $request, $id)
+    {
+        Comment::find($id)->update([
+            'comment_text' => $request->e_comment
+        ]);
+
+        return redirect()->back();
+    }
 }

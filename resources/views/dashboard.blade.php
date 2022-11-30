@@ -1007,7 +1007,7 @@
                                                                     pointer
                                                                     text-muted
                                                                     p-1
-                                                                " data-bs-toggle="collapse" data-bs-target="#collapsePost2" aria-expanded="false" aria-controls="collapsePost2">
+                                                                " data-bs-toggle="collapse" data-bs-target="#showReply{{$comment->id}}" aria-expanded="false" aria-controls="collapsePost2">
                                                             <i class="fas fa-comment-alt me-3"></i>
                                                             <p class="m-0">Reply</p>
                                                         </div>
@@ -1023,20 +1023,25 @@
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
-                                                                <div class="modal-body">
-                                                                    <input type="text" name="" id="" value="{{$comment->id}}">
+                                                                <form action="{{route('editComment', $comment->id)}}" method="post">
 
+                                                                <div class="modal-body">
+                                                                        @csrf
+                                                                        <label for="edit"> Edit Comment</label>
+                                                                        <input type="text" name="e_comment" id="edit" class="form-control" value="{{$comment->comment_text}}">
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                                    <input type="submit" class="btn btn-primary" value="Update Comment">
                                                                 </div>
+                                                                </form>
+
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                     <!-- comment expand -->
-                                                    <div id="collapsePost2" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample1">
+                                                    <div id="showReply{{$comment->id}}" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample1">
                                                         <div class="accordion-body1">
                                                             @foreach($comment->children as $child)
                                                             <div class="d-flex align-items-center my-1">

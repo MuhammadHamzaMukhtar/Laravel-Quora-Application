@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/getReply/{comment_id}/{post_id}', [FeedController::class, 'addReply'])->name('addReply');
     Route::get('/delete_comment/{id}', [FeedController::class, 'deleteComment'])->name('deleteComment');
     Route::get('/delete_reply/{id}', [FeedController::class, 'deleteReply'])->name('deleteReply');
+    Route::post('/edit_Comment/{id}', [FeedController::class, 'editComment'])->name('editComment');
 });
 
 require __DIR__.'/auth.php';
