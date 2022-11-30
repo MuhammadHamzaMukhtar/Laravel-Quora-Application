@@ -115,9 +115,27 @@ class FeedController extends Controller
      * @param  \App\Models\Feed  $feed
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Feed $feed)
+    public function destroy($id)
     {
-        //
+        $feed = Feed::find($id);
+        // $feed->comments()->comment_likes()->delete();
+        $feed->feed_likes()->delete();
+        $feed->delete();
+        $feed->comments()->delete();
+        return redirect()->back();
+    }
+
+    public function deleteComment($id)
+    {
+        Comment::find($id)->delete();
+        Comment::where('parent_id', $id)->delete();
+        return redirect()->back();
+    }
+
+    public function deleteReply($id)
+    {
+        Comment::find($id)->delete();
+        return redirect()->back();
     }
 
     public function likes(Request $request)

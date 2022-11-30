@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('feed_id');
-            $table->tinyInteger('is_liked')->default(0);
+            $table->tinyInteger('is_liked')->default(1);
             $table->timestamps();
         });
     }

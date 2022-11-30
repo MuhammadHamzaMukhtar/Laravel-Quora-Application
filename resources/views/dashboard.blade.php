@@ -837,18 +837,21 @@
                         justify-content-around
                         align-items-center
                         fs-7
-                      " href="#"  data-toggle="modal" data-target="#edit{{$post->id}}">
+                      " href="#" data-toggle="modal" data-target="#edit{{$post->id}}">
                                         Edit Post</a>
                                 </li>
                                 <li class="d-flex align-items-center">
-                                    <a class="
+                                    <form action="{{route('feed.destroy', $post->id)}}" method="post" class="ms-4">
+                                        @csrf
+                                        @method('DELETE')
+                                    <input class="
                         dropdown-item
                         d-flex
                         justify-content-around
                         align-items-center
                         fs-7
-                      " href="#">
-                                        Delete Post</a>
+                      " type="submit" value="Delete Post">
+                                    </form>
                                 </li>
                             </ul>
                         </div>
@@ -963,7 +966,7 @@
                                         justify-content-around
                                         align-items-center
                                         fs-7
-                                      " href="#">
+                                      " href="{{route('deleteComment', $comment->id)}}">
                                                                     Delete Comment</a>
                                                             </li>
                                                         </ul>
@@ -995,15 +998,15 @@
                                             <p class="m-0">Like</p> -->
                                                         </label>
                                                         <div class="
-                            dropdown-item
-                            rounded
-                            d-flex
-                            justify-content-center
-                            align-items-center
-                            pointer
-                            text-muted
-                            p-1
-                          " data-bs-toggle="collapse" data-bs-target="#collapsePost2" aria-expanded="false" aria-controls="collapsePost2">
+                                                                    dropdown-item
+                                                                    rounded
+                                                                    d-flex
+                                                                    justify-content-center
+                                                                    align-items-center
+                                                                    pointer
+                                                                    text-muted
+                                                                    p-1
+                                                                " data-bs-toggle="collapse" data-bs-target="#collapsePost2" aria-expanded="false" aria-controls="collapsePost2">
                                                             <i class="fas fa-comment-alt me-3"></i>
                                                             <p class="m-0">Reply</p>
                                                         </div>
@@ -1023,6 +1026,29 @@
                                                                 <!-- comment text -->
                                                                 <div class="p-3 rounded comment__input w-100">
                                                                     <!-- comment menu of author -->
+                                                                    @if($comment->user_id === Auth::user()->id)
+                                                                    <div class="d-flex justify-content-end">
+                                                                        <!-- icon -->
+                                                                        <i class="fas fa-ellipsis-h text-blue pointer" id="post1CommentMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                                                        <!-- menu -->
+                                                                        <ul class="dropdown-menu border-0 shadow" aria-labelledby="post1CommentMenuButton">
+                                                                            <li class="d-flex align-items-center">
+                                                                                <a class="dropdown-item d-flex justify-content-around align-items-center fs-7" href="#">
+                                                                                    Edit Reply</a>
+                                                                            </li>
+                                                                            <li class="d-flex align-items-center">
+                                                                                <a class="
+                                        dropdown-item
+                                        d-flex
+                                        justify-content-around
+                                        align-items-center
+                                        fs-7
+                                      " href="{{route('deleteReply', $child->id)}}">
+                                                                                    Delete Reply</a>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    @endif
                                                                     <div class="d-flex">
                                                                         <p class="fw-bold m-0 me-2">{{$child->user->name}}</p>
                                                                         <span class="text-muted fs-7">{{$child->updated_at->diffForHumans()}}</span>
@@ -1048,9 +1074,9 @@
                                                                             <!-- <input type="text" name="" class="like" value="{{$post->id}}">
                                             <p class="m-0">Like</p> -->
                                                                         </label>
-                                                                     
+
                                                                     </div>
-                                                               
+
                                                                 </div>
                                                             </div>
                                                             @endforeach

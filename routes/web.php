@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::post('getChildComment', [FeedController::class, 'child_comment_likes'])->name('getChildComment');
     Route::post('/getComments/{id}', [FeedController::class, 'storeComment'])->name('comments_store');
     Route::post('/getReply/{comment_id}/{post_id}', [FeedController::class, 'addReply'])->name('addReply');
+    Route::get('/delete_comment/{id}', [FeedController::class, 'deleteComment'])->name('deleteComment');
+    Route::get('/delete_reply/{id}', [FeedController::class, 'deleteReply'])->name('deleteReply');
 });
 
 require __DIR__.'/auth.php';
