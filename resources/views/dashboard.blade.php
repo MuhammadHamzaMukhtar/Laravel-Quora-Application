@@ -844,7 +844,7 @@
                                     <form action="{{route('feed.destroy', $post->id)}}" method="post" class="ms-4">
                                         @csrf
                                         @method('DELETE')
-                                    <input class="
+                                        <input class="
                         dropdown-item
                         d-flex
                         justify-content-around
@@ -956,9 +956,10 @@
                                                         <!-- menu -->
                                                         <ul class="dropdown-menu border-0 shadow" aria-labelledby="post1CommentMenuButton">
                                                             <li class="d-flex align-items-center">
-                                                                <a class="dropdown-item d-flex justify-content-around align-items-center fs-7" href="#">
-                                                                    Edit Comment</a>
+                                                                <button type="button" class="dropdown-item d-flex justify-content-around align-items-center fs-7" class="btn btn-primary" data-toggle="modal" data-target="#editComment{{$comment->id}}">
+                                                                    Edit Comment</button>
                                                             </li>
+
                                                             <li class="d-flex align-items-center">
                                                                 <a class="
                                         dropdown-item
@@ -1009,6 +1010,28 @@
                                                                 " data-bs-toggle="collapse" data-bs-target="#collapsePost2" aria-expanded="false" aria-controls="collapsePost2">
                                                             <i class="fas fa-comment-alt me-3"></i>
                                                             <p class="m-0">Reply</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="editComment{{$comment->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <input type="text" name="" id="" value="{{$comment->id}}">
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
 
@@ -1168,7 +1191,10 @@
                     </div>
                 </div>
                 @endforeach
-
+                <!-- Button trigger modal -->
+                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button> -->
             </div>
         </div>
         <!-- ================= Chatbar ================= -->

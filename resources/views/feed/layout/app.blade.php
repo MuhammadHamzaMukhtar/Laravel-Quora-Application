@@ -904,16 +904,16 @@
                     <ul class="dropdown-menu border-0 shadow p-3" aria-labelledby="secondMenu" style="width: 23em">
                         <!-- avatar -->
                         <li class="dropdown-item p-1 rounded d-flex" type="button">
-                            <img src="https://source.unsplash.com/collection/happy-people" alt="avatar" class="rounded-circle me-2" style="
+                            <img src="{{asset('images/'.Auth::user()->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="
                                         width: 45px;
                                         height: 45px;
                                         object-fit: cover;
                                     " />
                             <div>
-                                <p class="m-0">John</p>
-                                <p class="m-0 text-muted">
+                                <p class="m-0">{{Auth::user()->name}}</p>
+                                <a href="{{route('profile.edit')}}" class="m-0 text-muted">
                                     See your profile
-                                </p>
+                                </a>
                             </div>
                         </li>
                         <hr />
@@ -2120,7 +2120,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-<!-- <script>
+    <!-- <script>
     $(document).ready(function() {
         $('.like').hide();
 
@@ -2148,93 +2148,93 @@
 
     })
 </script> -->
-<script>
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $(document).ready(function() {
-        $('#pic_file').hide();
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $(document).ready(function() {
+            $('#pic_file').hide();
 
-        $('.fa-thumbs-up').click(function() {
-            $(this).removeClass('btn-outline-primary');
-            $(this).addClass('btn-primary');
-        })
+            $('.fa-thumbs-up').click(function() {
+                $(this).removeClass('btn-outline-primary');
+                $(this).addClass('btn-primary');
+            })
 
-        $(function() {
-            // alert('hey');
-
-            $('.toggle').change(function() {
+            $(function() {
                 // alert('hey');
 
-                var status = $(this).prop('checked') == true ? 1 : 0;
-                var feed_id = $(this).data('id');
-                // alert
-                $.ajax({
-                    type: "POST",
-                    dataType: "json",
-                    url: '/getLike',
-                    data: {
-                        'status': status,
-                        'feed_id': feed_id
-                    },
-                    success: function(data) {
-                        console.log('Success')
-                    }
+                $('.toggle').change(function() {
+                    // alert('hey');
+
+                    var status = $(this).prop('checked') == true ? 1 : 0;
+                    var feed_id = $(this).data('id');
+                    // alert
+                    $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        url: '/getLike',
+                        data: {
+                            'status': status,
+                            'feed_id': feed_id
+                        },
+                        success: function(data) {
+                            console.log('Success')
+                        }
+                    })
+                })
+            })
+
+            $(function() {
+                // alert('hey');
+
+                $('.comment_toggle').change(function() {
+                    // alert('hey');
+
+                    var status = $(this).prop('checked') == true ? 1 : 0;
+                    var comment_id = $(this).data('id');
+                    // alert
+                    $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        url: '/getComment',
+                        data: {
+                            'status': status,
+                            'comment_id': comment_id
+                        },
+                        success: function(data) {
+                            console.log('Success')
+                        }
+                    })
+                })
+            })
+
+            $(function() {
+                // alert('hey');
+
+                $('.child_comment_toggle').change(function() {
+                    // alert('hey');
+
+                    var status = $(this).prop('checked') == true ? 1 : 0;
+                    var child_comment_id = $(this).data('id');
+                    // alert(child_comment_id);
+                    $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        url: '/getChildComment',
+                        data: {
+                            'status': status,
+                            'child_comment_id': child_comment_id
+                        },
+                        success: function(data) {
+                            console.log('Success')
+                        }
+                    })
                 })
             })
         })
-
-        $(function() {
-            // alert('hey');
-
-            $('.comment_toggle').change(function() {
-                // alert('hey');
-
-                var status = $(this).prop('checked') == true ? 1 : 0;
-                var comment_id = $(this).data('id');
-                // alert
-                $.ajax({
-                    type: "POST",
-                    dataType: "json",
-                    url: '/getComment',
-                    data: {
-                        'status': status,
-                        'comment_id': comment_id
-                    },
-                    success: function(data) {
-                        console.log('Success')
-                    }
-                })
-            })
-        })
-
-        $(function() {
-            // alert('hey');
-
-            $('.child_comment_toggle').change(function() {
-                // alert('hey');
-
-                var status = $(this).prop('checked') == true ? 1 : 0;
-                var child_comment_id = $(this).data('id');
-                // alert(child_comment_id);
-                $.ajax({
-                    type: "POST",
-                    dataType: "json",
-                    url: '/getChildComment',
-                    data: {
-                        'status': status,
-                        'child_comment_id': child_comment_id
-                    },
-                    success: function(data) {
-                        console.log('Success')
-                    }
-                })
-            })
-        })
-    })
-</script>
+    </script>
 </body>
 
 </html>
