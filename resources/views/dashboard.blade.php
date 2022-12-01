@@ -608,12 +608,12 @@
                                                 @csrf
                                                 <!-- text -->
                                                 <div>
-                                                    <textarea name="description" cols="30" rows="5" class="form-control border-0" placeholder="Start your question with What, Why or How?.."></textarea>
+                                                    <textarea name="description" id="textarea" cols="30" rows="5" class="form-control border-0" placeholder="Start your question with What, Why or How?.."></textarea>
                                                 </div>
                                                 <!-- emoji  -->
                                                 <div class="d-flex            justify-content-between                            align-items-center">
                                                     <img src="https://www.facebook.com/images/composer/SATP_Aa_square-2x.png" class="pointer" alt="fb text" style="width: 30px; height: 30px; object-fit: cover;" />
-                                                    <i class="far fa-laugh-wink fs-5 text-muted pointer"></i>
+                                                    <!-- <i class="far fa-laugh-wink fs-5 text-muted pointer"></i> -->
                                                 </div>
                                                 <!-- options -->
                                                 <div class="d-flex                            justify-content-between border border-1 border-light rounded p-3 mt-3">
@@ -633,7 +633,7 @@
                                   text-warning
                                   pointer
                                   mx-1
-                                "></i>
+                                " ></i>
                                                         <!-- <i class="
                                   fas
                                   fa-map-marker-alt

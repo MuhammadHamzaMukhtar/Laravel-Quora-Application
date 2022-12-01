@@ -18,6 +18,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css"/>
     <!-- CSS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/css/toastr.css" rel="stylesheet" />
 </head>
@@ -1222,7 +1223,7 @@
                                         <div class="d-flex text-decoration-none text-dark">
                                             <i class="fas fa-cog bg-gray p-2 rounded-circle"></i>
                                             <button class="ms-3 d-flex justify-content-between align-items-center w-100">
-                                                <p class="m-0">Log Out</p>
+                                                <p class="m-0 style-none">Log Out</p>
                                             </button>
                                         </div>
                                     </form>
@@ -2125,6 +2126,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.js"></script>
+    <script>
+        $('#textarea').emojioneArea({
+            pickerPosition: 'bottom'
+        });
+    </script>
 <!-- JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/js/toastr.js"></script>
 <script>
@@ -2132,7 +2139,9 @@
             toastr.options = {
                 'timeOut': 10000,
                 'closeButton': true,
-                'progressBar': true
+                'progressBar': true,
+                'loaderBg': '#9EC600',
+                'showHideTransition': 'fade',
             }
             @if (Session::has('error'))
                 toastr.error('{{ Session::get('error') }}');
