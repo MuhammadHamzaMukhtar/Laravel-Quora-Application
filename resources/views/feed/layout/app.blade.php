@@ -17,9 +17,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+    <!-- CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/css/toastr.css" rel="stylesheet" />
 </head>
 
 <body class="bg-gray postion-relative">
+
     <!-- ================= Appbar ================= -->
     <div class="bg-white d-flex align-items-center fixed-top shadow" style="min-height: 56px; z-index: 5">
         <div class="container-fluid">
@@ -27,7 +31,7 @@
                 <!-- search -->
                 <div class="col d-flex align-items-center">
                     <!-- logo -->
-                    <i class="fab fa-quora text-primary" style="font-size: 3rem"></i>
+                    <a href="{{route('feed.index')}}"><i class="fab fa-quora text-primary" style="font-size: 3rem"></i></a>
                     <!-- search bar -->
                     <div class="input-group ms-3" type="button">
                         <!-- mobile -->
@@ -101,7 +105,7 @@
                     <!-- home -->
                     <div class="mx-4 nav__btn nav__btn-active">
                         <button type="button" class="btn px-4">
-                            <i class="fas fa-home text-muted fs-4"></i>
+                            <a href="{{route('feed.index')}}"><i class="fas fa-home text-muted fs-4"></i></a>
                         </button>
                     </div>
                     <!-- market -->
@@ -2120,6 +2124,20 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    
+<!-- JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/js/toastr.js"></script>
+<script>
+        $(document).ready(function() {
+            toastr.options.timeOut = 10000;
+            @if (Session::has('error'))
+                toastr.error('{{ Session::get('error') }}');
+            @elseif(Session::has('success'))
+                toastr.success('{{ Session::get('success') }}');
+            @endif
+        });
+
+    </script>
     <!-- <script>
     $(document).ready(function() {
         $('.like').hide();
@@ -2157,10 +2175,10 @@
         $(document).ready(function() {
             $('#pic_file').hide();
 
-            $('.fa-thumbs-up').click(function() {
-                $(this).removeClass('btn-outline-primary');
-                $(this).addClass('btn-primary');
-            })
+            // $('.fa-thumbs-up').click(function() {
+            //     $(this).removeClass('btn-outline-primary');
+            //     $(this).addClass('btn-primary');
+            // })
 
             $(function() {
                 // alert('hey');
@@ -2169,6 +2187,8 @@
                     // alert('hey');
 
                     var status = $(this).prop('checked') == true ? 1 : 0;
+                    // alert(status);
+                    var style = $(this).prop('checked') == true ? $('.likes-thumb').addClass('btn btn-primary').removeClass('btn btn-outline-primary') : $('.likes-thumb').addClass('btn btn-outline-primary').removeClass('btn btn-primary');
                     var feed_id = $(this).data('id');
                     // alert
                     $.ajax({

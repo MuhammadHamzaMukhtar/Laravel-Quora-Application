@@ -24,6 +24,11 @@ class Comment extends Model
         return $this->comment_likes()->sum('is_liked');
     }
     
+    public function getPostCommentsAttribute()
+    {
+        return $this->where('parent_id', $this->id)->count();    
+    }
+  
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');

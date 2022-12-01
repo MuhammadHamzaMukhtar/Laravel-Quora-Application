@@ -359,6 +359,7 @@
                         </div>
                         <!-- end -->
                     </div>
+
                     <!-- short 1 -->
                     <li class="dropdown-item p-1">
                         <a href="#" class="
@@ -488,7 +489,7 @@
                 <div class="p-2 mt-5">
                     <p class="text-muted fs-7">
                         Privacy &#8226; Terms &#8226; Advertising &#8226; Ad Choices
-                        &#8226; Cookies &#8226; Flexbook © 2021
+                        &#8226; Cookies &#8226; Laravel Quora © 2022
                     </p>
                 </div>
             </div>
@@ -500,8 +501,8 @@
                 <div class="mt-5 d-flex justify-content-between position-relative">
                     <!-- s 1 -->
                     <div class="mx-1 bg-white rounded story" type="button" style="width: 6em; height: 190px">
-                        <img src="https://source.unsplash.com/collection/happy-people" class="card-img-top" alt="story posts" style="min-height: 125px; object-fit: cover" />
-                        <div class="
+                        <img src="https://source.unsplash.com/collection/happy-people" class="card-img-top" alt="story posts" style="min-height: 190px; object-fit: cover" />
+                        <!-- <div class="
                     d-flex
                     align-items-center
                     justify-content-center
@@ -519,7 +520,7 @@
                         rounded-circle
                       "></i>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- s 2 -->
                     <div class="rounded mx-1 story" type="button" style="width: 6em; height: 190px">
@@ -568,7 +569,7 @@
                         <div class="p-1">
                             <img src="{{asset('images/'.Auth::user()->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="width: 38px; height: 38px; object-fit: cover" />
                         </div>
-                        <input type="text" class="form-control rounded-pill border-0 bg-gray pointer" disabled placeholder="What's on your mind, {{Auth::user()->name}}?" data-bs-toggle="modal" data-bs-target="#createModal" />
+                        <input type="text" class="form-control rounded-pill border-0 bg-gray pointer" disabled placeholder="Which question is in your mind, {{Auth::user()->name}}?" data-bs-toggle="modal" data-bs-target="#createModal" />
                     </div>
                     <!-- create modal -->
                     <div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true" data-bs-backdrop="false">
@@ -596,18 +597,18 @@
                                                 </div>
                                                 <div>
                                                     <p class="m-0 fw-bold">{{Auth::user()->name}}</p>
-                                                    <select class="form-select border-0 bg-gray w-75 fs-7" aria-label="Default select example">
+                                                    <!-- <select class="form-select border-0 bg-gray w-75 fs-7" aria-label="Default select example">
                                                         <option selected value="1">Public</option>
                                                         <option value="2">Pin To Top</option>
                                                         <option value="3">Hide</option>
-                                                    </select>
+                                                    </select> -->
                                                 </div>
                                             </div>
                                             <form action="{{route('feed.store')}}" method="post" enctype="multipart/form-data">
                                                 @csrf
                                                 <!-- text -->
                                                 <div>
-                                                    <textarea name="description" cols="30" rows="5" class="form-control border-0"></textarea>
+                                                    <textarea name="description" cols="30" rows="5" class="form-control border-0" placeholder="Start your question with What, Why or How?.."></textarea>
                                                 </div>
                                                 <!-- emoji  -->
                                                 <div class="d-flex            justify-content-between                            align-items-center">
@@ -616,15 +617,15 @@
                                                 </div>
                                                 <!-- options -->
                                                 <div class="d-flex                            justify-content-between border border-1 border-light rounded p-3 mt-3">
-                                                    <p class="m-0" id="display_pic">Add to your post</p>
+                                                    <p class="m-0" id="display_pic">Add your question</p>
                                                     <div>
                                                         <label for="pic_file">
                                                             <i class="fas fa-images fs-5 text-success pointer mx-1"></i>
                                                         </label>
                                                         <input type="file" name="image" id="pic_file">
-                                                        <i class="fas fa-user-check fs-5 text-primary pointer
+                                                        <!-- <i class="fas fa-user-check fs-5 text-primary pointer
                                   mx-1
-                                "></i>
+                                "></i> -->
                                                         <i class="
                                   far
                                   fa-smile
@@ -633,14 +634,14 @@
                                   pointer
                                   mx-1
                                 "></i>
-                                                        <i class="
+                                                        <!-- <i class="
                                   fas
                                   fa-map-marker-alt
                                   fs-5
                                   text-info
                                   pointer
                                   mx-1
-                                "></i>
+                                "></i> 
                                                         <i class="
                                   fas
                                   fa-microphone
@@ -648,7 +649,7 @@
                                   text-danger
                                   pointer
                                   mx-1
-                                "></i>
+                                "></i>-->
                                                         <i class="
                                   fas
                                   fa-ellipsis-h
@@ -678,7 +679,7 @@
                     <!-- actions -->
                     <div class="d-flex flex-column flex-lg-row mt-3">
                         <!-- a 1 -->
-                        <div class="
+                        <!-- <div class="
                     dropdown-item
                     rounded
                     d-flex
@@ -687,7 +688,7 @@
                   " type="button">
                             <i class="fas fa-video me-2 text-danger"></i>
                             <p class="m-0 text-muted">Live Video</p>
-                        </div>
+                        </div> -->
                         <!-- a 2 -->
                         <div class="
                     dropdown-item
@@ -695,7 +696,7 @@
                     d-flex
                     align-items-center
                     justify-content-center
-                  " type="button">
+                  " type="button" data-bs-toggle="modal" data-bs-target="#createModal">
                             <i class="fas fa-photo-video me-2 text-success"></i>
                             <p class="m-0 text-muted">Photo/Video</p>
                         </div>
@@ -706,9 +707,9 @@
                     d-flex
                     align-items-center
                     justify-content-center
-                  " type="button">
+                  " type="button" data-bs-toggle="modal" data-bs-target="#createModal">
                             <i class="fas fa-smile me-2 text-warning"></i>
-                            <p class="m-0 text-muted">Feeling/Activity</p>
+                            <p class="m-0 text-muted">Questions/Answers</p>
                         </div>
                     </div>
                 </div>
@@ -725,9 +726,9 @@
                 position-relative
               ">
                     <!-- btn -->
-                    <div>
+                    <div class="ms-3">
                         <button class="btn rounded-pill btn-info">
-                            <i class="fas fa-video me-3"></i>Create Room
+                            <i class="fas fa-video me-3"></i>Slides
                         </button>
                     </div>
                     <!-- slider mobile -->
@@ -849,7 +850,7 @@
                         d-flex
                         justify-content-around
                         align-items-center
-                        fs-7
+                        fs-7 show-alert-delete-box
                       " type="submit" value="Delete Post">
                                     </form>
                                 </li>
@@ -911,7 +912,7 @@
                                             p-1
                                         ">
 
-                                            <i class="fas fa-thumbs-up me-3 btn btn-outline-primary form-control"></i>
+                                            <i  data-id="likes-thumb{{$post->id}}" class="fas fa-thumbs-up me-3 text-center btn btn-outline-primary form-control likes-thumb"></i>
 
                                             <input type="checkbox" name="" data-id="{{$post->id}}" class="toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$post->is_liked == 1 ? 'checked'
                                             : ''}} hidden>
@@ -961,14 +962,24 @@
                                                             </li>
 
                                                             <li class="d-flex align-items-center">
-                                                                <a class="
+                                                                <!-- <a class="
                                         dropdown-item
                                         d-flex
                                         justify-content-around
                                         align-items-center
-                                        fs-7
+                                        fs-7 
                                       " href="{{route('deleteComment', $comment->id)}}">
-                                                                    Delete Comment</a>
+                                                                    Delete Comment</a> -->
+                                                                <form action="{{route('deleteComment', $comment->id)}}" method="get" class="ms-4">
+                                                                    @csrf
+                                                                    <input class="
+                        dropdown-item
+                        d-flex
+                        justify-content-around
+                        align-items-center
+                        fs-7 comment-box
+                      " type="submit" value="Delete Comment">
+                                                                </form>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -1009,7 +1020,7 @@
                                                                     p-1
                                                                 " data-bs-toggle="collapse" data-bs-target="#showReply{{$comment->id}}" aria-expanded="false" aria-controls="collapsePost2">
                                                             <i class="fas fa-comment-alt me-3"></i>
-                                                            <p class="m-0">Reply</p>
+                                                            <p class="m-0">{{$comment->post_comments}}</p>
                                                         </div>
                                                     </div>
 
@@ -1025,15 +1036,15 @@
                                                                 </div>
                                                                 <form action="{{route('editComment', $comment->id)}}" method="post">
 
-                                                                <div class="modal-body">
+                                                                    <div class="modal-body">
                                                                         @csrf
                                                                         <label for="edit"> Edit Comment</label>
                                                                         <input type="text" name="e_comment" id="edit" class="form-control" value="{{$comment->comment_text}}">
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                    <input type="submit" class="btn btn-primary" value="Update Comment">
-                                                                </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                        <input type="submit" class="btn btn-primary" value="Update Comment">
+                                                                    </div>
                                                                 </form>
 
                                                             </div>
@@ -1065,14 +1076,24 @@
                                                                                     Edit Reply</a>
                                                                             </li>
                                                                             <li class="d-flex align-items-center">
-                                                                                <a class="
+                                                                                <!-- <a class="
                                         dropdown-item
                                         d-flex
                                         justify-content-around
                                         align-items-center
                                         fs-7
                                       " href="{{route('deleteReply', $child->id)}}">
-                                                                                    Delete Reply</a>
+                                                                                    Delete Reply</a> -->
+                                                                                <form action="{{route('deleteReply', $child->id)}}" method="get" class="ms-4">
+                                                                                    @csrf
+                                                                                    <input class="
+                        dropdown-item
+                        d-flex
+                        justify-content-around
+                        align-items-center
+                        fs-7 reply-box
+                      " type="submit" value="Delete Reply">
+                                                                                </form>
                                                                             </li>
                                                                         </ul>
                                                                     </div>
@@ -1120,9 +1141,12 @@
                                 " />
                                                                 </div>
                                                                 <!-- input -->
-                                                                <input type="text" name="reply" class="form-control border-0 rounded-pill bg-gray" placeholder="Write a comment" />
-                                                                <button type="submit" class="bg-dark rounded-pill ms-2"><i class="fas fa-chevron-right text-primary"></i></button>
+                                                                <input type="text" name="reply" class="form-control border-0 rounded-pill bg-gray @error('reply') is-invalid @enderror" placeholder="Write a comment" />
+                                                                <button type="submit" class="bg-light rounded-pill ms-2"><i class="fas fa-chevron-right text-primary"></i></button>
                                                             </form>
+                                                            @error('reply')
+                                                            <span class="text-danger text-center ms-5">{{$message}}</span>
+                                                            @enderror
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1141,9 +1165,13 @@
                                 " />
                                                 </div>
                                                 <!-- input -->
-                                                <input type="text" name="comment" class="form-control border-0 rounded-pill bg-gray" placeholder="Write a comment" />
-                                                <button type="submit" class="bg-dark rounded-pill ms-2"><i class="fas fa-chevron-right text-primary"></i></button>
+                                                <input type="text" name="comment" class="form-control border-0 rounded-pill bg-gray @error('comment') is-invalid @enderror" placeholder="Write a comment" />
+
+                                                <button type="submit" class="bg-light rounded-pill ms-2"><i class="fas fa-chevron-right text-primary"></i></button>
                                             </form>
+                                            @error('comment')
+                                            <span class="text-danger text-center ms-5">{{$message}}</span>
+                                            @enderror
                                             <!-- end -->
                                         </div>
                                     </div>
@@ -2149,5 +2177,72 @@
         </div>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script type="text/javascript">
+    $('.show-alert-delete-box').click(function(event) {
+        // alert('asasa');
+        var form = $(this).closest("form");
+        // var name = $(this).data("name");
+        // alert(form);
+        event.preventDefault();
+        swal({
+            title: "Are you sure you want to delete this post?",
+            text: "If you delete this, it will be gone forever.",
+            icon: "warning",
+            type: "warning",
+            buttons: ["Cancel", "Yes Delete!"],
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((willDelete) => {
+            if (willDelete) {
+                form.submit();
+            }
+        });
+    });
+    $('.comment-box').click(function(event) {
+        // alert('asasa');
+        var form = $(this).closest("form");
+        // var name = $(this).data("name");
+        // alert(form);
+        event.preventDefault();
+        swal({
+            title: "Are you sure you want to delete this comment?",
+            text: "If you delete this, it will be gone forever.",
+            icon: "warning",
+            type: "warning",
+            buttons: ["Cancel", "Yes Delete!"],
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((willDelete) => {
+            if (willDelete) {
+                form.submit();
+            }
+        });
+    });
+    $('.reply-box').click(function(event) {
+        // alert('asasa');
+        var form = $(this).closest("form");
+        // var name = $(this).data("name");
+        // alert(form);
+        event.preventDefault();
+        swal({
+            title: "Are you sure you want to delete this comment?",
+            text: "If you delete this, it will be gone forever.",
+            icon: "warning",
+            type: "warning",
+            buttons: ["Cancel", "Yes Delete!"],
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((willDelete) => {
+            if (willDelete) {
+                form.submit();
+            }
+        });
+    });
+</script>
 
 @endsection

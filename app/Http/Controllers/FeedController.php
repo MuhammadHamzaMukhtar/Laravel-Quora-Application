@@ -57,7 +57,7 @@ class FeedController extends Controller
             'pic' => $image ?? 'NULL'
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Success! Post Created Successfully!');
     }
 
     /**
@@ -106,7 +106,7 @@ class FeedController extends Controller
         }
 
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Post Updated Successfully!');
     }
 
     /**
@@ -118,20 +118,20 @@ class FeedController extends Controller
     public function destroy($id)
     {
         Feed::find($id)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('error', 'Post Deleted Successfully!');
     }
 
     public function deleteComment($id)
     {
         Comment::find($id)->delete();
         Comment::where('parent_id', $id)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('error', 'Comment Deleted Successfully!');
     }
 
     public function deleteReply($id)
     {
         Comment::find($id)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('error', 'Reply Deleted Successfully!');
     }
 
     public function likes(Request $request)
@@ -179,18 +179,26 @@ class FeedController extends Controller
 
     public function storeComment(Request $request, $id)
     {
+        $request->validate([
+            'comment' => 'required'
+        ]);
+
         Comment::create([
             'user_id' => Auth::user()->id,
             'feed_id' => $id,
             'comment_text' => $request->comment
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Comment Added Successfully!');
     }
 
     public function addReply(Request $request, $comment_id, $post_id)
     {
         // dd($comment_id, $post_id);
+        $request->validate([
+            'reply' => 'required'
+        ]);
+
         Comment::create([
             'user_id' => Auth::user()->id,
             'feed_id' => $post_id,
@@ -198,7 +206,7 @@ class FeedController extends Controller
             'parent_id' => $comment_id
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Reply Added Successfully!');
     }
 
     public function editComment(Request $request, $id)
@@ -207,6 +215,6 @@ class FeedController extends Controller
             'comment_text' => $request->e_comment
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Comment Updated Successfully!');
     }
 }
