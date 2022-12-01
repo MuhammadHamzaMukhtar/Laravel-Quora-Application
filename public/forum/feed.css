@@ -12,10 +12,10 @@
     background: #f0f2f5 !important;
   }
   .nav__btn button:hover i {
-    color: #0d6efd !important;
+    color: red !important;
   }
   .nav__btn-active i {
-    color: #0d6efd !important;
+    color: red !important;
   }
   .nav__btn-active {
     position: relative;
@@ -28,7 +28,7 @@
     transform: translate(0, 4.5px);
     width: 100%;
     height: 3px;
-    border-bottom: 3px solid #0d6efd !important;
+    border-bottom: 3px solid red !important;
   }
   /* dropdown */
   .dropdown-item:active {
@@ -36,25 +36,25 @@
   }
   /* chat box */
   .modal-content:hover .fa-phone-alt {
-    color: #0d6efd !important;
+    color: red !important;
   }
   .modal-content:hover .fa-video {
-    color: #0d6efd !important;
+    color: red !important;
   }
   .modal-content:hover .fa-file-image {
-    color: #0d6efd !important;
+    color: red !important;
   }
   .modal-content:hover .fa-plus-circle {
-    color: #0d6efd !important;
+    color: red !important;
   }
   .modal-content:hover .fa-portrait {
-    color: #0d6efd !important;
+    color: red !important;
   }
   .modal-content:hover .fa-adjust {
-    color: #0d6efd !important;
+    color: red !important;
   }
   .modal-content:hover .fa-thumbs-up {
-    color: #0d6efd !important;
+    color: red !important;
   }
   /* edit */
   .edit-button {

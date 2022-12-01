@@ -31,7 +31,7 @@
                 <!-- search -->
                 <div class="col d-flex align-items-center">
                     <!-- logo -->
-                    <a href="{{route('feed.index')}}"><i class="fab fa-quora text-primary" style="font-size: 3rem"></i></a>
+                    <a href="{{route('feed.index')}}"><i class="fab fa-quora text-danger" style="font-size: 3rem"></i></a>
                     <!-- search bar -->
                     <div class="input-group ms-3" type="button">
                         <!-- mobile -->
@@ -2129,7 +2129,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/js/toastr.js"></script>
 <script>
         $(document).ready(function() {
-            toastr.options.timeOut = 10000;
+            toastr.options = {
+                'timeOut': 10000,
+                'closeButton': true,
+                'progressBar': true
+            }
             @if (Session::has('error'))
                 toastr.error('{{ Session::get('error') }}');
             @elseif(Session::has('success'))
