@@ -941,13 +941,10 @@
                                             <!-- comment 1 -->
                                             @foreach($comments as $comment)
                                             @if($comment->feed_id === $post->id)
+                                           
                                             <div class="d-flex align-items-center my-1">
                                                 <!-- avatar -->
-                                                <img src="{{asset('images/'.$comment->user->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="
-                                width: 38px;
-                                height: 38px;
-                                object-fit: cover;
-                              " />
+                                               
                                                 <!-- comment text -->
                                                 <div class="p-3 rounded comment__input w-100">
                                                     <!-- comment menu of author -->
@@ -989,9 +986,17 @@
                                                         <p class="fw-bold m-0 me-2">{{$comment->user->name}}</p>
                                                         <span class="text-muted fs-7">{{$comment->updated_at->diffForHumans()}}</span>
                                                     </div>
-                                                    <p class="m-0 fs-7 bg-gray p-2 rounded">
+                                                    <div class="d-flex">
+                                            <img src="{{asset('images/'.$comment->user->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="
+                                width: 38px;
+                                height: 38px;
+                                object-fit: cover;
+                              " />
+                              <p class="m-0 fs-7 bg-gray p-2 rounded form-control">
                                                         {{$comment->comment_text}}
                                                     </p>
+                                            </div>
+                                                    
                                                     <!-- comment & like bar -->
                                                     <div class="d-flex justify-content-around">
                                                         <label class="
