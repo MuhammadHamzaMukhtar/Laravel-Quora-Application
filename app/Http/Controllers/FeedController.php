@@ -137,6 +137,8 @@ class FeedController extends Controller
     public function likes(Request $request)
     {
         $user = Auth::user();
+        $html = $request->status;
+
         $feedLike = Feed_like::where(['user_id' => $user['id'], 'feed_id' => $request['feed_id']])->update(['is_liked' => $request['status']]);
         if (!$feedLike) {
 
@@ -146,6 +148,8 @@ class FeedController extends Controller
                 'is_liked' => $request['status']
             ]);
         }
+        echo $html;
+
     }
 
     public function comment_likes(Request $request)
@@ -159,6 +163,7 @@ class FeedController extends Controller
                 'comment_id' => $request['comment_id'],
                 'is_liked' => $request['status']
             ]);
+
         }
     }
 

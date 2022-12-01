@@ -884,7 +884,8 @@
                                     <!-- <i class="text-danger fab fa-gratipay"></i>
                                     <i class="text-warning fas fa-grin-squint"></i> -->
                                 </div>
-                                <p class="m-0 text-muted fs-7">{{$post->is_liked}} likes</p>
+                                <p class="m-0 text-muted fs-7" id="post_likes">{{$post->is_liked}}</p>
+                                <pre class="m-0 text-muted fs-7"> likes</pre>
                             </div>
                             <!-- comments start-->
                             <div class="accordion" id="accordionExample">
@@ -2179,6 +2180,7 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
 <script type="text/javascript">
     $('.show-alert-delete-box').click(function(event) {
         // alert('asasa');
@@ -2244,5 +2246,96 @@
         });
     });
 </script>
+<script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $(document).ready(function() {
+            $('#pic_file').hide();
 
+            // $('.fa-thumbs-up').click(function() {
+            //     $(this).removeClass('btn-outline-primary');
+            //     $(this).addClass('btn-primary');
+            // })
+
+            $(function() {
+                // alert('hey');
+
+                $('.toggle').change(function() {
+                    // alert('hey');
+
+                    var status = $(this).prop('checked') == true ? 1 : 0;
+                    // alert(status);
+                    var style = $(this).prop('checked') == true ? $(this).addClass('btn btn-primary').removeClass('btn btn-outline-primary') : $(this).addClass('btn btn-outline-primary').removeClass('btn btn-primary');
+                    var feed_id = $(this).data('id');
+                    // alert
+                    $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        url: '/getLike',
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                            'status': status,
+                            'feed_id': feed_id
+                        },
+                        success: function(data) {
+                            $('#post_likes').text(data)
+                        }
+                    })
+                })
+            })
+
+            $(function() {
+                // alert('hey');
+
+                $('.comment_toggle').change(function() {
+                    // alert('hey');
+
+                    var status = $(this).prop('checked') == true ? 1 : 0;
+                    var comment_id = $(this).data('id');
+                    // alert
+                    $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        url: '/getComment',
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                            'status': status,
+                            'comment_id': comment_id
+                        },
+                        success: function(data) {
+                            console.log('Success')
+                        }
+                    })
+                })
+            })
+
+            $(function() {
+                // alert('hey');
+
+                $('.child_comment_toggle').change(function() {
+                    // alert('hey');
+
+                    var status = $(this).prop('checked') == true ? 1 : 0;
+                    var child_comment_id = $(this).data('id');
+                    // alert(child_comment_id);
+                    $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        url: '/getChildComment',
+                        data: {
+                             "_token": "{{ csrf_token() }}",
+                            'status': status,
+                            'child_comment_id': child_comment_id
+                        },
+                        success: function(data) {
+                            console.log(data)
+                        }
+                    })
+                })
+            })
+        })
+    </script>
 @endsection

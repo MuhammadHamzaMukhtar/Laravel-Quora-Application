@@ -2120,7 +2120,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <script src="{{ asset('forum/feed.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
@@ -2170,95 +2170,7 @@
 
     })
 </script> -->
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $(document).ready(function() {
-            $('#pic_file').hide();
-
-            // $('.fa-thumbs-up').click(function() {
-            //     $(this).removeClass('btn-outline-primary');
-            //     $(this).addClass('btn-primary');
-            // })
-
-            $(function() {
-                // alert('hey');
-
-                $('.toggle').change(function() {
-                    // alert('hey');
-
-                    var status = $(this).prop('checked') == true ? 1 : 0;
-                    // alert(status);
-                    var style = $(this).prop('checked') == true ? $('.likes-thumb').addClass('btn btn-primary').removeClass('btn btn-outline-primary') : $('.likes-thumb').addClass('btn btn-outline-primary').removeClass('btn btn-primary');
-                    var feed_id = $(this).data('id');
-                    // alert
-                    $.ajax({
-                        type: "POST",
-                        dataType: "json",
-                        url: '/getLike',
-                        data: {
-                            'status': status,
-                            'feed_id': feed_id
-                        },
-                        success: function(data) {
-                            console.log('Success')
-                        }
-                    })
-                })
-            })
-
-            $(function() {
-                // alert('hey');
-
-                $('.comment_toggle').change(function() {
-                    // alert('hey');
-
-                    var status = $(this).prop('checked') == true ? 1 : 0;
-                    var comment_id = $(this).data('id');
-                    // alert
-                    $.ajax({
-                        type: "POST",
-                        dataType: "json",
-                        url: '/getComment',
-                        data: {
-                            'status': status,
-                            'comment_id': comment_id
-                        },
-                        success: function(data) {
-                            console.log('Success')
-                        }
-                    })
-                })
-            })
-
-            $(function() {
-                // alert('hey');
-
-                $('.child_comment_toggle').change(function() {
-                    // alert('hey');
-
-                    var status = $(this).prop('checked') == true ? 1 : 0;
-                    var child_comment_id = $(this).data('id');
-                    // alert(child_comment_id);
-                    $.ajax({
-                        type: "POST",
-                        dataType: "json",
-                        url: '/getChildComment',
-                        data: {
-                            'status': status,
-                            'child_comment_id': child_comment_id
-                        },
-                        success: function(data) {
-                            console.log('Success')
-                        }
-                    })
-                })
-            })
-        })
-    </script>
+   
 </body>
 
 </html>
