@@ -9,7 +9,7 @@
                     <!-- top -->
                     <!-- avatar -->
                     <li class="dropdown-item p-1 rounded">
-                        <a href="#" class="
+                        <a href="{{route('profile.edit')}}" class="
                     d-flex
                     align-items-center
                     text-decoration-none text-dark
