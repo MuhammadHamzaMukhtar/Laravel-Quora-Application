@@ -1059,7 +1059,7 @@
 
                                                     <!-- comment expand -->
                                                     <div id="showReply{{$comment->id}}" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample1">
-                                                        <div class="accordion-body1">
+                                                        <div class="accordion-body1 mx-5 ">
                                                             @foreach($comment->children as $child)
                                                             <div class="d-flex align-items-center my-1">
                                                                 <!-- avatar -->
@@ -1147,7 +1147,7 @@
                                 " />
                                                                 </div>
                                                                 <!-- input -->
-                                                                <input type="text" name="reply" class="form-control border-0 rounded-pill bg-gray @error('reply') is-invalid @enderror" placeholder="Write a comment" />
+                                                                <input type="text" name="reply" class="form-control border-0 rounded-pill bg-gray @error('reply') is-invalid @enderror" placeholder="Write a reply" />
                                                                 <button type="submit" class="bg-light rounded-pill ms-2"><i class="fas fa-chevron-right text-primary"></i></button>
                                                             </form>
                                                             @error('reply')
