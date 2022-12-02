@@ -884,7 +884,7 @@
                                     <!-- <i class="text-danger fab fa-gratipay"></i>
                                     <i class="text-warning fas fa-grin-squint"></i> -->
                                 </div>
-                                <p class="m-0 text-muted fs-7" id="post_likes">{{$post->is_liked}}</p>
+                                <p class="m-0 text-muted fs-7" id="post_likes" class="like-count">{{$post->is_liked}}</p>
                                 <pre class="m-0 text-muted fs-7"> likes</pre>
                             </div>
                             <!-- comments start-->
@@ -896,7 +896,11 @@
                                             pointer
                                             d-flex
                                             justify-content-end" data-bs-toggle="collapse" data-bs-target="#collapsePost1{{$post->id}}" aria-expanded="false" aria-controls="collapsePost1">
+                                            @if($post->total_comments === 0)
+                                            <p class="m-0">No Comments</p>
+@else
                                             <p class="m-0">{{$post->total_comments}} Comments</p>
+                                            @endif
                                         </div>
                                     </h2>
                                     <hr />
@@ -912,11 +916,16 @@
                                             text-muted
                                             p-1
                                         ">
+                                           <small>
+                                           <span id="saveLike" data-type="like" data-post="{{$post->id}}">
+                                                    Like
+                                                <!-- <i class="fas fa-thumbs-up me-3 text-center btn  form-control"></i> -->
+                                                <span class="like-count">{{$post->likes()}}</span>
+                                            </span>
+                                           </small>
 
-                                            <i data-id="likes-thumb{{$post->id}}" class="fas fa-thumbs-up me-3 text-center btn btn-outline-primary form-control likes-thumb"></i>
-
-                                            <input type="checkbox" name="" data-id="{{$post->id}}" class="toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$post->is_liked == 1 ? 'checked'
-                                            : ''}} hidden>
+                                            <!-- <input type="checkbox" name="" data-id="{{$post->id}}" class="toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$post->is_liked == 1 ? 'checked'
+                                            : ''}} hidden> -->
                                             <!-- <input type="text" name="" class="like" value="{{$post->id}}">
                                             <p class="m-0">Like</p> -->
                                         </label>
@@ -2283,90 +2292,92 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $(document).ready(function() {
-        $('#pic_file').hide();
 
-        // $('.fa-thumbs-up').click(function() {
-        //     $(this).removeClass('btn-outline-primary');
-        //     $(this).addClass('btn-primary');
-        // })
+    
+    // $(document).ready(function() {
+    //     $('#pic_file').hide();
 
-        $(function() {
-            // alert('hey');
+    //     // $('.fa-thumbs-up').click(function() {
+    //     //     $(this).removeClass('btn-outline-primary');
+    //     //     $(this).addClass('btn-primary');
+    //     // })
 
-            $('.toggle').change(function() {
-                // alert('hey');
+    //     $(function() {
+    //         // alert('hey');
 
-                var status = $(this).prop('checked') == true ? 1 : 0;
-                // alert(status);
-                var style = $(this).prop('checked') == true ? $(this).addClass('btn btn-primary').removeClass('btn btn-outline-primary') : $(this).addClass('btn btn-outline-primary').removeClass('btn btn-primary');
-                var feed_id = $(this).data('id');
-                // alert
-                $.ajax({
-                    type: "POST",
-                    dataType: "json",
-                    url: '/getLike',
-                    data: {
-                        "_token": "{{ csrf_token() }}",
-                        'status': status,
-                        'feed_id': feed_id
-                    },
-                    success: function(data) {
-                        $('#post_likes').text(data)
-                    }
-                })
-            })
-        })
+    //         $('.toggle').change(function() {
+    //             // alert('hey');
 
-        $(function() {
-            // alert('hey');
+    //             var status = $(this).prop('checked') == true ? 1 : 0;
+    //             // alert(status);
+    //             // var style = $(this).prop('checked') == true ? $(this).addClass('btn btn-primary').removeClass('btn btn-outline-primary') : $(this).addClass('btn btn-outline-primary').removeClass('btn btn-primary');
+    //             var feed_id = $(this).data('id');
+    //             // alert
+    //             $.ajax({
+    //                 type: "POST",
+    //                 dataType: "json",
+    //                 url: '/getLike',
+    //                 data: {
+    //                     "_token": "{{ csrf_token() }}",
+    //                     'status': status,
+    //                     'feed_id': feed_id
+    //                 },
+    //                 success: function(data) {
+    //                     $('#post_likes').text(data)
+    //                 }
+    //             })
+    //         })
+    //     })
 
-            $('.comment_toggle').change(function() {
-                // alert('hey');
+    //     $(function() {
+    //         // alert('hey');
 
-                var status = $(this).prop('checked') == true ? 1 : 0;
-                var comment_id = $(this).data('id');
-                // alert
-                $.ajax({
-                    type: "POST",
-                    dataType: "json",
-                    url: '/getComment',
-                    data: {
-                        "_token": "{{ csrf_token() }}",
-                        'status': status,
-                        'comment_id': comment_id
-                    },
-                    success: function(data) {
-                        console.log('Success')
-                    }
-                })
-            })
-        })
+    //         $('.comment_toggle').change(function() {
+    //             // alert('hey');
 
-        $(function() {
-            // alert('hey');
+    //             var status = $(this).prop('checked') == true ? 1 : 0;
+    //             var comment_id = $(this).data('id');
+    //             // alert
+    //             $.ajax({
+    //                 type: "POST",
+    //                 dataType: "json",
+    //                 url: '/getComment',
+    //                 data: {
+    //                     "_token": "{{ csrf_token() }}",
+    //                     'status': status,
+    //                     'comment_id': comment_id
+    //                 },
+    //                 success: function(data) {
+    //                     console.log('Success')
+    //                 }
+    //             })
+    //         })
+    //     })
 
-            $('.child_comment_toggle').change(function() {
-                // alert('hey');
+    //     $(function() {
+    //         // alert('hey');
 
-                var status = $(this).prop('checked') == true ? 1 : 0;
-                var child_comment_id = $(this).data('id');
-                // alert(child_comment_id);
-                $.ajax({
-                    type: "POST",
-                    dataType: "json",
-                    url: '/getChildComment',
-                    data: {
-                        "_token": "{{ csrf_token() }}",
-                        'status': status,
-                        'child_comment_id': child_comment_id
-                    },
-                    success: function(data) {
-                        console.log(data)
-                    }
-                })
-            })
-        })
-    })
+    //         $('.child_comment_toggle').change(function() {
+    //             // alert('hey');
+
+    //             var status = $(this).prop('checked') == true ? 1 : 0;
+    //             var child_comment_id = $(this).data('id');
+    //             // alert(child_comment_id);
+    //             $.ajax({
+    //                 type: "POST",
+    //                 dataType: "json",
+    //                 url: '/getChildComment',
+    //                 data: {
+    //                     "_token": "{{ csrf_token() }}",
+    //                     'status': status,
+    //                     'child_comment_id': child_comment_id
+    //                 },
+    //                 success: function(data) {
+    //                     console.log(data)
+    //                 }
+    //             })
+    //         })
+    //     })
+    // })
 </script>
 @endsection

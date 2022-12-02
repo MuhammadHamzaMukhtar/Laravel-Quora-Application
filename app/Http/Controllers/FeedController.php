@@ -137,18 +137,37 @@ class FeedController extends Controller
     public function likes(Request $request)
     {
         $user = Auth::user();
-        $html = $request->status;
+        // $html = $request->status;
 
+        // $feedLike = Feed_like::where(['user_id' => $user['id'], 'feed_id' => $request['feed_id']])->update(['is_liked' => $request['status']]);
+        // if (!$feedLike) {
+
+        //     Feed_like::create([
+        //         'user_id' => $user['id'],
+        //         'feed_id' => $request['feed_id'],
+        //         'is_liked' => $request['status']
+        //     ]);
+        // }
+        // echo $html;
         $feedLike = Feed_like::where(['user_id' => $user['id'], 'feed_id' => $request['feed_id']])->update(['is_liked' => $request['status']]);
-        if (!$feedLike) {
+        if(!$feedLike){
 
-            Feed_like::create([
-                'user_id' => $user['id'],
-                'feed_id' => $request['feed_id'],
-                'is_liked' => $request['status']
-            ]);
+            $data = new Feed_like();
+            $data->feed_id = $request->post;
+            $data->user_id = $user['id'];
+            if($request->type == 'like'){
+                $data->is_liked = 1;
+            }else{
+                $data->dislike = 1;
+            }
+            $data->save();
+        } else {
+            
         }
-        echo $html;
+
+        return response()->json([
+            'bool' => true
+        ]);
 
     }
 
