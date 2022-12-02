@@ -913,7 +913,7 @@
                                             p-1
                                         ">
 
-                                            <i  data-id="likes-thumb{{$post->id}}" class="fas fa-thumbs-up me-3 text-center btn btn-outline-primary form-control likes-thumb"></i>
+                                            <i data-id="likes-thumb{{$post->id}}" class="fas fa-thumbs-up me-3 text-center btn btn-outline-primary form-control likes-thumb"></i>
 
                                             <input type="checkbox" name="" data-id="{{$post->id}}" class="toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$post->is_liked == 1 ? 'checked'
                                             : ''}} hidden>
@@ -941,10 +941,10 @@
                                             <!-- comment 1 -->
                                             @foreach($comments as $comment)
                                             @if($comment->feed_id === $post->id)
-                                           
+
                                             <div class="d-flex align-items-center my-1">
                                                 <!-- avatar -->
-                                               
+
                                                 <!-- comment text -->
                                                 <div class="p-3 rounded comment__input w-100">
                                                     <!-- comment menu of author -->
@@ -987,16 +987,16 @@
                                                         <span class="text-muted fs-7">{{$comment->updated_at->diffForHumans()}}</span>
                                                     </div>
                                                     <div class="d-flex">
-                                            <img src="{{asset('images/'.$comment->user->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="
+                                                        <img src="{{asset('images/'.$comment->user->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="
                                 width: 38px;
                                 height: 38px;
                                 object-fit: cover;
                               " />
-                              <p class="m-0 fs-7 bg-gray p-2 rounded form-control">
-                                                        {{$comment->comment_text}}
-                                                    </p>
-                                            </div>
-                                                    
+                                                        <p class="m-0 fs-7 bg-gray p-2 rounded form-control">
+                                                            {{$comment->comment_text}}
+                                                        </p>
+                                                    </div>
+
                                                     <!-- comment & like bar -->
                                                     <div class="d-flex justify-content-around">
                                                         <label class="
@@ -2252,95 +2252,95 @@
     });
 </script>
 <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $(document).ready(function() {
-            $('#pic_file').hide();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $(document).ready(function() {
+        $('#pic_file').hide();
 
-            // $('.fa-thumbs-up').click(function() {
-            //     $(this).removeClass('btn-outline-primary');
-            //     $(this).addClass('btn-primary');
-            // })
+        // $('.fa-thumbs-up').click(function() {
+        //     $(this).removeClass('btn-outline-primary');
+        //     $(this).addClass('btn-primary');
+        // })
 
-            $(function() {
+        $(function() {
+            // alert('hey');
+
+            $('.toggle').change(function() {
                 // alert('hey');
 
-                $('.toggle').change(function() {
-                    // alert('hey');
-
-                    var status = $(this).prop('checked') == true ? 1 : 0;
-                    // alert(status);
-                    var style = $(this).prop('checked') == true ? $(this).addClass('btn btn-primary').removeClass('btn btn-outline-primary') : $(this).addClass('btn btn-outline-primary').removeClass('btn btn-primary');
-                    var feed_id = $(this).data('id');
-                    // alert
-                    $.ajax({
-                        type: "POST",
-                        dataType: "json",
-                        url: '/getLike',
-                        data: {
-                            "_token": "{{ csrf_token() }}",
-                            'status': status,
-                            'feed_id': feed_id
-                        },
-                        success: function(data) {
-                            $('#post_likes').text(data)
-                        }
-                    })
-                })
-            })
-
-            $(function() {
-                // alert('hey');
-
-                $('.comment_toggle').change(function() {
-                    // alert('hey');
-
-                    var status = $(this).prop('checked') == true ? 1 : 0;
-                    var comment_id = $(this).data('id');
-                    // alert
-                    $.ajax({
-                        type: "POST",
-                        dataType: "json",
-                        url: '/getComment',
-                        data: {
-                            "_token": "{{ csrf_token() }}",
-                            'status': status,
-                            'comment_id': comment_id
-                        },
-                        success: function(data) {
-                            console.log('Success')
-                        }
-                    })
-                })
-            })
-
-            $(function() {
-                // alert('hey');
-
-                $('.child_comment_toggle').change(function() {
-                    // alert('hey');
-
-                    var status = $(this).prop('checked') == true ? 1 : 0;
-                    var child_comment_id = $(this).data('id');
-                    // alert(child_comment_id);
-                    $.ajax({
-                        type: "POST",
-                        dataType: "json",
-                        url: '/getChildComment',
-                        data: {
-                             "_token": "{{ csrf_token() }}",
-                            'status': status,
-                            'child_comment_id': child_comment_id
-                        },
-                        success: function(data) {
-                            console.log(data)
-                        }
-                    })
+                var status = $(this).prop('checked') == true ? 1 : 0;
+                // alert(status);
+                var style = $(this).prop('checked') == true ? $(this).addClass('btn btn-primary').removeClass('btn btn-outline-primary') : $(this).addClass('btn btn-outline-primary').removeClass('btn btn-primary');
+                var feed_id = $(this).data('id');
+                // alert
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: '/getLike',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        'status': status,
+                        'feed_id': feed_id
+                    },
+                    success: function(data) {
+                        $('#post_likes').text(data)
+                    }
                 })
             })
         })
-    </script>
+
+        $(function() {
+            // alert('hey');
+
+            $('.comment_toggle').change(function() {
+                // alert('hey');
+
+                var status = $(this).prop('checked') == true ? 1 : 0;
+                var comment_id = $(this).data('id');
+                // alert
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: '/getComment',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        'status': status,
+                        'comment_id': comment_id
+                    },
+                    success: function(data) {
+                        console.log('Success')
+                    }
+                })
+            })
+        })
+
+        $(function() {
+            // alert('hey');
+
+            $('.child_comment_toggle').change(function() {
+                // alert('hey');
+
+                var status = $(this).prop('checked') == true ? 1 : 0;
+                var child_comment_id = $(this).data('id');
+                // alert(child_comment_id);
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: '/getChildComment',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        'status': status,
+                        'child_comment_id': child_comment_id
+                    },
+                    success: function(data) {
+                        console.log(data)
+                    }
+                })
+            })
+        })
+    })
+</script>
 @endsection
