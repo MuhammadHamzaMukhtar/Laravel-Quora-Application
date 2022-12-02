@@ -222,4 +222,13 @@ class FeedController extends Controller
 
         return redirect()->back()->with('success', 'Comment Updated Successfully!');
     }
+
+    public function editReply(Request $request, $id)
+    {
+        Comment::find($id)->update([
+            'comment_text' => $request->e_reply
+        ]);
+
+        return redirect()->back()->with('success', 'Reply Updated Successfully!');
+    }
 }

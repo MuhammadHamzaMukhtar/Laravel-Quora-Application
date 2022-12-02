@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/delete_comment/{id}', [FeedController::class, 'deleteComment'])->name('deleteComment');
     Route::get('/delete_reply/{id}', [FeedController::class, 'deleteReply'])->name('deleteReply');
     Route::post('/edit_Comment/{id}', [FeedController::class, 'editComment'])->name('editComment');
+    Route::post('/edit_Reply/{id}', [FeedController::class, 'editReply'])->name('editReply');
 });
 
 require __DIR__.'/auth.php';

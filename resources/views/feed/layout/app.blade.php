@@ -1223,7 +1223,7 @@
                                         <div class="d-flex text-decoration-none text-dark">
                                             <i class="fas fa-cog bg-gray p-2 rounded-circle"></i>
                                             <button class="ms-3 d-flex justify-content-between align-items-center w-100">
-                                                <p class="m-0 style-none">Log Out</p>
+                                                <p class="m-0">Log Out</p>
                                             </button>
                                         </div>
                                     </form>
@@ -2137,7 +2137,7 @@
 <script>
         $(document).ready(function() {
             toastr.options = {
-                'timeOut': 10000,
+                'timeOut': 5000,
                 'closeButton': true,
                 'progressBar': true,
                 'loaderBg': '#9EC600',

@@ -633,7 +633,7 @@
                                   text-warning
                                   pointer
                                   mx-1
-                                " ></i>
+                                "></i>
                                                         <!-- <i class="
                                   fas
                                   fa-map-marker-alt
@@ -971,27 +971,27 @@
                                                                 <form action="{{route('deleteComment', $comment->id)}}" method="get" class="ms-4">
                                                                     @csrf
                                                                     <input class="
-                        dropdown-item
-                        d-flex
-                        justify-content-around
-                        align-items-center
-                        fs-7 comment-box
-                      " type="submit" value="Delete Comment">
+                                                                        dropdown-item
+                                                                        d-flex
+                                                                        justify-content-around
+                                                                        align-items-center
+                                                                        fs-7 comment-box
+                                                                    " type="submit" value="Delete Comment">
                                                                 </form>
                                                             </li>
                                                         </ul>
                                                     </div>
                                                     @endif
-                                                    <div class="d-flex">
+                                                    <div class="d-flex ms-5">
                                                         <p class="fw-bold m-0 me-2">{{$comment->user->name}}</p>
                                                         <span class="text-muted fs-7">{{$comment->updated_at->diffForHumans()}}</span>
                                                     </div>
                                                     <div class="d-flex">
                                                         <img src="{{asset('images/'.$comment->user->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="
-                                width: 38px;
-                                height: 38px;
-                                object-fit: cover;
-                              " />
+                                                            width: 38px;
+                                                            height: 38px;
+                                                            object-fit: cover;
+                                                        " />
                                                         <p class="m-0 fs-7 bg-gray p-2 rounded form-control">
                                                             {{$comment->comment_text}}
                                                         </p>
@@ -1035,7 +1035,7 @@
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Edit Comment</h5>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
@@ -1059,7 +1059,7 @@
 
                                                     <!-- comment expand -->
                                                     <div id="showReply{{$comment->id}}" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample1">
-                                                        <div class="accordion-body1 mx-5 ">
+                                                        <div class="accordion-body1 ms-5 ">
                                                             @foreach($comment->children as $child)
                                                             <div class="d-flex align-items-center my-1">
                                                                 <!-- avatar -->
@@ -1071,16 +1071,18 @@
                                                                 <!-- comment text -->
                                                                 <div class="p-3 rounded comment__input w-100">
                                                                     <!-- comment menu of author -->
-                                                                    @if($comment->user_id === Auth::user()->id)
+                                                                    @if($child->user_id === Auth::user()->id)
                                                                     <div class="d-flex justify-content-end">
                                                                         <!-- icon -->
                                                                         <i class="fas fa-ellipsis-h text-blue pointer" id="post1CommentMenuButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
                                                                         <!-- menu -->
                                                                         <ul class="dropdown-menu border-0 shadow" aria-labelledby="post1CommentMenuButton">
                                                                             <li class="d-flex align-items-center">
-                                                                                <a class="dropdown-item d-flex justify-content-around align-items-center fs-7" href="#">
-                                                                                    Edit Reply</a>
+                                                                                <button class="dropdown-item d-flex justify-content-around align-items-center fs-7" data-toggle="modal" data-target="#editReply{{$child->id}}">
+                                                                                    Edit Reply</button>
                                                                             </li>
+                                                                            <!-- Modal -->
+
                                                                             <li class="d-flex align-items-center">
                                                                                 <!-- <a class="
                                         dropdown-item
@@ -1132,6 +1134,30 @@
 
                                                                     </div>
 
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal fade" id="editReply{{$child->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalLabel">Edit Reply</h5>
+                                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                <span aria-hidden="true">&times;</span>
+                                                                            </button>
+                                                                        </div>
+                                                                        <form action="{{route('editReply', $child->id)}}" method="post">
+                                                                            @csrf
+                                                                            <div class="modal-body">
+                                                                                <label for="edit"> Edit Reply</label>
+                                                                                <input type="text" name="e_reply" id="edit" class="form-control" value="{{$child->comment_text}}">
+                                                                            </div>
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                                <input type="submit" class="btn btn-primary" value="Update Reply">
+                                                                            </div>
+                                                                        </form>
+
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             @endforeach
