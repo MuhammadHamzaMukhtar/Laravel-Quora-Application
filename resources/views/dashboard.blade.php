@@ -916,18 +916,19 @@
                                             text-muted
                                             p-1
                                         ">
-                                           <small>
-                                           <span id="saveLike" data-type="like" data-post="{{$post->id}}">
+                                           <!-- <span id="saveLike" data-type="like" data-post="{{$post->id}}">
                                                     Like
-                                                <!-- <i class="fas fa-thumbs-up me-3 text-center btn  form-control"></i> -->
-                                                <span class="like-count">{{$post->likes()}}</span>
-                                            </span>
-                                           </small>
+                                                <i class="fas fa-thumbs-up me-3 text-center btn  form-control"></i>
+                                                <span>{{$post->is_liked}}</span>
+                                            </span> -->
 
-                                            <!-- <input type="checkbox" name="" data-id="{{$post->id}}" class="toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$post->is_liked == 1 ? 'checked'
-                                            : ''}} hidden> -->
-                                            <!-- <input type="text" name="" class="like" value="{{$post->id}}">
-                                            <p class="m-0">Like</p> -->
+                                            <input type="checkbox" name="" data-id="{{$post->id}}" class="toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$post->is_liked == 1 ? 'checked'
+                                            : ''}} hidden>
+                                            @if($post->like_status === 1)
+                                            <i class="fas fa-thumbs-up me-3 text-center btn btn-primary form-control" id="like-btn{{$post->id}}"></i>
+                                            @else
+                                            <i class="fas fa-thumbs-up me-3 text-center btn btn-outline-primary form-control" id="like-btn{{$post->id}}"></i>
+                                            @endif
                                         </label>
                                         <div class="
                             dropdown-item
@@ -991,12 +992,12 @@
                                                         </ul>
                                                     </div>
                                                     @endif
-                                                    <div class="d-flex ms-5">
+                                                    <div class="d-flex ms-5 px-3">
                                                         <p class="fw-bold m-0 me-2">{{$comment->user->name}}</p>
                                                         <span class="text-muted fs-7">{{$comment->updated_at->diffForHumans()}}</span>
                                                     </div>
                                                     <div class="d-flex">
-                                                        <img src="{{asset('images/'.$comment->user->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="
+                                                        <img src="{{asset('images/'.$comment->user->profile_pic)}}" alt="avatar" class="rounded-circle me-4" style="
                                                             width: 38px;
                                                             height: 38px;
                                                             object-fit: cover;
@@ -2294,90 +2295,90 @@
     });
 
     
-    // $(document).ready(function() {
-    //     $('#pic_file').hide();
+    $(document).ready(function() {
+        $('#pic_file').hide();
 
-    //     // $('.fa-thumbs-up').click(function() {
-    //     //     $(this).removeClass('btn-outline-primary');
-    //     //     $(this).addClass('btn-primary');
-    //     // })
+        // $('.fa-thumbs-up').click(function() {
+        //     $(this).removeClass('btn-outline-primary');
+        //     $(this).addClass('btn-primary');
+        // })
 
-    //     $(function() {
-    //         // alert('hey');
+        $(function() {
+            // alert('hey');
 
-    //         $('.toggle').change(function() {
-    //             // alert('hey');
+            $('.toggle').change(function() {
+                // alert('hey');
 
-    //             var status = $(this).prop('checked') == true ? 1 : 0;
-    //             // alert(status);
-    //             // var style = $(this).prop('checked') == true ? $(this).addClass('btn btn-primary').removeClass('btn btn-outline-primary') : $(this).addClass('btn btn-outline-primary').removeClass('btn btn-primary');
-    //             var feed_id = $(this).data('id');
-    //             // alert
-    //             $.ajax({
-    //                 type: "POST",
-    //                 dataType: "json",
-    //                 url: '/getLike',
-    //                 data: {
-    //                     "_token": "{{ csrf_token() }}",
-    //                     'status': status,
-    //                     'feed_id': feed_id
-    //                 },
-    //                 success: function(data) {
-    //                     $('#post_likes').text(data)
-    //                 }
-    //             })
-    //         })
-    //     })
+                var status = $(this).prop('checked') == true ? 1 : 0;
+                // alert(status);
+                var style = $(this).prop('checked') == true ? $('#like-btn{{$post->id}}').removeClass('btn-outline-primary').addClass('btn-primary') : $('#like-btn{{$post->id}}').removeClass('btn-primary').addClass('btn-outline-primary');
+                var feed_id = $(this).data('id');
+                // alert
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: '/getLike',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        'status': status,
+                        'feed_id': feed_id
+                    },
+                    success: function(data) {
+                        $('#post_likes').text(data)
+                    }
+                })
+            })
+        })
 
-    //     $(function() {
-    //         // alert('hey');
+        $(function() {
+            // alert('hey');
 
-    //         $('.comment_toggle').change(function() {
-    //             // alert('hey');
+            $('.comment_toggle').change(function() {
+                // alert('hey');
 
-    //             var status = $(this).prop('checked') == true ? 1 : 0;
-    //             var comment_id = $(this).data('id');
-    //             // alert
-    //             $.ajax({
-    //                 type: "POST",
-    //                 dataType: "json",
-    //                 url: '/getComment',
-    //                 data: {
-    //                     "_token": "{{ csrf_token() }}",
-    //                     'status': status,
-    //                     'comment_id': comment_id
-    //                 },
-    //                 success: function(data) {
-    //                     console.log('Success')
-    //                 }
-    //             })
-    //         })
-    //     })
+                var status = $(this).prop('checked') == true ? 1 : 0;
+                var comment_id = $(this).data('id');
+                // alert
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: '/getComment',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        'status': status,
+                        'comment_id': comment_id
+                    },
+                    success: function(data) {
+                        console.log('Success')
+                    }
+                })
+            })
+        })
 
-    //     $(function() {
-    //         // alert('hey');
+        $(function() {
+            // alert('hey');
 
-    //         $('.child_comment_toggle').change(function() {
-    //             // alert('hey');
+            $('.child_comment_toggle').change(function() {
+                // alert('hey');
 
-    //             var status = $(this).prop('checked') == true ? 1 : 0;
-    //             var child_comment_id = $(this).data('id');
-    //             // alert(child_comment_id);
-    //             $.ajax({
-    //                 type: "POST",
-    //                 dataType: "json",
-    //                 url: '/getChildComment',
-    //                 data: {
-    //                     "_token": "{{ csrf_token() }}",
-    //                     'status': status,
-    //                     'child_comment_id': child_comment_id
-    //                 },
-    //                 success: function(data) {
-    //                     console.log(data)
-    //                 }
-    //             })
-    //         })
-    //     })
-    // })
+                var status = $(this).prop('checked') == true ? 1 : 0;
+                var child_comment_id = $(this).data('id');
+                // alert(child_comment_id);
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: '/getChildComment',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        'status': status,
+                        'child_comment_id': child_comment_id
+                    },
+                    success: function(data) {
+                        console.log(data)
+                    }
+                })
+            })
+        })
+    })
 </script>
 @endsection

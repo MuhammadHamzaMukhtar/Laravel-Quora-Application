@@ -139,35 +139,30 @@ class FeedController extends Controller
         $user = Auth::user();
         // $html = $request->status;
 
-        // $feedLike = Feed_like::where(['user_id' => $user['id'], 'feed_id' => $request['feed_id']])->update(['is_liked' => $request['status']]);
-        // if (!$feedLike) {
-
-        //     Feed_like::create([
-        //         'user_id' => $user['id'],
-        //         'feed_id' => $request['feed_id'],
-        //         'is_liked' => $request['status']
-        //     ]);
-        // }
-        // echo $html;
         $feedLike = Feed_like::where(['user_id' => $user['id'], 'feed_id' => $request['feed_id']])->update(['is_liked' => $request['status']]);
-        if(!$feedLike){
+        if (!$feedLike) {
 
-            $data = new Feed_like();
-            $data->feed_id = $request->post;
-            $data->user_id = $user['id'];
-            if($request->type == 'like'){
-                $data->is_liked = 1;
-            }else{
-                $data->dislike = 1;
-            }
-            $data->save();
-        } else {
-            
+            Feed_like::create([
+                'user_id' => $user['id'],
+                'feed_id' => $request['feed_id'],
+                'is_liked' => $request['status']
+            ]);
         }
+        // echo $html;
+        // $feedLike = Feed_like::where(['user_id' => $user['id'], 'feed_id' => $request['feed_id']])->update(['is_liked' => 0]);
+        // if(!$feedLike){
 
-        return response()->json([
-            'bool' => true
-        ]);
+        //     $data = new Feed_like();
+        //     $data->feed_id = $request->post;
+        //     $data->user_id = $user['id'];
+        //     if($request->type == 'like'){
+        //         $data->is_liked = 1;
+        //     }
+        //     $data->save();
+        // } 
+        // return response()->json([
+        //     'bool' => true
+        // ]);
 
     }
 
