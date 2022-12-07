@@ -611,7 +611,7 @@
                                                     <textarea name="description" id="textarea" cols="30" rows="5" class="form-control border-0" placeholder="Start your question with What, Why or How?.."></textarea>
                                                 </div>
                                                 <!-- emoji  -->
-                                                <div class="d-flex            justify-content-between                            align-items-center">
+                                                <div class="d-flex justify-content-between                            align-items-center color-picker">
                                                     <img src="https://www.facebook.com/images/composer/SATP_Aa_square-2x.png" class="pointer" alt="fb text" style="width: 30px; height: 30px; object-fit: cover;" />
                                                     <!-- <i class="far fa-laugh-wink fs-5 text-muted pointer"></i> -->
                                                 </div>
