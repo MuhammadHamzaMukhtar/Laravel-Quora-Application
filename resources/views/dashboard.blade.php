@@ -884,9 +884,10 @@
                                     <!-- <i class="text-danger fab fa-gratipay"></i>
                                     <i class="text-warning fas fa-grin-squint"></i> -->
                                 </div>
-                                <p class="m-0 text-muted fs-7" id="post_likes" class="like-count">{{$post->is_liked}}</p>
+                                <p class="m-0 text-muted fs-7" id="post_likes{{$post->id}}" class="like-count">{{$post->is_liked}}</p>
                                 <pre class="m-0 text-muted fs-7"> likes</pre>
                             </div>
+
                             <!-- comments start-->
                             <div class="accordion" id="accordionExample">
                                 <div class="accordion-item border-0">
@@ -898,7 +899,7 @@
                                             justify-content-end" data-bs-toggle="collapse" data-bs-target="#collapsePost1{{$post->id}}" aria-expanded="false" aria-controls="collapsePost1">
                                             @if($post->total_comments === 0)
                                             <p class="m-0">No Comments</p>
-@else
+                                            @else
                                             <p class="m-0">{{$post->total_comments}} Comments</p>
                                             @endif
                                         </div>
@@ -916,16 +917,14 @@
                                             text-muted
                                             p-1
                                         ">
-                                           <small>
-                                           <span id="saveLike" data-type="like" data-post="{{$post->id}}">
-                                                    Like
-                                                <!-- <i class="fas fa-thumbs-up me-3 text-center btn  form-control"></i> -->
-                                                <span class="like-count">{{$post->likes()}}</span>
-                                            </span>
-                                           </small>
+                                            @if($post->like_status === 1)
+                                            <i class="fas fa-thumbs-up me-3 text-center btn btn-primary form-control post-thumb"></i>
+                                            @else
+                                            <i class="fas fa-thumbs-up me-3 text-center btn btn-outline-primary form-control post-thumb"></i>
+                                            @endif
 
-                                            <!-- <input type="checkbox" name="" data-id="{{$post->id}}" class="toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$post->is_liked == 1 ? 'checked'
-                                            : ''}} hidden> -->
+                                            <input type="checkbox" name="" data-id="{{$post->id}}" class="toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$post->like_status === 1 ? 'checked'
+                                            : ''}} hidden>
                                             <!-- <input type="text" name="" class="like" value="{{$post->id}}">
                                             <p class="m-0">Like</p> -->
                                         </label>
@@ -1017,9 +1016,15 @@
                                             pointer
                                             text-muted
                                             p-1 
+                                            ms-5
                                         ">
-                                                            <i class="fas fa-thumbs-up me-3"></i>
-                                                            <input type="checkbox" name="" data-id="{{$comment->id}}" class="comment_toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$comment->is_liked == 1 ? 'checked' : ''}} hidden><span class="text-muted fs-7">{{$comment->is_liked}}</span>
+                                                            @if($comment->like_status === 1)
+                                                            <i class="fas fa-thumbs-up me-3 text-primary comment-thumb"></i>
+                                                            @else
+                                                            <i class="fas fa-thumbs-up me-3 comment-thumb"></i>
+                                                            @endif
+                                                            <input type="checkbox" name="" data-id="{{$comment->id}}" class="comment_toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$comment->like_status == 1 ? 'checked' : ''}} hidden>
+                                                            <span class="text-muted fs-7" id="comment_like{{$comment->id}}">{{$comment->is_liked}}</span>
 
                                                             <!-- <input type="text" name="" class="like" value="{{$post->id}}">
                                             <p class="m-0">Like</p> -->
@@ -1134,8 +1139,13 @@
                                             text-muted
                                             p-1 
                                         ">
-                                                                            <i class="fas fa-thumbs-up me-3"></i>
-                                                                            <input type="checkbox" name="" data-id="{{$child->id}}" class="child_comment_toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$child->is_liked == 1 ? 'checked' : ''}} hidden><span class="text-muted fs-7">{{$child->is_liked}}</span>
+                                                                            @if($child->like_status === 1)
+                                                                            <i class="fas fa-thumbs-up me-3 text-primary child-thumb"></i>
+                                                                            @else
+                                                                            <i class="fas fa-thumbs-up me-3 child-thumb"></i>
+                                                                            @endif
+                                                                            <input type="checkbox" name="" data-id="{{$child->id}}" class="child_comment_toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$child->like_status == 1 ? 'checked' : ''}} hidden>
+                                                                            <span class="text-muted fs-7" id="child_comment_like{{$child->id}}">{{$child->is_liked}}</span>
 
                                                                             <!-- <input type="text" name="" class="like" value="{{$post->id}}">
                                             <p class="m-0">Like</p> -->
@@ -1195,7 +1205,7 @@
                                             @endif
                                             @endforeach
                                             <!-- create comment -->
-                                            <form action="{{route('comments_store', $post->id)}}" method="POST" class="d-flex my-1">
+                                            <form action="{{route('comments_store', $post->id)}}" method="POST" class="d-flex my-1 mx-2">
                                                 @csrf
                                                 <!-- avatar -->
                                                 <div>
@@ -2293,91 +2303,120 @@
         }
     });
 
-    
-    // $(document).ready(function() {
-    //     $('#pic_file').hide();
 
-    //     // $('.fa-thumbs-up').click(function() {
-    //     //     $(this).removeClass('btn-outline-primary');
-    //     //     $(this).addClass('btn-primary');
-    //     // })
+    $(document).ready(function() {
+        $('#pic_file').hide();
 
-    //     $(function() {
-    //         // alert('hey');
+        $('.post-thumb').click(function() {
+            $like = $(this);
+            if ($like.hasClass('btn-outline-primary')) {
 
-    //         $('.toggle').change(function() {
-    //             // alert('hey');
+                $(this).removeClass('btn-outline-primary');
+                $(this).addClass('btn-primary');
+            } else {
+                $(this).removeClass('btn-primary');
+                $(this).addClass('btn-outline-primary');
+            }
+        });
 
-    //             var status = $(this).prop('checked') == true ? 1 : 0;
-    //             // alert(status);
-    //             // var style = $(this).prop('checked') == true ? $(this).addClass('btn btn-primary').removeClass('btn btn-outline-primary') : $(this).addClass('btn btn-outline-primary').removeClass('btn btn-primary');
-    //             var feed_id = $(this).data('id');
-    //             // alert
-    //             $.ajax({
-    //                 type: "POST",
-    //                 dataType: "json",
-    //                 url: '/getLike',
-    //                 data: {
-    //                     "_token": "{{ csrf_token() }}",
-    //                     'status': status,
-    //                     'feed_id': feed_id
-    //                 },
-    //                 success: function(data) {
-    //                     $('#post_likes').text(data)
-    //                 }
-    //             })
-    //         })
-    //     })
+        $('.comment-thumb').click(function() {
+            $like = $(this);
+            if ($like.hasClass('text-primary')) {
+                $(this).removeClass('text-primary');
+            } else {
+                $(this).addClass('text-primary');
+            }
+        });
 
-    //     $(function() {
-    //         // alert('hey');
+        $('.child-thumb').click(function() {
+            $like = $(this);
+            if ($like.hasClass('text-primary')) {
+                $(this).removeClass('text-primary');
+            } else {
+                $(this).addClass('text-primary');
+            }
+        });
 
-    //         $('.comment_toggle').change(function() {
-    //             // alert('hey');
 
-    //             var status = $(this).prop('checked') == true ? 1 : 0;
-    //             var comment_id = $(this).data('id');
-    //             // alert
-    //             $.ajax({
-    //                 type: "POST",
-    //                 dataType: "json",
-    //                 url: '/getComment',
-    //                 data: {
-    //                     "_token": "{{ csrf_token() }}",
-    //                     'status': status,
-    //                     'comment_id': comment_id
-    //                 },
-    //                 success: function(data) {
-    //                     console.log('Success')
-    //                 }
-    //             })
-    //         })
-    //     })
 
-    //     $(function() {
-    //         // alert('hey');
+        $(function() {
+            // alert('hey');
 
-    //         $('.child_comment_toggle').change(function() {
-    //             // alert('hey');
+            $('.toggle').change(function() {
+                // alert('hey');
 
-    //             var status = $(this).prop('checked') == true ? 1 : 0;
-    //             var child_comment_id = $(this).data('id');
-    //             // alert(child_comment_id);
-    //             $.ajax({
-    //                 type: "POST",
-    //                 dataType: "json",
-    //                 url: '/getChildComment',
-    //                 data: {
-    //                     "_token": "{{ csrf_token() }}",
-    //                     'status': status,
-    //                     'child_comment_id': child_comment_id
-    //                 },
-    //                 success: function(data) {
-    //                     console.log(data)
-    //                 }
-    //             })
-    //         })
-    //     })
-    // })
+                var status = $(this).prop('checked') == true ? 1 : 0;
+                // alert(status);
+                // var style = $(this).prop('checked') == true ? $(this).removeClass('btn btn-outline-primary').addClass('btn btn-primary') : $(this).removeClass('btn btn-primary').addClass('btn btn-outline-primary');
+
+                var feed_id = $(this).data('id');
+                // alert
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: '/getLike',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        'status': status,
+                        'feed_id': feed_id
+                    },
+                    success: function(data) {
+
+                        $('#post_likes' + feed_id).text(data)
+                    }
+                })
+            })
+
+            $('.comment_toggle').change(function() {
+                // alert('hey');
+
+                var status = $(this).prop('checked') == true ? 1 : 0;
+                var comment_id = $(this).data('id');
+                // alert
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: '/getComment',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        'status': status,
+                        'comment_id': comment_id
+                    },
+                    success: function(data) {
+                        // alert(data)
+                        $('#comment_like' + comment_id).text(data)
+                        // console.log('Success')
+                    }
+                })
+            })
+        })
+
+        $(function() {
+            // alert('hey');
+
+            $('.child_comment_toggle').change(function() {
+                // alert('hey');
+
+                var status = $(this).prop('checked') == true ? 1 : 0;
+                var child_comment_id = $(this).data('id');
+                // alert(child_comment_id);
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: '/getChildComment',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        'status': status,
+                        'child_comment_id': child_comment_id
+                    },
+                    success: function(data) {
+                        // console.log(data)
+                        $('#child_comment_like' + child_comment_id).text(data)
+
+                    }
+                })
+            })
+        })
+    })
 </script>
 @endsection

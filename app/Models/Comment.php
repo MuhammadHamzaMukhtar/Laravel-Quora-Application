@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Comment extends Model
 {
@@ -28,7 +29,12 @@ class Comment extends Model
     {
         return $this->where('parent_id', $this->id)->count();    
     }
-  
+
+    public function getLikeStatusAttribute()
+    {
+        return $this->comment_likes()->where('user_id', Auth::user()->id)->value('is_liked');
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');

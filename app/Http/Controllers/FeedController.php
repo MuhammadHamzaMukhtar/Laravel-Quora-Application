@@ -118,56 +118,61 @@ class FeedController extends Controller
     public function destroy($id)
     {
         Feed::find($id)->delete();
-        return redirect()->back()->with('error', 'Post Deleted Successfully!');
+        return redirect()->back()->with('success', 'Post Deleted Successfully!');
     }
 
     public function deleteComment($id)
     {
         Comment::find($id)->delete();
         Comment::where('parent_id', $id)->delete();
-        return redirect()->back()->with('error', 'Comment Deleted Successfully!');
+        return redirect()->back()->with('success', 'Comment Deleted Successfully!');
     }
 
     public function deleteReply($id)
     {
         Comment::find($id)->delete();
-        return redirect()->back()->with('error', 'Reply Deleted Successfully!');
+        return redirect()->back()->with('success', 'Reply Deleted Successfully!');
     }
 
     public function likes(Request $request)
     {
         $user = Auth::user();
         // $html = $request->status;
-
-        // $feedLike = Feed_like::where(['user_id' => $user['id'], 'feed_id' => $request['feed_id']])->update(['is_liked' => $request['status']]);
-        // if (!$feedLike) {
-
-        //     Feed_like::create([
-        //         'user_id' => $user['id'],
-        //         'feed_id' => $request['feed_id'],
-        //         'is_liked' => $request['status']
-        //     ]);
-        // }
-        // echo $html;
+        
         $feedLike = Feed_like::where(['user_id' => $user['id'], 'feed_id' => $request['feed_id']])->update(['is_liked' => $request['status']]);
-        if(!$feedLike){
 
-            $data = new Feed_like();
-            $data->feed_id = $request->post;
-            $data->user_id = $user['id'];
-            if($request->type == 'like'){
-                $data->is_liked = 1;
-            }else{
-                $data->dislike = 1;
-            }
-            $data->save();
-        } else {
+        if (!$feedLike) {
             
+            Feed_like::create([
+                'user_id' => $user['id'],
+                'feed_id' => $request['feed_id'],
+                'is_liked' => $request['status']
+            ]);
         }
 
-        return response()->json([
-            'bool' => true
-        ]);
+        $html = Feed_like::where('feed_id', $request['feed_id'])->sum('is_liked');
+
+        echo $html;
+        
+        // $feedLike = Feed_like::where(['user_id' => $user['id'], 'feed_id' => $request['post']])->update(['is_liked' => 1 ? 0 : 1]);
+        // if(!$feedLike){
+
+        //     $data = new Feed_like();
+        //     $data->feed_id = $request->post;
+        //     $data->user_id = $user['id'];
+        //     if($request->type == 'like'){
+        //         $data->is_liked = 1;
+        //     }else{
+        //         $data->dislike = 1;
+        //     }
+        //     $data->save();
+        // } else {
+            
+        // }
+
+        // return response()->json([
+        //     'bool' => true
+        // ]);
 
     }
 
@@ -175,6 +180,7 @@ class FeedController extends Controller
     {
         $user = Auth::user();
         $commentLike = CommentLikes::where(['user_id' => $user['id'], 'comment_id' => $request['comment_id']])->update(['is_liked' => $request['status']]);
+
         if (!$commentLike) {
 
             CommentLikes::create([
@@ -184,6 +190,10 @@ class FeedController extends Controller
             ]);
 
         }
+        
+        $html = CommentLikes::where('comment_id', $request['comment_id'])->sum('is_liked');
+
+        echo $html;
     }
 
     public function child_comment_likes(Request $request)
@@ -199,6 +209,9 @@ class FeedController extends Controller
                 'is_liked' => $request['status']
             ]);
         }
+        $html = CommentLikes::where('comment_id', $request['child_comment_id'])->sum('is_liked');
+
+        echo $html;
     }
 
     public function storeComment(Request $request, $id)

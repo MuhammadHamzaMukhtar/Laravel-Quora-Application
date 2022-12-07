@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+.particle-div{
+    position: absolute;
+    top: 30%;
+    left: 33%;
+}
+
+#particles-js {
+    width: 100%;
+    height: 100vh;
+    overflow-y: hidden;
+    background: #fff;
+     /* rgb(238, 247, 255); */
+}
