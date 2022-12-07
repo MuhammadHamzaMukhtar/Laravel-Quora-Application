@@ -2130,6 +2130,7 @@
         var _post = $(this).data('post');
         var _type = $(this).data('type');
         var vm = $(this);
+        // alert(vm);
 
         $.ajax({
             url: "getLike",
@@ -2148,7 +2149,7 @@
                     vm.removeClass('btn btn-outline-primary').addClass('btn btn-primary');
                     vm.removeAttr('id');
                     var _prevCount = $("." + _type + "-count").text();
-                    // alert(_prevCount);
+                    alert(_prevCount);
                     _prevCount++;
                     $("." + _type + "-count").text(_prevCount);
                 }
