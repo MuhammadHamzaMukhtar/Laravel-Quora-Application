@@ -842,7 +842,7 @@
                                         Edit Post</a>
                                 </li>
                                 <li class="d-flex align-items-center">
-                                    <form action="{{route('feed.destroy', $post->id)}}" method="post" class="ms-4">
+                                    <form action="{{route('feed.destroy', $post->id)}}" method="post" class="ps-4">
                                         @csrf
                                         @method('DELETE')
                                         <input class="
