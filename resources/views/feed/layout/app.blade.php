@@ -2126,6 +2126,8 @@
     <script src="{{ asset('forum/feed.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
     <script>
+        var panel = document.getElementById('panel');
+        // console.log('great');
         // Simple example, see optional options for more configuration.
 const pickr = Pickr.create({
     el: '.color-picker',
@@ -2167,6 +2169,13 @@ const pickr = Pickr.create({
             save: true
         }
     }
+});
+pickr.on('change', (...args) => {
+    let color = args[0].toRGBA();
+    // console.log(color);
+    // $('#textarea').css('background-color', `rgba(${color[0]},${color[1]},${color[2]},${color[3]})`);
+    // this.panel.style.backgroundColor = `rgba(${color[0]},${color[1]},${color[2]},${color[3]})`;
+
 });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

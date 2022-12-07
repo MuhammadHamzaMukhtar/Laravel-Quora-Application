@@ -609,6 +609,7 @@
                                                 <!-- text -->
                                                 <div>
                                                     <textarea name="description" id="textarea" cols="30" rows="5" class="form-control border-0" placeholder="Start your question with What, Why or How?.."></textarea>
+                                                    <!-- <div id="panel" class="w-25 h-25"></div> -->
                                                 </div>
                                                 <!-- emoji  -->
                                                 <div class="d-flex justify-content-between                            align-items-center color-picker">
@@ -620,7 +621,7 @@
                                                     <p class="m-0" id="display_pic">Add your question</p>
                                                     <div>
                                                         <label for="pic_file">
-                                                            <i class="fas fa-images fs-5 text-success pointer mx-1"></i>
+                                                            <i class="fas fa-images fs-5 text-success pointer mx-1"  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Image"></i>
                                                         </label>
                                                         <input type="file" name="image" id="pic_file">
                                                         <!-- <i class="fas fa-user-check fs-5 text-primary pointer
