@@ -57,7 +57,10 @@
                         <ul class="dropdown-menu overflow-auto border-0 shadow p-3" aria-labelledby="searchMenu" style="width: 20em; max-height: 600px">
                             <!-- search input -->
                             <li>
-                                <input type="text" class="rounded-pill border-0 bg-gray dropdown-item" placeholder="Search Laravel Quora..." autofocus />
+                                <form action="" method="get" class="d-flex">
+                                <input type="text" class="rounded-pill border-0 bg-gray dropdown-item" name="search" placeholder="Search Laravel Quora..." value="{{$search}}" autofocus />
+                                <input type="submit" class="rounded-pill bg-primary text-white" value="Search">
+                                </form>
                             </li>
                             <!-- search 1 -->
                             <li class="my-4">

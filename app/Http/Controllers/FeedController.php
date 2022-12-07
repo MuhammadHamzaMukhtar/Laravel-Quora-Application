@@ -16,14 +16,20 @@ class FeedController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Feed::with('user', 'comments', 'feed_likes')->orderBy('updated_at', 'desc')->get();
+        $search = $request['search'];
+        $posts = Feed::with('user', 'comments', 'feed_likes')->orderBy('updated_at', 'desc')
+
+            ->when( $request['search'], function ($q) use ($request) {
+                $q->where('description', 'LIKE', $request['search']);
+            })
+            ->get();
         //    dd($posts);
         $comments = Comment::with('children.children')->root()->latest()->get();
         //    $likes_count = $posts->feed_likes()->sum('is_liked');
         //    dd($comments);
-        return view('dashboard', compact('posts', 'comments'));
+        return view('dashboard', compact('posts', 'comments', 'search'));
     }
 
     /**
@@ -98,8 +104,8 @@ class FeedController extends Controller
                 'description' => $request->e_description,
                 'pic' => $image
             ]);
-        }else{
-            
+        } else {
+
             Feed::find($id)->update([
                 'description' => $request->e_description,
             ]);
@@ -138,11 +144,11 @@ class FeedController extends Controller
     {
         $user = Auth::user();
         // $html = $request->status;
-        
+
         $feedLike = Feed_like::where(['user_id' => $user['id'], 'feed_id' => $request['feed_id']])->update(['is_liked' => $request['status']]);
 
         if (!$feedLike) {
-            
+
             Feed_like::create([
                 'user_id' => $user['id'],
                 'feed_id' => $request['feed_id'],
@@ -153,7 +159,7 @@ class FeedController extends Controller
         $html = Feed_like::where('feed_id', $request['feed_id'])->sum('is_liked');
 
         echo $html;
-        
+
         // $feedLike = Feed_like::where(['user_id' => $user['id'], 'feed_id' => $request['post']])->update(['is_liked' => 1 ? 0 : 1]);
         // if(!$feedLike){
 
@@ -167,7 +173,7 @@ class FeedController extends Controller
         //     }
         //     $data->save();
         // } else {
-            
+
         // }
 
         // return response()->json([
@@ -188,9 +194,8 @@ class FeedController extends Controller
                 'comment_id' => $request['comment_id'],
                 'is_liked' => $request['status']
             ]);
-
         }
-        
+
         $html = CommentLikes::where('comment_id', $request['comment_id'])->sum('is_liked');
 
         echo $html;
