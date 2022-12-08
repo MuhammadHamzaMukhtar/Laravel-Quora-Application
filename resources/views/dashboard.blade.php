@@ -621,7 +621,7 @@
                                                     <p class="m-0" id="display_pic">Add your question</p>
                                                     <div>
                                                         <label for="pic_file">
-                                                            <i class="fas fa-images fs-5 text-success pointer mx-1"  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Image"></i>
+                                                            <i class="fas fa-images fs-5 text-success pointer mx-1" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Image"></i>
                                                         </label>
                                                         <input type="file" name="image" id="pic_file">
                                                         <!-- <i class="fas fa-user-check fs-5 text-primary pointer
@@ -814,7 +814,7 @@
                     </div>
                 </div>
                 <!-- posts -->
-                @foreach($posts as $post)
+                @forelse($posts as $post)
                 <div class="bg-white p-4 rounded shadow mt-3">
                     <!-- author -->
                     <div class="d-flex justify-content-between">
@@ -1275,7 +1275,11 @@
                         </div>
                     </div>
                 </div>
-                @endforeach
+                @empty
+                <!-- content -->
+                
+                    <img src="{{asset('images/no-post.png')}}" alt="" height="450px"  class="rounded" >
+                @endforelse
                 <!-- Button trigger modal -->
                 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Launch demo modal

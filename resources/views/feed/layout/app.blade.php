@@ -48,8 +48,12 @@
                         <span class="input-group-prepend d-none d-lg-block" id="searchMenu" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
                             <div class="input-group-text bg-gray border-0 rounded-pill" style="min-height: 40px; min-width: 230px">
                                 <i class="fas fa-search me-2 text-muted"></i>
-                                <p class="m-0 fs-7 text-muted">
-                                    Search Laravel Quora
+                                <p class="m-0 fs-7 text-dark ps-3">
+                                    @if($search)
+                                   {{$search}}
+                                   @else
+                                   Search Laravel Quora
+                                   @endif
                                 </p>
                             </div>
                         </span>
@@ -914,7 +918,7 @@
                     <!-- secondary menu dd -->
                     <ul class="dropdown-menu border-0 shadow p-3" aria-labelledby="secondMenu" style="width: 23em">
                         <!-- avatar -->
-                        <li class="dropdown-item p-1 rounded d-flex" type="button">
+                        <li class="dropdown-item p-1 rounded d-flex" type="button" id="profile-div">
                             <img src="{{asset('images/'.Auth::user()->profile_pic)}}" alt="avatar" class="rounded-circle me-2" style="
                                         width: 45px;
                                         height: 45px;
@@ -922,9 +926,9 @@
                                     " />
                             <div>
                                 <p class="m-0">{{Auth::user()->name}}</p>
-                                <a href="{{route('profile.edit')}}" class="m-0 text-muted text-decoration-none">
+                                <p class="m-0 text-muted text-decoration-none">
                                     See your profile
-                                </a>
+                                </p>
                             </div>
                         </li>
                         <hr />
@@ -2125,6 +2129,29 @@
     <div class="fixed-bottom right-100 p-3" style="z-index: 6; left: initial" type="button" data-bs-toggle="modal" data-bs-target="#newChat">
         <i class="fas fa-edit bg-white rounded-circle p-3 shadow"></i>
     </div>
+    <style>
+        #scrollBtn {
+  display: none;
+  position: fixed;
+  bottom: 74px;
+  right: 21px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#scrollBtn:hover {
+  background-color: #555;
+}
+    </style>
+    <button onclick="topFunction()" id="scrollBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <script src="{{ asset('forum/feed.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
@@ -2242,7 +2269,31 @@ pickr.on('change', (...args) => {
             $('#logout-item').click(function(){
                 $('#logout-form').submit();
             })
+
+            $('#profile-div').click(function(){
+                window.location.href = "http://127.0.0.1:8000/profile"
+            });
         });
+
+        // Get the button
+let mybutton = document.getElementById("scrollBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
 
     </script>
     <!-- <script>

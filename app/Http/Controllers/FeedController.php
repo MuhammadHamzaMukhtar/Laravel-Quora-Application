@@ -22,7 +22,10 @@ class FeedController extends Controller
         $posts = Feed::with('user', 'comments', 'feed_likes')->orderBy('updated_at', 'desc')
 
             ->when( $request['search'], function ($q) use ($request) {
-                $q->where('description', 'LIKE', '%'.$request['search'].'%');
+                $q->where('description', 'LIKE', '%'.$request['search'].'%')
+                ->orWhereHas('user', function($q) use($request) {
+                    $q->where('name', 'LIKE', '%'.$request['search'].'%');
+                });
             })
             ->get();
         //    dd($posts);
