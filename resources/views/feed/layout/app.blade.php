@@ -2296,35 +2296,6 @@ function topFunction() {
 }
 
     </script>
-    <!-- <script>
-    $(document).ready(function() {
-        $('.like').hide();
-
-        $('.like').click(function() {
-            var feed_id = $(this).val();
-            // alert(feed_id);
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                type: "POST",
-                dataType: "json",
-                url: '/getLike',
-                data: {
-                    'feed_id': feed_id
-                },
-                success: function(data) {
-                    console.log(data);
-                },
-            });
-        })
-
-
-    })
-</script> -->
-
 </body>
 
 </html>

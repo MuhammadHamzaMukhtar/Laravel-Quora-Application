@@ -627,14 +627,14 @@
                                                         <!-- <i class="fas fa-user-check fs-5 text-primary pointer
                                   mx-1
                                 "></i> -->
-                                                        <i class="
+                                                        <!-- <i class="
                                   far
                                   fa-smile
                                   fs-5
                                   text-warning
                                   pointer
                                   mx-1
-                                "></i>
+                                "></i> -->
                                                         <!-- <i class="
                                   fas
                                   fa-map-marker-alt
