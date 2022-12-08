@@ -19,7 +19,7 @@ class FeedController extends Controller
     public function index(Request $request)
     {
         $search = $request['search'];
-        $posts = Feed::with('user', 'comments', 'feed_likes')->orderBy('updated_at', 'desc')
+        $posts = Feed::with('user', 'comments', 'feed_likes')->orderBy('created_at', 'desc')
 
             ->when( $request['search'], function ($q) use ($request) {
                 $q->where('description', 'LIKE', '%'.$request['search'].'%')
