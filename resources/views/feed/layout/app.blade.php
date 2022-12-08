@@ -2134,7 +2134,7 @@
   display: none;
   position: fixed;
   bottom: 74px;
-  right: 21px;
+  right: 17px;
   z-index: 99;
   font-size: 18px;
   border: none;
@@ -2150,7 +2150,7 @@
   background-color: #555;
 }
     </style>
-    <button onclick="topFunction()" id="scrollBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+    <button onclick="topFunction()" id="scrollBtn" class="rounded-circle shadow" title="Go to top"><i class="fas fa-arrow-up "></i></button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <script src="{{ asset('forum/feed.js') }}"></script>

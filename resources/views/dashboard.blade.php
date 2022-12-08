@@ -1278,7 +1278,7 @@
                 @empty
                 <!-- content -->
                 
-                    <img src="{{asset('images/no-post.png')}}" alt="" height="450px"  class="rounded" >
+                    <img src="{{asset('images/no-post.png')}}"  alt="" height="450px"  width="450px" class="rounded mx-auto" >
                 @endforelse
                 <!-- Button trigger modal -->
                 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">

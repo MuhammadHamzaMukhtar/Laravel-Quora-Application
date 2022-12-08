@@ -1,0 +1,20 @@
+
+
+******* DEVELOPED BY ***********
+
+* MUHAMMAD HAMZA MUKHTAR *
+
+* FINAL PROJECT *
+
+* LARAVEL QUORA APPLICATION *
+
+
+
+******* CONTACT *******
+
+* +923156336271 *
+
+* RHMZA4@GMAIL.COM *
+
+* PFTP ROLL NO: pftp375417140669 *
+
