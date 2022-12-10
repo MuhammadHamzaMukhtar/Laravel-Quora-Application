@@ -21,11 +21,11 @@ class FeedController extends Controller
         $search = $request['search'];
         $posts = Feed::with('user', 'comments', 'feed_likes')->orderBy('created_at', 'desc')
 
-            ->when( $request['search'], function ($q) use ($request) {
-                $q->where('description', 'LIKE', '%'.$request['search'].'%')
-                ->orWhereHas('user', function($q) use($request) {
-                    $q->where('name', 'LIKE', '%'.$request['search'].'%');
-                });
+            ->when($request['search'], function ($q) use ($request) {
+                $q->where('description', 'LIKE', '%' . $request['search'] . '%')
+                    ->orWhereHas('user', function ($q) use ($request) {
+                        $q->where('name', 'LIKE', '%' . $request['search'] . '%');
+                    });
             })
             ->get();
         //    dd($posts);
@@ -53,20 +53,26 @@ class FeedController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->image) {
 
-            $image = $request->file('image')->getClientOriginalName();
+        if ($request->image || $request->description) {
 
-            $request->image->move(public_path('images'), $image);
+            if($request->image){
+
+                $image = $request->file('image')->getClientOriginalName();
+    
+                $request->image->move(public_path('images'), $image);
+            }
+
+            Feed::create([
+                'user_id' => Auth::user()->id,
+                'description' => $request->description ?? NULL,
+                'pic' => $image ?? 'NULL'
+            ]);
+
+            return redirect()->back()->with('success', 'Success! Post Created Successfully!');
+        } elseif (!$request->image && !$request->desctiption) {
+            return redirect()->back()->with('error', 'Please Enter Question or Select Image to Post!');
         }
-
-        Feed::create([
-            'user_id' => Auth::user()->id,
-            'description' => $request->description ?? NULL,
-            'pic' => $image ?? 'NULL'
-        ]);
-
-        return redirect()->back()->with('success', 'Success! Post Created Successfully!');
     }
 
     /**

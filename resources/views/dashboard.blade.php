@@ -663,6 +663,11 @@
                                                 </div>
                                         </div>
                                     </div>
+                                    <br>
+                <span class="text-danger pic-err"></span>
+
+                <img class="mt-3" src="" width="60px" height="60px" alt="" id="addPic">
+                <embed class="mt-3" src="" width="400px" height="150px" alt="" id="addPdf">
 
                                     <!-- end -->
                                 </div>
@@ -1277,8 +1282,8 @@
                 </div>
                 @empty
                 <!-- content -->
-                
-                    <img src="{{asset('images/post.png')}}"  alt="" height="450px"  width="650px" class="rounded mx-auto" >
+
+                <img src="{{asset('images/post.png')}}" alt="" height="450px" width="650px" class="rounded mx-auto">
                 @endforelse
                 <!-- Button trigger modal -->
                 <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -2311,6 +2316,38 @@
 
     $(document).ready(function() {
         $('#pic_file').hide();
+        $("#addPic").hide();
+        $("#addPdf").hide();
+
+        $("#pic_file").on("change", function() {
+            document.getElementById("addPic").src = window.URL.createObjectURL(
+                this.files[0]
+            );
+            document.getElementById("addPdf").src = window.URL.createObjectURL(
+                this.files[0]
+            );
+
+            var fileExtension = ["jpeg", "jpg", "png"];
+            var fileExtensionPdf = ["pdf"];
+            if (
+                $.inArray(
+                    $(this).val().split(".").pop().toLowerCase(),
+                    fileExtension
+                ) == -1 && $.inArray(
+                    $(this).val().split(".").pop().toLowerCase(),
+                    fileExtensionPdf
+                ) == -1
+            ) {
+
+                $(".pic-err").html(
+                    "Only formats are allowed : pdf, jpeg, jpg and png"
+                );
+            } else {
+                $("#addPic").show();
+            $("#addPdf").show();
+                $(".pic-err").html(" ");
+            }
+        });
 
         $('.post-thumb').click(function() {
             $like = $(this);
