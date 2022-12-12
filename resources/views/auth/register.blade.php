@@ -12,7 +12,12 @@
             <!-- Name -->
             <div>
                 <x-input-label for="name" :value="__('Name')" />
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                <div class="d-flex">
+
+                    <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                    <i class="fa fa-circle-check fs-3 text-success ms-2 mt-2" style="display: none;" id="name-tick"></i>
+                    <i class="fa-solid fa-circle-xmark fs-3 text-danger ms-2 mt-2" style="display: none;" id="name-cross"></i>
+                </div>
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 <br>
                 <span class="text-danger name-err"></span>
@@ -21,7 +26,12 @@
             <!-- Email Address -->
             <div class="mt-4">
                 <x-input-label for="email" :value="__('Email')" />
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <div class="d-flex">
+
+                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                    <i class="fa fa-circle-check fs-3 text-success ms-2 mt-2" style="display: none;" id="email-tick"></i>
+                    <i class="fa-solid fa-circle-xmark fs-3 text-danger ms-2 mt-2" style="display: none;" id="email-cross"></i>
+                </div>
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 <br>
                 <span class="text-danger email-err"></span>
@@ -30,7 +40,11 @@
             <!-- Profile Image -->
             <div class="mt-4">
                 <x-input-label for="profile_pic" :value="__('Profile Pic')" />
-                <x-text-input id="image" class="block mt-1 w-full" type="file" name="image" :value="old('image')" required />
+                <div class="d-flex">
+                    <x-text-input id="image" class="block mt-1 w-full" type="file" name="image" :value="old('image')" required />
+                    <i class="fa fa-circle-check fs-3 text-success ms-2 mt-2" style="display: none;" id="pic-tick"></i>
+                    <i class="fa-solid fa-circle-xmark fs-3 text-danger ms-2 mt-2" style="display: none;" id="pic-cross"></i>
+                </div>
                 <x-input-error :messages="$errors->get('image')" class="mt-2" />
                 <br>
                 <span class="text-danger pic-err"></span>
@@ -42,7 +56,11 @@
             <div class="mt-4">
                 <x-input-label for="password" :value="__('Password')" />
 
-                <x-text-input id="pass" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                <div class="d-flex">
+                    <x-text-input id="pass" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                    <i class="fa fa-circle-check fs-3 text-success ms-2 mt-2" style="display: none;" id="pass-tick"></i>
+                    <i class="fa-solid fa-circle-xmark fs-3 text-danger ms-2 mt-2" style="display: none;" id="pass-cross"></i>
+                </div>
 
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 <br>
@@ -53,7 +71,11 @@
             <div class="mt-4">
                 <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
-                <x-text-input id="cpass" class="block mt-1 w-full" type="password" name="password_confirmation" required />
+                <div class="d-flex">
+                    <x-text-input id="cpass" class="block mt-1 w-full" type="password" name="password_confirmation" required />
+                    <i class="fa fa-circle-check fs-3 text-success ms-2 mt-2" style="display: none;" id="cpass-tick"></i>
+                    <i class="fa-solid fa-circle-xmark fs-3 text-danger ms-2 mt-2" style="display: none;" id="cpass-cross"></i>
+                </div>
 
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                 <br>
@@ -87,20 +109,32 @@
                             fileExtension
                         ) == -1
                     ) {
-                    $("#addPic").hide();
+                        $('#pic-cross').show();
+                        $('#pic-tick').hide();
+
+                        $("#addPic").hide();
 
                         $(".pic-err").html(
                             "Only formats are allowed : " + fileExtension.join(", ")
                         );
                     } else {
+                        $('#pic-cross').hide();
+                        $('#pic-tick').show();
+
                         $(".pic-err").html(" ");
                     }
                 });
                 // alert('assasa')
                 $("#name").on("keyup", function() {
                     if ($(this).val() === "") {
+                        $('#name-cross').show();
+                        $('#name-tick').hide();
+
                         $(".name-err").html("Name field cannot be NULL");
                     } else {
+                        $('#name-cross').hide();
+                        $('#name-tick').show();
+
                         $(".name-err").html("");
                     }
                 });
@@ -110,10 +144,19 @@
                         return emailReg.test($email);
                     }
                     if ($(this).val() === "") {
+                        $('#email-cross').show();
+                        $('#email-tick').hide();
+
                         $(".email-err").html("An email field cannot be NULL");
                     } else if (!validateEmail($(this).val())) {
+                        $('#email-cross').show();
+                        $('#email-tick').hide();
+
                         $(".email-err").html("Invalid Email Format");
                     } else {
+                        $('#email-cross').hide();
+                        $('#email-tick').show();
+
                         $(".email-err").html("");
                     }
                 });
@@ -124,19 +167,34 @@
                         return pwdReg.test($pwd);
                     }
                     if ($(this).val() === "") {
+                        $('#pass-cross').show();
+                        $('#pass-tick').hide();
+
                         $(".pass-err").html("Password field cannot be NULL");
                     } else if (!validatePwd($(this).val())) {
+                        $('#pass-cross').show();
+                        $('#pass-tick').hide();
+
                         $(".pass-err").html(
                             "Password must contain at least 8 characters 1 upppercase, 1 lowercase and special character"
                         );
                     } else {
+                        $('#pass-cross').hide();
+                        $('#pass-tick').show();
+
                         $(".pass-err").html("");
                     }
                 });
                 $('#cpass').on('keyup', function() {
                     if ($(this).val() !== $('#pass').val()) {
+                        $('#cpass-cross').show();
+                        $('#cpass-tick').hide();
+
                         $(".cpass-err").html("Confirm Password field must match");
                     } else {
+                        $('#cpass-cross').hide();
+                        $('#cpass-tick').show();
+
                         $(".cpass-err").html("");
                     }
                 });

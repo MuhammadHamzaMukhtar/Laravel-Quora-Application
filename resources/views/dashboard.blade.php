@@ -664,10 +664,10 @@
                                         </div>
                                     </div>
                                     <br>
-                <span class="text-danger pic-err"></span>
+                                    <span class="text-danger pic-err"></span>
 
-                <img class="mt-3" src="" width="60px" height="60px" alt="" id="addPic">
-                <embed class="mt-3" src="" width="400px" height="150px" alt="" id="addPdf">
+                                    <img src="" width="80px" height="80px" alt="" id="addPic">
+                                    <embed src="" width="400px" height="150px" alt="" id="addPdf">
 
                                     <!-- end -->
                                 </div>
@@ -873,7 +873,7 @@
                             </p>
                             @if($post->pic !== 'NULL')
                             <!-- <img src="{{asset('images/'.$post->pic)}}" alt="post image" class="img-fluid rounded" /> -->
-                            <embed src="{{ asset('images/'.$post->pic) }}" width="600" height="500" alt="pdf" />
+                            <embed src="{{ asset('images/'.$post->pic) }}" width="600" height="500" alt="pdf" class="ms-3" />
                             @endif
                         </div>
                         <div class="post__comment mt-3 position-relative">
@@ -912,7 +912,8 @@
                                     </h2>
                                     <hr />
                                     <!-- comment & like bar -->
-                                    <div class="d-flex justify-content-around">
+                                        
+                                    <div class="d-flex justify-content-around d-inline-block">
                                         <label class="
                                             dropdown-item
                                             rounded
@@ -921,7 +922,7 @@
                                             align-items-center
                                             pointer
                                             text-muted
-                                            p-1
+                                            p-1 
                                         ">
                                             @if($post->like_status === 1)
                                             <i class="fas fa-thumbs-up me-3 text-center btn btn-primary form-control post-thumb"></i>
@@ -931,8 +932,7 @@
 
                                             <input type="checkbox" name="" data-id="{{$post->id}}" class="toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$post->like_status === 1 ? 'checked'
                                             : ''}} hidden>
-                                            <!-- <input type="text" name="" class="like" value="{{$post->id}}">
-                                            <p class="m-0">Like</p> -->
+                                   
                                         </label>
                                         <div class="
                             dropdown-item
@@ -2320,13 +2320,6 @@
         $("#addPdf").hide();
 
         $("#pic_file").on("change", function() {
-            document.getElementById("addPic").src = window.URL.createObjectURL(
-                this.files[0]
-            );
-            document.getElementById("addPdf").src = window.URL.createObjectURL(
-                this.files[0]
-            );
-
             var fileExtension = ["jpeg", "jpg", "png"];
             var fileExtensionPdf = ["pdf"];
             if (
@@ -2338,15 +2331,36 @@
                     fileExtensionPdf
                 ) == -1
             ) {
-
+                $("#addPic").hide();
+                $("#addPdf").hide();
                 $(".pic-err").html(
                     "Only formats are allowed : pdf, jpeg, jpg and png"
                 );
-            } else {
-                $("#addPic").show();
-            $("#addPdf").show();
+            } else if ($.inArray(
+                    $(this).val().split(".").pop().toLowerCase(),
+                    fileExtension
+                ) == -1) {
+                $("#addPdf").show();
+                $("#addPic").hide();
+
+                document.getElementById("addPdf").src = window.URL.createObjectURL(
+                    this.files[0]
+                );
                 $(".pic-err").html(" ");
-            }
+
+            } else if ($.inArray(
+                    $(this).val().split(".").pop().toLowerCase(),
+                    fileExtensionPdf
+                ) == -1) {
+                $("#addPic").show();
+                $("#addPdf").hide();
+
+                document.getElementById("addPic").src = window.URL.createObjectURL(
+                    this.files[0]
+                );
+                $(".pic-err").html(" ");
+            } 
+
         });
 
         $('.post-thumb').click(function() {
