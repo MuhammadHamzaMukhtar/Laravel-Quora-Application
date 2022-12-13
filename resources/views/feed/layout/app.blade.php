@@ -120,11 +120,11 @@
                         </button>
                     </div>
                     <!-- market -->
-                    <div class="mx-4 nav__btn">
+                    <a href="{{route('profile.edit')}}" class="mx-4 nav__btn">
                         <button type="button" class="btn px-4">
-                            <i class="fas fa-store text-muted fs-4"></i>
+                            <i class="fas fa-user text-muted fs-4"></i>
                         </button>
-                    </div>
+                    </a>
                     <!-- group -->
                     <div class="mx-4 nav__btn">
                         <button type="button" class="btn px-4">

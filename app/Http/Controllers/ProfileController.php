@@ -6,6 +6,7 @@ use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -63,5 +64,22 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $current_pass = $request->current_password;
+        // dd($current_pass);
+
+        if(!Hash::check($current_pass, Auth::user()->password)){
+            
+            // dd('true');
+            return 'false';
+
+        } else {
+
+            return 'true';
+
+        }
     }
 }

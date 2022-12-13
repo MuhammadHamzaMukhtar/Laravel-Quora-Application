@@ -35,6 +35,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/delete_reply/{id}', [FeedController::class, 'deleteReply'])->name('deleteReply');
     Route::post('/edit_Comment/{id}', [FeedController::class, 'editComment'])->name('editComment');
     Route::post('/edit_Reply/{id}', [FeedController::class, 'editReply'])->name('editReply');
+    Route::post('/passwordAjax', [ProfileController::class, 'updatePassword']);
+
 });
 
 require __DIR__.'/auth.php';

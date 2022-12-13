@@ -912,7 +912,7 @@
                                     </h2>
                                     <hr />
                                     <!-- comment & like bar -->
-                                        
+
                                     <div class="d-flex justify-content-around d-inline-block">
                                         <label class="
                                             dropdown-item
@@ -932,7 +932,7 @@
 
                                             <input type="checkbox" name="" data-id="{{$post->id}}" class="toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$post->like_status === 1 ? 'checked'
                                             : ''}} hidden>
-                                   
+
                                         </label>
                                         <div class="
                             dropdown-item
@@ -2359,7 +2359,7 @@
                     this.files[0]
                 );
                 $(".pic-err").html(" ");
-            } 
+            }
 
         });
 
