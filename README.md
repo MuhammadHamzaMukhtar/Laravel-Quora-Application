@@ -11,11 +11,11 @@
 
 ******* DEVELOPED BY ***********
 
-* MUHAMMAD HAMZA MUKHTAR *
+* MUHAMMAD HAMZA MUKHTAR 
 
-* FINAL PROJECT *
+* FINAL PROJECT 
 
-* LARAVEL QUORA APPLICATION *
+* LARAVEL QUORA APPLICATION 
 
 
 * Register User with Email Verification
@@ -32,7 +32,7 @@
 * Like Replys
 * Comment on Replys
 * Like Comment Replys
-* Search Posts
+* Live Search Posts
 * Add Emoji to posts
 * Edit your profile credentials
 * Alert Toasters on user activity
@@ -40,9 +40,9 @@
 
 ******* CONTACT *******
 
-* +923156336271 *
+* +923156336271 
 
-* RHMZA4@GMAIL.COM *
+* RHMZA4@GMAIL.COM 
 
-* PFTP ROLL NO: pftp375417140669 *
+* PFTP ROLL NO: pftp375417140669 
 

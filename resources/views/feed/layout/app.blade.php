@@ -1,12 +1,12 @@
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- CSRF Token -->
-        <meta name="csrf-token" content="{{ csrf_token() }}" />
-        <!-- fontawesome -->
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous" />
@@ -18,11 +18,11 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojionearea/3.4.2/emojionearea.min.css" />
     <!-- CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/css/toastr.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/css/toastr.css" rel="stylesheet" />
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/> <!-- 'classic' theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css" /> <!-- 'classic' theme -->
 
 </head>
 
@@ -50,10 +50,10 @@
                                 <i class="fas fa-search me-2 text-muted"></i>
                                 <p class="m-0 fs-7 text-dark ps-3">
                                     @if($search)
-                                   {{$search}}
-                                   @else
-                                   Search Laravel Quora
-                                   @endif
+                                    {{$search}}
+                                    @else
+                                    Search Laravel Quora
+                                    @endif
                                 </p>
                             </div>
                         </span>
@@ -61,9 +61,9 @@
                         <ul class="dropdown-menu overflow-auto border-0 shadow p-3" aria-labelledby="searchMenu" style="width: 20em; max-height: 600px">
                             <!-- search input -->
                             <li>
-                                <form action="" method="get" class="d-flex">
-                                <input type="text" class="rounded-pill border-0 bg-gray dropdown-item" name="search" placeholder="Search Laravel Quora..." value="{{$search}}" autofocus />
-                                <input type="submit" class="rounded-pill bg-primary text-white" value="Search">
+                                <form action="" method="get" class="d-flex" id="searchForm">
+                                    <input type="text" class="rounded-pill border-0 bg-gray dropdown-item" name="search" id="searchInput" placeholder="Search Laravel Quora..." value="{{$search}}" autofocus />
+                                    <!-- <input type="submit" class="rounded-pill bg-primary text-white" value="Search"> -->
                                 </form>
                             </li>
                             <!-- search 1 -->
@@ -1233,7 +1233,7 @@
                                         <div class="d-flex text-decoration-none text-dark">
                                             <i class="fas fa-cog bg-gray p-2 rounded-circle"></i>
                                             <!-- <button class="ms-3 d-flex justify-content-between align-items-center w-100"> -->
-                                                <input type="submit" class="m-0 ms-3 mt-1 bg-white mask" value="Log Out" style="border: 1px solid white;">
+                                            <input type="submit" class="m-0 ms-3 mt-1 bg-white mask" value="Log Out" style="border: 1px solid white;">
                                             <!-- </button> -->
                                         </div>
                                     </form>
@@ -2131,24 +2131,24 @@
     </div>
     <style>
         #scrollBtn {
-  display: none;
-  position: fixed;
-  bottom: 74px;
-  right: 17px;
-  z-index: 99;
-  font-size: 18px;
-  border: none;
-  outline: none;
-  background-color: red;
-  color: white;
-  cursor: pointer;
-  padding: 15px;
-  border-radius: 4px;
-}
+            display: none;
+            position: fixed;
+            bottom: 74px;
+            right: 17px;
+            z-index: 99;
+            font-size: 18px;
+            border: none;
+            outline: none;
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+        }
 
-#scrollBtn:hover {
-  background-color: #555;
-}
+        #scrollBtn:hover {
+            background-color: #555;
+        }
     </style>
     <button onclick="topFunction()" id="scrollBtn" class="rounded-circle shadow" title="Go to top"><i class="fas fa-arrow-up "></i></button>
 
@@ -2159,54 +2159,54 @@
         var panel = document.getElementById('panel');
         // console.log('great');
         // Simple example, see optional options for more configuration.
-const pickr = Pickr.create({
-    el: '.color-picker',
-    theme: 'classic', // or 'monolith', or 'nano'
+        const pickr = Pickr.create({
+            el: '.color-picker',
+            theme: 'classic', // or 'monolith', or 'nano'
 
-    swatches: [
-        'rgba(244, 67, 54, 1)',
-        'rgba(233, 30, 99, 0.95)',
-        'rgba(156, 39, 176, 0.9)',
-        'rgba(103, 58, 183, 0.85)',
-        'rgba(63, 81, 181, 0.8)',
-        'rgba(33, 150, 243, 0.75)',
-        'rgba(3, 169, 244, 0.7)',
-        'rgba(0, 188, 212, 0.7)',
-        'rgba(0, 150, 136, 0.75)',
-        'rgba(76, 175, 80, 0.8)',
-        'rgba(139, 195, 74, 0.85)',
-        'rgba(205, 220, 57, 0.9)',
-        'rgba(255, 235, 59, 0.95)',
-        'rgba(255, 193, 7, 1)'
-    ],
+            swatches: [
+                'rgba(244, 67, 54, 1)',
+                'rgba(233, 30, 99, 0.95)',
+                'rgba(156, 39, 176, 0.9)',
+                'rgba(103, 58, 183, 0.85)',
+                'rgba(63, 81, 181, 0.8)',
+                'rgba(33, 150, 243, 0.75)',
+                'rgba(3, 169, 244, 0.7)',
+                'rgba(0, 188, 212, 0.7)',
+                'rgba(0, 150, 136, 0.75)',
+                'rgba(76, 175, 80, 0.8)',
+                'rgba(139, 195, 74, 0.85)',
+                'rgba(205, 220, 57, 0.9)',
+                'rgba(255, 235, 59, 0.95)',
+                'rgba(255, 193, 7, 1)'
+            ],
 
-    components: {
+            components: {
 
-        // Main components
-        preview: true,
-        opacity: true,
-        hue: true,
+                // Main components
+                preview: true,
+                opacity: true,
+                hue: true,
 
-        // Input / output Options
-        interaction: {
-            hex: true,
-            rgba: true,
-            hsla: true,
-            hsva: true,
-            cmyk: true,
-            input: true,
-            clear: true,
-            save: true
-        }
-    }
-});
-pickr.on('change', (...args) => {
-    let color = args[0].toRGBA();
-    // console.log(color);
-    // $('#textarea').css('background-color', `rgba(${color[0]},${color[1]},${color[2]},${color[3]})`);
-    // this.panel.style.backgroundColor = `rgba(${color[0]},${color[1]},${color[2]},${color[3]})`;
+                // Input / output Options
+                interaction: {
+                    hex: true,
+                    rgba: true,
+                    hsla: true,
+                    hsva: true,
+                    cmyk: true,
+                    input: true,
+                    clear: true,
+                    save: true
+                }
+            }
+        });
+        pickr.on('change', (...args) => {
+            let color = args[0].toRGBA();
+            // console.log(color);
+            // $('#textarea').css('background-color', `rgba(${color[0]},${color[1]},${color[2]},${color[3]})`);
+            // this.panel.style.backgroundColor = `rgba(${color[0]},${color[1]},${color[2]},${color[3]})`;
 
-});
+        });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -2249,9 +2249,9 @@ pickr.on('change', (...args) => {
             pickerPosition: 'bottom'
         });
     </script>
-<!-- JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/js/toastr.js"></script>
-<script>
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/js/toastr.js"></script>
+    <script>
         $(document).ready(function() {
             toastr.options = {
                 'timeOut': 5000,
@@ -2260,41 +2260,52 @@ pickr.on('change', (...args) => {
                 'loaderBg': '#9EC600',
                 'showHideTransition': 'fade',
             }
-            @if (Session::has('error'))
-                toastr.error('{{ Session::get('error') }}');
+            @if(Session::has('error'))
+            toastr.error('{{ Session::get('
+                error ') }}');
             @elseif(Session::has('success'))
-                toastr.success('{{ Session::get('success') }}');
+            toastr.success('{{ Session::get('
+                success ') }}');
             @endif
 
-            $('#logout-item').click(function(){
+            $('#logout-item').click(function() {
                 $('#logout-form').submit();
             })
 
-            $('#profile-div').click(function(){
+            $('#profile-div').click(function() {
                 window.location.href = "http://127.0.0.1:8000/profile"
             });
         });
 
         // Get the button
-let mybutton = document.getElementById("scrollBtn");
+        let mybutton = document.getElementById("scrollBtn");
 
-// When the user scrolls down 20px from the top of the document, show the button
-window.onscroll = function() {scrollFunction()};
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {
+            scrollFunction()
+        };
 
-function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    mybutton.style.display = "block";
-  } else {
-    mybutton.style.display = "none";
-  }
-}
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
 
-// When the user clicks on the button, scroll to the top of the document
-function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
 
+    <script>
+        $(document).ready(function() {
+            $('#searchInput').change(function() {
+                $('#searchForm').submit();
+            })
+        })
     </script>
 </body>
 

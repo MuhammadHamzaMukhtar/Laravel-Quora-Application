@@ -15,8 +15,8 @@
                 <div class="d-flex">
 
                     <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-                    <i class="fa fa-circle-check fs-3 text-success ms-2 mt-2" style="display: none;" id="name-tick"></i>
-                    <i class="fa-solid fa-circle-xmark fs-3 text-danger ms-2 mt-2" style="display: none;" id="name-cross"></i>
+                    <i class="fa fa-circle-check fs-4 text-success ms-2 mt-2" style="display: none;" id="name-tick"></i>
+                    <i class="fa-solid fa-circle-xmark fs-4 text-danger ms-2 mt-2" style="display: none;" id="name-cross"></i>
                 </div>
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 <br>
@@ -29,8 +29,8 @@
                 <div class="d-flex">
 
                     <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
-                    <i class="fa fa-circle-check fs-3 text-success ms-2 mt-2" style="display: none;" id="email-tick"></i>
-                    <i class="fa-solid fa-circle-xmark fs-3 text-danger ms-2 mt-2" style="display: none;" id="email-cross"></i>
+                    <i class="fa fa-circle-check fs-4 text-success ms-2 mt-2" style="display: none;" id="email-tick"></i>
+                    <i class="fa-solid fa-circle-xmark fs-4 text-danger ms-2 mt-2" style="display: none;" id="email-cross"></i>
                 </div>
                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 <br>
@@ -42,8 +42,8 @@
                 <x-input-label for="profile_pic" :value="__('Profile Pic')" />
                 <div class="d-flex">
                     <x-text-input id="image" class="block mt-1 w-full" type="file" name="image" :value="old('image')" required />
-                    <i class="fa fa-circle-check fs-3 text-success ms-2 mt-2" style="display: none;" id="pic-tick"></i>
-                    <i class="fa-solid fa-circle-xmark fs-3 text-danger ms-2 mt-2" style="display: none;" id="pic-cross"></i>
+                    <i class="fa fa-circle-check fs-4 text-success ms-2 mt-2" style="display: none;" id="pic-tick"></i>
+                    <i class="fa-solid fa-circle-xmark fs-4 text-danger ms-2 mt-2" style="display: none;" id="pic-cross"></i>
                 </div>
                 <x-input-error :messages="$errors->get('image')" class="mt-2" />
                 <br>
@@ -58,8 +58,9 @@
 
                 <div class="d-flex">
                     <x-text-input id="pass" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-                    <i class="fa fa-circle-check fs-3 text-success ms-2 mt-2" style="display: none;" id="pass-tick"></i>
-                    <i class="fa-solid fa-circle-xmark fs-3 text-danger ms-2 mt-2" style="display: none;" id="pass-cross"></i>
+                    <i class="fa-sharp fa-solid fa-eye-slash mt-3 fs-6" style="margin-left: -30px;" id="eye"></i>
+                    <i class="fa fa-circle-check fs-4 text-success ms-3 mt-2" style="display: none;" id="pass-tick"></i>
+                    <i class="fa-solid fa-circle-xmark fs-4 text-danger ms-3 mt-2" style="display: none;" id="pass-cross"></i>
                 </div>
 
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
@@ -73,8 +74,9 @@
 
                 <div class="d-flex">
                     <x-text-input id="cpass" class="block mt-1 w-full" type="password" name="password_confirmation" required />
-                    <i class="fa fa-circle-check fs-3 text-success ms-2 mt-2" style="display: none;" id="cpass-tick"></i>
-                    <i class="fa-solid fa-circle-xmark fs-3 text-danger ms-2 mt-2" style="display: none;" id="cpass-cross"></i>
+                    <i class="fa-sharp fa-solid fa-eye-slash mt-3 fs-6" style="margin-left: -30px;" id="ceye"></i>
+                    <i class="fa fa-circle-check fs-4 text-success ms-3 mt-2" style="display: none;" id="cpass-tick"></i>
+                    <i class="fa-solid fa-circle-xmark fs-4 text-danger ms-3 mt-2" style="display: none;" id="cpass-cross"></i>
                 </div>
 
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
@@ -199,6 +201,28 @@
                     }
                 });
             });
+            $('#eye').click(function() {
+            if ($(this).hasClass('fa-eye-slash')) {
+                $(this).removeClass('fa-eye-slash');
+                $(this).addClass('fa-eye');
+                $('#pass').attr('type', 'text')
+            } else {
+                $(this).removeClass('fa-eye');
+                $(this).addClass('fa-eye-slash');
+                $('#pass').attr('type', 'password')
+            }
+        })
+            $('#ceye').click(function() {
+            if ($(this).hasClass('fa-eye-slash')) {
+                $(this).removeClass('fa-eye-slash');
+                $(this).addClass('fa-eye');
+                $('#cpass').attr('type', 'text')
+            } else {
+                $(this).removeClass('fa-eye');
+                $(this).addClass('fa-eye-slash');
+                $('#cpass').attr('type', 'password')
+            }
+        })
         </script>
     </x-auth-card>
 </x-guest-layout>

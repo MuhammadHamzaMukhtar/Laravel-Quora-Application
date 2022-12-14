@@ -22,12 +22,14 @@
             <!-- Password -->
             <div class="mt-4">
                 <x-input-label for="password" :value="__('Password')" />
+                <div class="d-flex">
 
-                <x-text-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-
+                    <x-text-input id="password" class="block mt-1 w-full"
+                                    type="password"
+                                    name="password"
+                                    required autocomplete="current-password" />
+                                    <i class="fa-sharp fa-solid fa-eye-slash mt-3 fs-6" style="margin-left: -30px;" id="eye"></i>
+                </div>
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
 
@@ -51,5 +53,20 @@
                 </x-danger-button>
             </div>
         </form>
+        <script>
+            $(document).ready(function(){
+                $('#eye').click(function() {
+            if ($(this).hasClass('fa-eye-slash')) {
+                $(this).removeClass('fa-eye-slash');
+                $(this).addClass('fa-eye');
+                $('#password').attr('type', 'text')
+            } else {
+                $(this).removeClass('fa-eye');
+                $(this).addClass('fa-eye-slash');
+                $('#password').attr('type', 'password')
+            }
+        })
+            })
+        </script>
     </x-auth-card>
 </x-guest-layout>
