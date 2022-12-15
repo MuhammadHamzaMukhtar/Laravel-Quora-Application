@@ -53,8 +53,7 @@
             <label for="pic" :value="__('Profile Pic')" class="mt-1">
                 Profile Pic </label><br />
             <input id="pic" name="pic" id="image" type="file" class="mt-1 block w-full image" />
-<!--         
-         <x-text-input id="image" name="pic" type="file" class="mt-1 block w-full" :value="old('pic', $user->profile_pic)" required autocomplete="pic" /> -->
+
             @error('pic')
             <span class="text-danger">{{
                 $message

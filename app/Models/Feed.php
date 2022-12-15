@@ -33,12 +33,7 @@ class Feed extends Model
     {
         return $this->comments()->count();    
     }
-    
-    // public function likes()
-    // {
-    //     return $this->hasMany(Feed_like::class, 'feed_id', 'id')->sum('is_liked');
-    // }
-
+  
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');

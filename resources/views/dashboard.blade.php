@@ -502,25 +502,7 @@
                     <!-- s 1 -->
                     <div class="mx-1 bg-white rounded story" type="button" style="width: 6em; height: 190px">
                         <img src="https://source.unsplash.com/collection/happy-people" class="card-img-top" alt="story posts" style="min-height: 190px; object-fit: cover" />
-                        <!-- <div class="
-                    d-flex
-                    align-items-center
-                    justify-content-center
-                    position-relative
-                  " style="min-height: 65px">
-                            <p class="mb-0 text-center fs-7 fw-bold">Create Story</p>
-                            <div class="position-absolute top-0 start-50 translate-middle">
-                                <i class="
-                        fas
-                        fa-plus-circle
-                        fs-3
-                        text-primary
-                        bg-white
-                        p-1
-                        rounded-circle
-                      "></i>
-                            </div>
-                        </div> -->
+                       
                     </div>
                     <!-- s 2 -->
                     <div class="rounded mx-1 story" type="button" style="width: 6em; height: 190px">
@@ -597,11 +579,7 @@
                                                 </div>
                                                 <div>
                                                     <p class="m-0 fw-bold">{{Auth::user()->name}}</p>
-                                                    <!-- <select class="form-select border-0 bg-gray w-75 fs-7" aria-label="Default select example">
-                                                        <option selected value="1">Public</option>
-                                                        <option value="2">Pin To Top</option>
-                                                        <option value="3">Hide</option>
-                                                    </select> -->
+                                               
                                                 </div>
                                             </div>
                                             <form action="{{route('feed.store')}}" method="post" enctype="multipart/form-data">
@@ -609,12 +587,12 @@
                                                 <!-- text -->
                                                 <div>
                                                     <textarea name="description" id="textarea" cols="30" rows="5" class="form-control border-0" placeholder="Start your question with What, Why or How?.."></textarea>
-                                                    <!-- <div id="panel" class="w-25 h-25"></div> -->
+                                                   
                                                 </div>
                                                 <!-- emoji  -->
                                                 <div class="d-flex justify-content-between                            align-items-center color-picker">
                                                     <img src="https://www.facebook.com/images/composer/SATP_Aa_square-2x.png" class="pointer" alt="fb text" style="width: 30px; height: 30px; object-fit: cover;" />
-                                                    <!-- <i class="far fa-laugh-wink fs-5 text-muted pointer"></i> -->
+                                                   
                                                 </div>
                                                 <!-- options -->
                                                 <div class="d-flex                            justify-content-between border border-1 border-light rounded p-3 mt-3">
@@ -624,33 +602,7 @@
                                                             <i class="fas fa-images fs-5 text-success pointer mx-1" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Image"></i>
                                                         </label>
                                                         <input type="file" name="image" id="pic_file">
-                                                        <!-- <i class="fas fa-user-check fs-5 text-primary pointer
-                                  mx-1
-                                "></i> -->
-                                                        <!-- <i class="
-                                  far
-                                  fa-smile
-                                  fs-5
-                                  text-warning
-                                  pointer
-                                  mx-1
-                                "></i> -->
-                                                        <!-- <i class="
-                                  fas
-                                  fa-map-marker-alt
-                                  fs-5
-                                  text-info
-                                  pointer
-                                  mx-1
-                                "></i> 
-                                                        <i class="
-                                  fas
-                                  fa-microphone
-                                  fs-5
-                                  text-danger
-                                  pointer
-                                  mx-1
-                                "></i>-->
+                                                       
                                                         <i class="
                                   fas
                                   fa-ellipsis-h
@@ -685,16 +637,7 @@
                     <!-- actions -->
                     <div class="d-flex flex-column flex-lg-row mt-3">
                         <!-- a 1 -->
-                        <!-- <div class="
-                    dropdown-item
-                    rounded
-                    d-flex
-                    align-items-center
-                    justify-content-center
-                  " type="button">
-                            <i class="fas fa-video me-2 text-danger"></i>
-                            <p class="m-0 text-muted">Live Video</p>
-                        </div> -->
+                        
                         <!-- a 2 -->
                         <div class="
                     dropdown-item
@@ -872,7 +815,7 @@
                                 {{$post->description}}
                             </p>
                             @if($post->pic !== 'NULL')
-                            <!-- <img src="{{asset('images/'.$post->pic)}}" alt="post image" class="img-fluid rounded" /> -->
+                           
                             <embed src="{{ asset('images/'.$post->pic) }}" width="600" height="500" alt="pdf" class="ms-3" />
                             @endif
                         </div>
@@ -887,8 +830,7 @@
                     " style="height: 50px; z-index: 5">
                                 <div class="me-2">
                                     <i class="text-primary fas fa-thumbs-up"></i>
-                                    <!-- <i class="text-danger fab fa-gratipay"></i>
-                                    <i class="text-warning fas fa-grin-squint"></i> -->
+                                    
                                 </div>
                                 <p class="m-0 text-muted fs-7" id="post_likes{{$post->id}}" class="like-count">{{$post->is_liked}}</p>
                                 <pre class="m-0 text-muted fs-7"> likes</pre>
@@ -974,14 +916,7 @@
                                                             </li>
 
                                                             <li class="d-flex align-items-center">
-                                                                <!-- <a class="
-                                        dropdown-item
-                                        d-flex
-                                        justify-content-around
-                                        align-items-center
-                                        fs-7 
-                                      " href="{{route('deleteComment', $comment->id)}}">
-                                                                    Delete Comment</a> -->
+                                                                
                                                                 <form action="{{route('deleteComment', $comment->id)}}" method="get" class="ms-4">
                                                                     @csrf
                                                                     <input class="
@@ -1032,8 +967,6 @@
                                                             <input type="checkbox" name="" data-id="{{$comment->id}}" class="comment_toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$comment->like_status == 1 ? 'checked' : ''}} hidden>
                                                             <span class="text-muted fs-7" id="comment_like{{$comment->id}}">{{$comment->is_liked}}</span>
 
-                                                            <!-- <input type="text" name="" class="like" value="{{$post->id}}">
-                                            <p class="m-0">Like</p> -->
                                                         </label>
                                                         <div class="
                                                                     dropdown-item
@@ -1104,14 +1037,7 @@
                                                                             <!-- Modal -->
 
                                                                             <li class="d-flex align-items-center">
-                                                                                <!-- <a class="
-                                        dropdown-item
-                                        d-flex
-                                        justify-content-around
-                                        align-items-center
-                                        fs-7
-                                      " href="{{route('deleteReply', $child->id)}}">
-                                                                                    Delete Reply</a> -->
+                                                                              
                                                                                 <form action="{{route('deleteReply', $child->id)}}" method="get" class="ms-4">
                                                                                     @csrf
                                                                                     <input class="
@@ -1153,8 +1079,6 @@
                                                                             <input type="checkbox" name="" data-id="{{$child->id}}" class="child_comment_toggle" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" {{$child->like_status == 1 ? 'checked' : ''}} hidden>
                                                                             <span class="text-muted fs-7" id="child_comment_like{{$child->id}}">{{$child->is_liked}}</span>
 
-                                                                            <!-- <input type="text" name="" class="like" value="{{$post->id}}">
-                                            <p class="m-0">Like</p> -->
                                                                         </label>
 
                                                                     </div>
@@ -1285,10 +1209,7 @@
 
                 <img src="{{asset('images/post.png')}}" alt="" height="450px" width="650px" class="rounded mx-auto">
                 @endforelse
-                <!-- Button trigger modal -->
-                <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button> -->
+             
             </div>
         </div>
         <!-- ================= Chatbar ================= -->
@@ -2243,10 +2164,8 @@
 
 <script type="text/javascript">
     $('.show-alert-delete-box').click(function(event) {
-        // alert('asasa');
         var form = $(this).closest("form");
-        // var name = $(this).data("name");
-        // alert(form);
+       
         event.preventDefault();
         swal({
             title: "Are you sure you want to delete this post?",
@@ -2264,10 +2183,8 @@
         });
     });
     $('.comment-box').click(function(event) {
-        // alert('asasa');
         var form = $(this).closest("form");
-        // var name = $(this).data("name");
-        // alert(form);
+        
         event.preventDefault();
         swal({
             title: "Are you sure you want to delete this comment?",
@@ -2285,10 +2202,8 @@
         });
     });
     $('.reply-box').click(function(event) {
-        // alert('asasa');
         var form = $(this).closest("form");
-        // var name = $(this).data("name");
-        // alert(form);
+     
         event.preventDefault();
         swal({
             title: "Are you sure you want to delete this comment?",
@@ -2396,14 +2311,11 @@
 
 
         $(function() {
-            // alert('hey');
 
             $('.toggle').change(function() {
-                // alert('hey');
 
                 var status = $(this).prop('checked') == true ? 1 : 0;
-                // alert(status);
-                // var style = $(this).prop('checked') == true ? $(this).removeClass('btn btn-outline-primary').addClass('btn btn-primary') : $(this).removeClass('btn btn-primary').addClass('btn btn-outline-primary');
+    
 
                 var feed_id = $(this).data('id');
                 // alert
@@ -2424,11 +2336,9 @@
             })
 
             $('.comment_toggle').change(function() {
-                // alert('hey');
 
                 var status = $(this).prop('checked') == true ? 1 : 0;
                 var comment_id = $(this).data('id');
-                // alert
                 $.ajax({
                     type: "POST",
                     dataType: "json",
@@ -2439,23 +2349,18 @@
                         'comment_id': comment_id
                     },
                     success: function(data) {
-                        // alert(data)
                         $('#comment_like' + comment_id).text(data)
-                        // console.log('Success')
                     }
                 })
             })
         })
 
         $(function() {
-            // alert('hey');
 
             $('.child_comment_toggle').change(function() {
-                // alert('hey');
 
                 var status = $(this).prop('checked') == true ? 1 : 0;
                 var child_comment_id = $(this).data('id');
-                // alert(child_comment_id);
                 $.ajax({
                     type: "POST",
                     dataType: "json",
@@ -2466,7 +2371,6 @@
                         'child_comment_id': child_comment_id
                     },
                     success: function(data) {
-                        // console.log(data)
                         $('#child_comment_like' + child_comment_id).text(data)
 
                     }

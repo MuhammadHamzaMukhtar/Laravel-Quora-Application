@@ -97,7 +97,6 @@
 
         <script>
             $(document).ready(function() {
-                // alert('asasass')
                 $("#addPic").hide();
                 $("#image").on("change", function() {
                     document.getElementById("addPic").src = window.URL.createObjectURL(
@@ -126,7 +125,6 @@
                         $(".pic-err").html(" ");
                     }
                 });
-                // alert('assasa')
                 $("#name").on("keyup", function() {
                     if ($(this).val() === "") {
                         $('#name-cross').show();

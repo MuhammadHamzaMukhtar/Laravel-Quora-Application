@@ -10,8 +10,7 @@
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-    <!-- bootstrap -->
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/css/toastr.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -1162,7 +1161,7 @@
 
                                         <div class="d-flex text-decoration-none text-dark">
                                             <i class="fas fa-cog bg-gray p-2 rounded-circle"></i>
-                                            <!-- <button class="ms-3 d-flex justify-content-between align-items-center w-100"> -->
+                                        
                                             <input type="submit" class="m-0 ms-3 mt-1 bg-white mask" value="Log Out" style="border: 1px solid white;">
                                             <!-- </button> -->
                                         </div>
@@ -1215,10 +1214,8 @@
     </script>
     <script>
         $(document).ready(function() {
-            // alert('askajsk')
 
             $("#name").on("keyup", function() {
-                // alert('asassa')
                 if ($(this).val() === "") {
                     $(".name-err").html("Name field cannot be NULL");
                 } else {
@@ -1239,7 +1236,6 @@
                 }
             });
             $("#password").on("keyup", function() {
-                // alert('sas')
                 function validatePwd($pwd) {
                     var pwdReg =
                         /^.*(?=.*[a-zA-Z])(?=.*[0-7])(?=.*[\d\x])(?=.*[@$!]).*$/;
@@ -1278,7 +1274,6 @@
                 }
             });
             $(".image").on("change", function() {
-                // alert('asasass')x`
                 document.getElementById("user-img").src =
                     window.URL.createObjectURL(this.files[0]);
                 var fileExtension = ["jpeg", "jpg", "png"];
@@ -1299,10 +1294,8 @@
                 }
             });
             $(".current_password").on("keyup", function() {
-                // alert('asasasa')
                 var user_id = $(this).data("id");
                 var old_pass = $(this).val();
-                // alert(old_pass)
                 $.ajaxSetup({
                     headers: {
                         "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
@@ -1319,7 +1312,6 @@
                     },
                     async: false,
                     success: function(data) {
-                        // alert(data);
                         if (data === "false") {
                             $("#currentPass-cross").show();
                             $("#currentPass-tick").hide();

@@ -28,10 +28,8 @@ class FeedController extends Controller
                     });
             })
             ->get();
-        //    dd($posts);
         $comments = Comment::with('children.children')->root()->latest()->get();
-        //    $likes_count = $posts->feed_likes()->sum('is_liked');
-        //    dd($comments);
+    
         return view('dashboard', compact('posts', 'comments', 'search'));
     }
 
@@ -169,26 +167,6 @@ class FeedController extends Controller
 
         echo $html;
 
-        // $feedLike = Feed_like::where(['user_id' => $user['id'], 'feed_id' => $request['post']])->update(['is_liked' => 1 ? 0 : 1]);
-        // if(!$feedLike){
-
-        //     $data = new Feed_like();
-        //     $data->feed_id = $request->post;
-        //     $data->user_id = $user['id'];
-        //     if($request->type == 'like'){
-        //         $data->is_liked = 1;
-        //     }else{
-        //         $data->dislike = 1;
-        //     }
-        //     $data->save();
-        // } else {
-
-        // }
-
-        // return response()->json([
-        //     'bool' => true
-        // ]);
-
     }
 
     public function comment_likes(Request $request)
@@ -212,7 +190,6 @@ class FeedController extends Controller
 
     public function child_comment_likes(Request $request)
     {
-        // dd($request->all());
         $user = Auth::user();
         $commentLike = CommentLikes::where(['user_id' => $user['id'], 'comment_id' => $request['child_comment_id']])->update(['is_liked' => $request['status']]);
         if (!$commentLike) {
@@ -245,7 +222,6 @@ class FeedController extends Controller
 
     public function addReply(Request $request, $comment_id, $post_id)
     {
-        // dd($comment_id, $post_id);
         $request->validate([
             'reply' => 'required'
         ]);
